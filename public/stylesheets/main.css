@@ -1,6 +1,7 @@
 body{
     font-family: Corbel, sans-serif;
     color: rgb(67, 74, 86);
+    background-color: rgb(246, 246, 246);
 }
 
 a{
@@ -33,7 +34,7 @@ hr{
     margin: 0;
 }
 
-.green{
+.gr, een{
     background-color: rgba(118, 196, 174, .85);
 }
 
