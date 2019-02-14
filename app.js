@@ -6,7 +6,7 @@ const expressSanitzer = require("express-sanitizer"),
       mongoose = require('mongoose');
 
       //rezzio
-       mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`)
+       mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
        // mine
       // mongoose.connect(`mongodb://soufi:NHIadkQn0ULQKkoa@cluster0-shard-00-00-ku5v3.mongodb.net:27017,cluster0-shard-00-01-ku5v3.mongodb.net:27017,cluster0-shard-00-02-ku5v3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`)
         .then(() => console.log('Connected'))
@@ -30,9 +30,9 @@ app.get('/', (req, res) => res.render('index'));
 // app.get('/thankyou', (req, res) => res.render('thank-you'));
 
 // Open about-you page for new users
-app.get('/about-you/new', (req, res) => res.render('createUser'));
+app.get('/about-you', (req, res) => res.render('createUser'));
 // Open awareness page for new users
-app.get('/awareness/new', (req, res) => res.render('CreateAwareness'));
+app.get('/awareness', (req, res) => res.render('CreateAwareness'));
 // Open careerAwareness page for new users
 // app.get('/careerAwareness/new', (req, res) => res.render('CreateCareerAwareness'));
 // Open careerPath page for new users
