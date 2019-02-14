@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const campgroundSchema = new mongoose.Schema({
    firstName: String,
    lastName: String,
-   gender: String,
+   gender: Number,
    emailAddress: String,
    currentMajor: String,
    currentMinor: String,
