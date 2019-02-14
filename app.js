@@ -62,7 +62,7 @@ app.get('/awareness/new', (req, res) => res.render('CreateAwareness'));
 
 
 // CREATE New User object
-app.post('/about-you/new', (req, res) => {
+app.post('/about-you', (req, res) => {
   console.log(req.body);
   let firstName = req.body.aa;
   let lastName = req.body.ab;

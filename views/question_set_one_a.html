@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Rezzio: Learning made easy">
+  <meta name="author" content="Mitch Brudy">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="http://example.com/favicon.png">
+  <title>REZZIO</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/css/main.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/question_set_one.css" type="text/css">
+  <script src="lib/jquery-3.3.1.min.js" type="text/javascript" rel="script"></script>
+  <!-- Start of Async Drift Code -->
+  <script>
+      "use strict";
+
+      !function() {
+          var t = window.driftt = window.drift = window.driftt || [];
+          if (!t.init) {
+              if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+              t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+                  t.factory = function(e) {
+                      return function() {
+                          var n = Array.prototype.slice.call(arguments);
+                          return n.unshift(e), t.push(n), t;
+                      };
+                  }, t.methods.forEach(function(e) {
+                  t[e] = t.factory(e);
+              }), t.load = function(t) {
+                  var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                  o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                  var i = document.getElementsByTagName("script")[0];
+                  i.parentNode.insertBefore(o, i);
+              };
+          }
+      }();
+      drift.SNIPPET_VERSION = '0.3.1';
+      drift.load('g27in3s85a48');
+  </script>
+  <!-- End of Async Drift Code -->
+</head>
+
+<body>
+<div class="ui secondary pointing menu">
+        <a class="item">
+            <img src="assets/img/Small_Icon.svg">
+            <p>REZZIO LEARNING</p>
+        </a>
+        <div class="right menu">
+            <a class="item">
+                DASHBOARD
+            </a>
+            <a class="item">
+                ABOUT REZZIO
+            </a>
+            <a class="item">
+                CREATE PROFILE
+            </a>
+        </div>
+</div>
+
+<div class="ui container center">
+  <h2>
+    AWARENESS
+  </h2>
+  <div class="ui eight column centered grid">
+    <form class="ui form">
+      <div class="field">
+        <label>WAS THIS UNIVERSITY YOUR FIRST CHOICE?</label>
+        <button class="ui secondary button" type="button" name="yes-button">Yes</button>
+        <button class="ui secondary button" type="button" name="no-button">no</button>
+      </div>
+      <div class="field">
+          <label>WHAT WAS THE DEFINING FACTOR IN YOUR DECISION TO ATTEND THIS UNIVERSITY?</label>
+          <textarea></textarea>
+        </div>
+        <div class="field">
+          <label>WHAT DO YOU WISH THE UNIVERSITY HAD THAT IT DOES NOT PROVIDE</label>
+          <textarea></textarea>
+        </div>
+
+          <!--  Did any of these factor into your decision to attend this school-->
+          <p><span class="multiple-select">DID ANY OF THESE FACTOR INTO YOUR DECISION TO ATTEND THIS SCHOOL?</span></p>
+          <div class="ui equal width center aligned padded grid selection">
+              <div class="row selection-outer">
+                <div class="column selection-padding">
+                  Specific Program
+                </div>
+                <div class="column selection-padding selection-inner">
+                  Sports
+                </div>
+                <div class="column selection-padding">
+                  Location
+                </div>
+              </div>
+              <div class="row">
+                <div class="column selection-padding">
+                  Finances
+                </div>
+                <div class="column selection-padding selection-inner">
+                  University Sports
+                </div>
+                <div class="column selection-padding">
+                  Friends / Family
+                </div>
+              </div>
+            </div>
+
+          <!--  What do you wish the school had that it does not provide-->
+          <p><span class="multiple-select">WHAT DO YOU WISH THE SCHOOL HAD THAT IT DOES NOT PROVIDE?</span></p>
+          <div class="ui equal width center aligned padded grid selection">
+              <div class="row selection-outer">
+                <div class="column selection-padding">
+                  Specific Program
+                </div>
+                <div class="column selection-padding selection-inner">
+                  Sports
+                </div>
+                <div class="column selection-padding">
+                  Location
+                </div>
+              </div>
+              <div class="row">
+                <div class="column selection-padding">
+                  Finances
+                </div>
+                <div class="column selection-padding selection-inner">
+                  University Sports
+                </div>
+                <div class="column selection-padding">
+                  Friends / Family
+                </div>
+              </div>
+            </div>
+
+        <div class="field">
+          <label>MY FAMILY PLAYED A ROLE IN MY DECISION TO ATTEND THIS UNIVERISTY</label>
+          <button class="ui secondary button" type="button" name="yes-button">Yes</button>
+          <button class="ui secondary button" type="button" name="no-button">no</button>
+        </div>
+        <div class="field">
+          <label>MY FAMILY SUPPORTED MY DECISION TO ATTEND THIS UNIVERISTY</label>
+          <button class="ui secondary button" type="button" name="yes-button">Yes</button>
+          <button class="ui secondary button" type="button" name="no-button">no</button>
+        </div>
+      </div>
+  </div>
+
+  <div class="ui four column centered grid">
+    <button class="ui primary button next">
+        <a href="career_awareness.html">NEXT</a>
+    </button>
+  </div>
+</body>
+</html>
