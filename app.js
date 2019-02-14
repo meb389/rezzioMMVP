@@ -34,9 +34,9 @@ app.get('/about-you', (req, res) => res.render('createUser'));
 // Open awareness page for new users
 app.get('/awareness', (req, res) => res.render('CreateAwareness'));
 // Open careerAwareness page for new users
-// app.get('/careerAwareness/new', (req, res) => res.render('CreateCareerAwareness'));
+app.get('/careerawareness', (req, res) => res.render('CreateCareerAwareness'));
 // Open careerPath page for new users
-// app.get('/careerPath/new', (req, res) => res.render('CreateCareerPath'));
+app.get('/careerpath', (req, res) => res.render('createCareerPath'));
 // Open exposureA page for new users
 // app.get('/exposureA/new', (req, res) => res.render('CreateExposureA'));
 // Open exposureB page for new users
