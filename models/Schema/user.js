@@ -11,4 +11,5 @@ const campgroundSchema = new mongoose.Schema({
    graduationDate: String,
 });
 
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model("User", campgroundSchema);
+module.exports = User;

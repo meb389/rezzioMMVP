@@ -1,7 +1,78 @@
-<h1>TESTING</h1>
+<% include partials/header %>
 
-<form class="form" action="/about-you" method="post">
-  <input type="text" name="name" value="">
-  <input type="number" name="age" value="">
-  <input type="submit" name="button" value="">
-</form>
+<% include partials/navMenu %>
+
+<div class="hero">
+    <div class="content-wrapper">
+        <div class="ui grid">
+            <div class="eight wide column center">
+                <h1>TELL US ABOUT YOURSELF</h1>
+            </div>
+            <div class="eight wide column center">
+                <h1>STEP #1</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="/about-you/new" method="post">
+
+
+<div class="content-wrapper">
+    <div class="ui grid">
+        <div class="eight wide column center">
+            <div class="ui form">
+                <div class="field">
+                    <div class="two fields">
+                        <div class="field">
+                            <input name="aa" type="text" placeholder="FIRST NAME">
+                        </div>
+                        <div class="field">
+                            <input name="ab" type="text" placeholder="LAST NAME">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui selection dropdown">
+                        <input name="ac" type="hidden" name="gender">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">GENDER</div>
+                        <div class="menu">
+                            <div class="item" data-value="1">Male</div>
+                            <div class="item" data-value="0">Female</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <input name="ad" type="text" placeholder="EMAIL ADDRESS">
+                </div>
+                <div class="field">
+                    <div class="two fields">
+                        <div class="field">
+                            <input name="ae" type="text" placeholder="CURRENT MAJOR">
+                        </div>
+                        <div class="field">
+                            <input name="af" type="text" placeholder="CURRENT MINOR">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <input name="ag" type="text" placeholder="CURRENT GRADE">
+                </div>
+                <div class="field">
+                    <input name="ah" type="text" placeholder="ANTICIPATED GRADUATION DATE">
+                </div>
+            </div>
+        </div>
+        <div class="eight wide column center">
+            <div class="row">
+                <button id="aboutButton" class="ui primary button" type="submit">
+                  Next
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+        </form>
+
+        <% include partials/footer %>
