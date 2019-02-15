@@ -2,40 +2,45 @@
 
 <% include partials/navMenu %>
 
-<div class="content-wrapper introQuestion">
-    <div class="ui grid">
-        <div class="eight wide column center">
-          <h2>EXPOSURE</h2>
-            <p>
-              We want to learn more about your experience with study abroad programs and active service trips.
-            </p>
-            <form class="ui form">
-              <!-- Question one -->
-              <div class="field">
-                <p>HAVE YOU EVER HAD A MENTOR?</p>
-                <div class="buttonClassLeft light-blue">
-                  <a href="exposure-d.html" id="ga">YES</a>
-                </div>
-                <div class="buttonClassRight light-blue">
-                  <a href="exposure-d.html" id="gb">NO</a>
-                </div>
-              </div>
+<div id="introQuestion" class="content-wrapper">
+  <div class="ui grid">
+    <div class="eight wide column center">
+      <h2>EXPOSURE</h2>
+      <p>
+        We want to learn more about your experience with study abroad programs and active service trips.
+      </p>
+      <form class="ui form">
+        <!-- Question one -->
+        <div class="field">
+          <p><strong>HAVE YOU EVER HAD A MENTOR?</strong></p>
+          <button class="ui primary button">
+            YES
+          </button>
+          <button class="ui primary button">
+            NO
+          </button>
         </div>
-        <div class="eight wide column center">
-            <img src="assets\img\Executive Menber.png" alt="">
-        </div>
+      </form>
     </div>
+
+    <div class="eight wide column center">
+      <img src="images\Executive Menber.png" alt="">
+    </div>
+  </div>
 </div>
 
-<div class="ui container center mainQuestions">
-  <h2>
-    EXPOSURE
-  </h2>
+<div id="mainQuestions" class="ui container center">
+  <h2>EXPOSURE</h2>
   <div class="ui eight column centered grid">
     <form class="ui form">
+
       <!-- Question one -->
       <div class="field">
-        <p><span class="multiple-select">IT IS IMPORTANT TO BE OPEN TO DIVERSITY IN ORDER TO SUCCEED AS AN INDIVIDUAL AND PROFESSIONALY</span></p>
+        <p>
+          <span class="multiple-select">
+            IT IS IMPORTANT TO BE OPEN TO DIVERSITY IN ORDER TO SUCCEED AS AN INDIVIDUAL AND PROFESSIONALY
+          </span>
+        </p>
         <!-- Scale of 1-5 -->
         <div class="ui selection dropdown">
           <input type="hidden" name="ha">
@@ -50,6 +55,7 @@
           </div>
         </div>
       </div>
+
       <!-- Question two -->
       <div class="field">
         <p><span class="multiple-select">I AM INTERESTED IN PARTICIPATING IN THE FOLLOWING DURING MY COLLEGE EXPERIENCE</span></p>
@@ -68,10 +74,11 @@
       </div>
     </form>
   </div>
+  
   <div class="ui four column centered grid">
-    <div class="buttonClass light-blue moveDown">
+    <button class="ui primary button">
       <a href="/internship">READY TO BEGIN?</a>
-    </div>
+    </button>
   </div>
 </div>
 
