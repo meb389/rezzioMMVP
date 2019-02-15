@@ -1,0 +1,109 @@
+<% include partials/header %>
+
+<% include partials/navMenu %>
+
+<div class="content-wrapper">
+    <div class="ui grid">
+        <div class="eight wide column center">
+          <h2>NETWORKING</h2>
+            <p>
+              We want to learn more about your experience with networking with other students and professionals.
+            </p>
+            <form class="ui form">
+              <!-- Question one -->
+              <div class="field">
+                <p>HAVE YOU EVER HAD A MENTOR?</p>
+                <div class="buttonClassLeft light-blue">
+                  <a href="networking-d.html" id="ka">YES</a>
+                </div>
+                <div class="buttonClassRight light-blue">
+                  <a href="networking-d.html" id="kb">NO</a>
+                </div>
+              </div>
+        </div>
+        <div class="eight wide column center">
+            <img src="assets\img\networking.png" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="ui container center">
+  <h2>
+    NETWORKING
+  </h2>
+  <div class="ui eight column centered grid">
+    <form class="ui form">
+      <!-- Question one -->
+      <div class="field">
+        <p><span class="multiple-select">IT IS IMPORTANT TO BEGIN NETWORKING EARLY IN MY COLLEGE CAREER</span></p>
+        <!-- Scale of 1-5 -->
+        <div class="ui selection dropdown">
+          <input type="hidden" name="la">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select One</div>
+          <div class="menu">
+            <div class="item" data-value="4">5 - Most Important</div>
+            <div class="item" data-value="3">4</div>
+            <div class="item" data-value="2">3</div>
+            <div class="item" data-value="1">2</div>
+            <div class="item" data-value="0">1 - Not important at all</div>
+          </div>
+        </div>
+      </div>
+      <!-- Question two -->
+      <div class="field">
+        <p><span class="multiple-select">NETWORKING IS ESSENTIAL TO MY CAREER GROWTH AND PROFESSIONAL DEVELOPMENT</span></p>
+        <!-- Scale of 1-5 -->
+        <div class="ui selection dropdown">
+          <input type="hidden" name="lb">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select One</div>
+          <div class="menu">
+            <div class="item" data-value="4">5 - Most Important</div>
+            <div class="item" data-value="3">4</div>
+            <div class="item" data-value="2">3</div>
+            <div class="item" data-value="1">2</div>
+            <div class="item" data-value="0">1 - Not important at all</div>
+          </div>
+        </div>
+      </div>
+      <!-- Question THREE -->
+      <div class="field">
+        <p><span class="multiple-select">DO YOU FELL COMFORTABLE NETWORKING WITH A PROFESSIONAL?</span></p>
+        <!-- Scale of 1-5 -->
+        <div class="ui selection dropdown">
+          <input type="hidden" name="lc">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select One</div>
+          <div class="menu">
+            <div class="item" data-value="Yes">Yes</div>
+            <div class="item" data-value="No">No</div>
+          </div>
+        </div>
+      </div>
+      <!-- Question FOUR -->
+      <div class="field">
+        <p><span class="multiple-select">WHAT TYPES OF NETWORKING EVENTS HAVE YOU ATTENDED?</span></p>
+        <!-- Professional Conferences, Industry Specific Speaking Engagements, Roundtable Events, LinkedIn/Online groups, Meetup.com Events, Career Fairs, Other, None of the above -->
+        <select name="ld" multiple="" class="ui fluid dropdown">
+          <option value="">Select All That Apply</option>
+          <option value="Confernece">Professional Conferneces</option>
+          <option value="Speaking">Industry Specific Speaking Engagements</option>
+          <option value="Roundtable">Roundtable Events</option>
+          <option value="Online">LinkedIn / Online Groups</option>
+          <option value="Meetup.com Events">Meetup.com Events</option>
+          <option value="Career Fair">Career Fairs</option>
+          <option value="Other">Other</option>
+          <option value="None">None</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="ui four column centered grid">
+    <div class="buttonClass light-blue moveDown">
+      <a href="/involvement">READY TO BEGIN?</a>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>

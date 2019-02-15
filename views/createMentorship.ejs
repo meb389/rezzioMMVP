@@ -1,0 +1,79 @@
+<% include partials/header %>
+
+<% include partials/navMenu %>
+
+
+<div class="content-wrapper introQuestion">
+    <div class="ui grid">
+        <div class="eight wide column center">
+          <h2>MENTORSHIP</h2>
+            <p>
+              Mentors play an important role in helping you learn about your and make decisions about your future.
+            </p>
+            <form class="ui form">
+              <!-- Question one -->
+              <div class="field">
+                <p>HAVE YOU EVER HAD A MENTOR?</p>
+                <div class="buttonClassLeft light-blue">
+                  <a href="mentorship-d.html" id="ea">YES</a>
+                </div>
+                <div class="buttonClassRight light-blue">
+                  <a href="mentorship-d.html" id="eb">NO</a>
+                </div>
+              </div>
+            </form>
+        </div>
+        <div class="eight wide column center">
+            <img src="assets\img\Mentor.png" alt="">
+        </div>
+    </div>
+</div>
+
+
+<div class="ui container center mainQuestions">
+  <h2>
+    AWARENESS
+  </h2>
+  <div class="ui eight column centered grid">
+    <form class="ui form">
+      <!-- Question one -->
+      <div class="field">
+        <label>TELL US ABOUT YOUR MENTORSHIP EXPERIENCES TO DATE</label>
+        <textarea name="fa"></textarea>
+      </div>
+      <!-- Question two -->
+      <div class="field">
+        <p><span class="multiple-select">HOW IMPORTANT DO YOU THINK IT IS TO HAVE A MENTOR?</span></p>
+        <!-- Scale of 1-5 -->
+        <div class="ui selection dropdown">
+          <input type="hidden" name="fb">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select One</div>
+          <div class="menu">
+            <div class="item" data-value="4">5 - Most Important</div>
+            <div class="item" data-value="3">4</div>
+            <div class="item" data-value="2">3</div>
+            <div class="item" data-value="1">2</div>
+            <div class="item" data-value="0">1 - Not important at all</div>
+          </div>
+        </div>
+      </div>
+      <!-- Question three -->
+      <div class="field">
+        <label>IN YOUR OPINION DESCRIBE THE QUALITIES A GOOD MENTOR POSSESSES</label>
+        <textarea name="fc"></textarea>
+      </div>
+      <div class="field">
+        <label>HOW MANY MENTORS DO YOU PLAN ON HAVING BEFORE YOU GRADUATE?</label>
+        <input name="fd" type="text">
+      </div>
+    </form>
+  </div>
+  <div class="ui four column centered grid">
+    <div class="buttonClass light-blue moveDown">
+      <a href="/exposure">READY TO BEGIN?</a>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>

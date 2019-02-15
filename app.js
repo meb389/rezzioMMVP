@@ -12,7 +12,6 @@ const expressSanitzer = require("express-sanitizer"),
         .then(() => console.log('Connected'))
         .catch(err => console.log(err));
 
-
       app.use(bodyParser.urlencoded({extended: true}));
       app.use(expressSanitzer());
       app.use(express.static("public"));
@@ -24,74 +23,63 @@ const expressSanitzer = require("express-sanitizer"),
 
 // Index
 app.get('/', (req, res) => res.render('index'));
-//Questionnaire
-// app.get('/questionnaire', (req, res) => res.render('questionnaire'));
-// Thank You page
-// app.get('/thankyou', (req, res) => res.render('thank-you'));
-
 // Open about-you page for new users
 app.get('/about-you', (req, res) => res.render('createUser'));
-// Open awareness page for new users
-app.get('/awareness', (req, res) => res.render('CreateAwareness'));
-// Open careerAwareness page for new users
-app.get('/careerawareness', (req, res) => res.render('CreateCareerAwareness'));
 // Open careerPath page for new users
 app.get('/careerpath', (req, res) => res.render('createCareerPath'));
-// Open exposureA page for new users
-// app.get('/exposureA/new', (req, res) => res.render('CreateExposureA'));
-// Open exposureB page for new users
-// app.get('/exposureB/new', (req, res) => res.render('CreateExposureB'));
-// Open internshipA page for new users
-// app.get('/internshipA/new', (req, res) => res.render('CreateInternshipA'));
-// Open internshipB page for new users
-// app.get('/internshipB/new', (req, res) => res.render('CreateInternshipB'));
-// Open involvementA page for new users
-// app.get('/involvementA/new', (req, res) => res.render('CreateInvolvementA'));
-// Open involvementB page for new users
-// app.get('/involvementB/new', (req, res) => res.render('CreateInvolvementB'));
-// Open mentorshipA page for new users
-// app.get('/mentorshipA/new', (req, res) => res.render('CreateMentorshipA'));
-// Open mentorshipB page for new users
-// app.get('/mentorshipB/new', (req, res) => res.render('CreateMentorshipB'));
+//Questionnaire
+app.get('/questionnare', (req, res) => res.render('questionnare'));
+// Open awareness page for new users
+app.get('/awareness', (req, res) => res.render('createAwareness'));
+// Open careerAwareness page for new users
+app.get('/careerawareness', (req, res) => res.render('createCareerAwareness'));
+// Open mentorship page for new users
+app.get('/mentorship', (req, res) => res.render('CreateMentorship'));
+// Open exposure page for new users
+app.get('/exposure', (req, res) => res.render('CreateExposure'));
+// Open internship page for new users
+app.get('/internship', (req, res) => res.render('createInternship'));
 // Open networkingA page for new users
-// app.get('/networkingA/new', (req, res) => res.render('CreateNetworkingA'));
-// Open networkingB page for new users
-// app.get('/networkingB/new', (req, res) => res.render('CreateNetworkingB'));
+app.get('/networking', (req, res) => res.render('createNetworking'));
+// Open involvementA page for new users
+app.get('/involvement', (req, res) => res.render('createInvolvement'));
 
+// Thank You page
+app.get('/thankyou', (req, res) => res.render('thankYou'));
 
 
 
 // CREATE New User object
-app.post('/about-you', (req, res) => {
-  console.log(req.body);
-  let firstName = req.body.aa;
-  let lastName = req.body.ab;
-  let gender = req.body.ac;
-  let emailAddress = req.body.ad;
-  let currentMajor = req.body.ae;
-  let currentMinor = req.body.af;
-  let currentGrade = req.body.ag;
-  let graduationDate = req.body.ah;
-
-  let newUser = {
-    firstName: firstName,
-    lastName: lastName,
-    gender:gender,
-    emailAddress: emailAddress,
-    currentMajor: currentMajor,
-    currentMinor: currentMinor,
-    currentGrade: currentGrade,
-    graduationDate: graduationDate
-  };
-    // Create user and save to DB
-    User.create(newUser, (err, createdUser) => {
-      if(err){
-        console.log(err);
-      } else {
-        res.redirect('awareness');
-      }
-    });
-});
+// app.post('/about-you', (req, res) => {
+//   console.log(req.body);
+//   let firstName = req.body.aa;
+//   let lastName = req.body.ab;
+//   let gender = req.body.ac;
+//   let emailAddress = req.body.ad;
+//   let currentMajor = req.body.ae;
+//   let currentMinor = req.body.af;
+//   let currentGrade = req.body.ag;
+//   let graduationDate = req.body.ah;
+//
+//   let newUser = {
+//     firstName: firstName,
+//     lastName: lastName,
+//     gender:gender,
+//     emailAddress: emailAddress,
+//     currentMajor: currentMajor,
+//     currentMinor: currentMinor,
+//     currentGrade: currentGrade,
+//     graduationDate: graduationDate
+//   };
+//     // Create user and save to DB
+//     User.create(newUser, (err, createdUser) => {
+//       if(err){
+//         console.log(err);
+//       } else {
+//         res.redirect('awareness');
+//       }
+//     });
+// });
 
 
 
