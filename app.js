@@ -6,9 +6,9 @@ const expressSanitzer = require("express-sanitizer"),
       mongoose = require('mongoose');
 
       //rezzio
-       mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
+       //mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
        // mine
-      // mongoose.connect(`mongodb://soufi:NHIadkQn0ULQKkoa@cluster0-shard-00-00-ku5v3.mongodb.net:27017,cluster0-shard-00-01-ku5v3.mongodb.net:27017,cluster0-shard-00-02-ku5v3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`)
+       mongoose.connect(`mongodb://soufi:NHIadkQn0ULQKkoa@cluster0-shard-00-00-ku5v3.mongodb.net:27017,cluster0-shard-00-01-ku5v3.mongodb.net:27017,cluster0-shard-00-02-ku5v3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
         .then(() => console.log('Connected'))
         .catch(err => console.log(err));
 
@@ -93,6 +93,23 @@ app.post('/about-you', (req, res) => {
     });
 });
 
+app.post('/awareness', (req, res) => {
+  // req.send('hello');
+  console.log(req.body);
+  //let {} = req.body;
+
+  // let newUser = {
+  //
+  // };
+  //   // Create user and save to DB
+  //   User.create(newUser, (err, createdUser) => {
+  //     if(err){
+  //       console.log(err);
+  //     } else {
+  //       res.redirect('awareness');
+  //     }
+  //   });
+});
 
 
 app.listen(5000, () => console.log('Example app listening on port 5000!'))
