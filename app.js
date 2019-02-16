@@ -5,11 +5,11 @@ const expressSanitzer = require("express-sanitizer"),
       mongoose        = require('mongoose'),
       User            = require('./models/Schema/user');
       //rezzio
-       //mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
+       mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
        // mine
-       mongoose.connect(`mongodb://soufi:NHIadkQn0ULQKkoa@cluster0-shard-00-00-ku5v3.mongodb.net:27017,cluster0-shard-00-01-ku5v3.mongodb.net:27017,cluster0-shard-00-02-ku5v3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
-        .then(() => console.log('Connected'))
-        .catch(err => console.log(err));
+       // mongoose.connect(`mongodb://soufi:NHIadkQn0ULQKkoa@cluster0-shard-00-00-ku5v3.mongodb.net:27017,cluster0-shard-00-01-ku5v3.mongodb.net:27017,cluster0-shard-00-02-ku5v3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
+       //  .then(() => console.log('Connected'))
+       //  .catch(err => console.log(err));
 
       app = express(),
       app.use(bodyParser.urlencoded({extended: true}));
@@ -77,37 +77,36 @@ app.post('/about-you', (req, res) => {
   });
 });
 
-//CREATE New User object
-// app.post('/about-you', (req, res) => {
-//   console.log(req.body);
-//   let firstName = req.body.aa;
-//   let lastName = req.body.ab;
-//   let gender = req.body.ac;
-//   let emailAddress = req.body.ad;
-//   let currentMajor = req.body.ae;
-//   let currentMinor = req.body.af;
-//   let currentGrade = req.body.ag;
-//   let graduationDate = req.body.ah;
-//
-//   let newUser = {
-//     firstName: firstName,
-//     lastName: lastName,
-//     gender:gender,
-//     emailAddress: emailAddress,
-//     currentMajor: currentMajor,
-//     currentMinor: currentMinor,
-//     currentGrade: currentGrade,
-//     graduationDate: graduationDate
-//   };
-//     // Create user and save to DB
-//     User.create(newUser, (err, createdUser) => {
-//       if(err){
-//         console.log(err);
-//       } else {
-//         res.redirect('awareness');
-//       }
-//     });
-// });
+app.post('/careerPath', (req, res) => {
 
+});
+
+app.post('/awareness', (req, res) => {
+
+});
+
+app.post('/careerAwareness', (req, res) => {
+
+});
+
+app.post('/mentorship', (req, res) => {
+
+});
+
+app.post('/exposure', (req, res) => {
+
+});
+
+app.post('/internship', (req, res) => {
+
+});
+
+app.post('/networking', (req, res) => {
+
+});
+
+app.post('/involvement', (req, res) => {
+
+});
 
 app.listen(5000, () => console.log('Example app listening on port 5000!'))
