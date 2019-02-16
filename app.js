@@ -49,7 +49,7 @@ app.get('/thankyou', (req, res) => res.render('thankYou'));
 
 
 
-// CREATE New User object
+//CREATE New User object
 // app.post('/about-you', (req, res) => {
 //   console.log(req.body);
 //   let firstName = req.body.aa;
@@ -84,6 +84,7 @@ app.get('/thankyou', (req, res) => res.render('thankYou'));
 app.post('/awareness', (req, res) => {
   // req.send('hello');
   console.log(req.body);
+  //res.send('hello');
   //let {} = req.body;
 
   // let newUser = {
