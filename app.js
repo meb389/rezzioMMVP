@@ -1,10 +1,10 @@
 const expressSanitzer = require("express-sanitizer"),
       methodOverride  = require("method-override"),
       bodyParser      = require("body-parser"),
-      express = require('express'),
+      express         = require('express'),
+      mongoose        = require('mongoose'),
+      userAccount     = require('./models/Schema/user');
       app = express(),
-      mongoose = require('mongoose'),
-      userAccount = require('./models/Schema/user');
 
       //rezzio
        //mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
@@ -26,8 +26,8 @@ const expressSanitzer = require("express-sanitizer"),
 app.get('/', (req, res) => res.render('index'));
 // Open about-you page for new users
 app.get('/about-you', (req, res) => res.render('createUser'));
-
-app.post('/about-you', (req, res) =>{
+// Post route for submiting user data
+app.post('/about-you', (req, res) => {
   // Get data from form and add to users profile
   var firstName = req.body.aa;
   var lastName = req.body.ab;
@@ -46,7 +46,6 @@ app.post('/about-you', (req, res) =>{
     currentMinor: currentMinor,
     currentGrade: currentGrade,
     graduationDate: graduationDate
-
     };
   // Create a new User profile and save to DB
   User.create(newUser, function(err, newlyCreated){
