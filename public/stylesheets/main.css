@@ -25,6 +25,8 @@ hr{
     background-color: rgb(67, 74, 86);
 }
 
+/* ========================================================================== */
+
 .ui.secondary.button{
   background-color: rgba(35, 47, 62, .85);
 }
@@ -35,7 +37,9 @@ hr{
     background-color: white;
 }
 
-.gr, een{
+/* ========================================================================== */
+
+.green{
     background-color: rgba(118, 196, 174, .85);
 }
 
@@ -83,36 +87,16 @@ hr{
     text-align: center;
 }
 
-.buttonClass{
-  font-weight: bold;
-  width: 200px;
-  height: 35px;
-  padding-top: 5px;
-  border-radius: 5px;
-  margin: auto;
-}
-
-.buttonClassLeft{
-  font-weight: bold;
-  width: 44%;
-  height: 35px;
-  padding-top: 5px;
-  border-radius: 5px;
-  margin: auto;
-  float: left;
-}
-
-.buttonClassRight{
-  font-weight: bold;
-  width: 44%;
-  height: 35px;
-  padding-top: 5px;
-  border-radius: 5px;
-  margin: auto;
-  float: right;
-}
-
 .moveDown{
   margin-top: 100px;
   margin-bottom: 50px;
+}
+
+#introQuestion{
+  display: block;
+  margin-top: 150px;
+}
+
+#mainQuestions{
+  display: none;
 }

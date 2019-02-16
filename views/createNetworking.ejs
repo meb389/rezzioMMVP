@@ -2,35 +2,33 @@
 
 <% include partials/navMenu %>
 
-<div class="content-wrapper">
-    <div class="ui grid">
-        <div class="eight wide column center">
-          <h2>NETWORKING</h2>
-            <p>
-              We want to learn more about your experience with networking with other students and professionals.
-            </p>
-            <form class="ui form">
-              <!-- Question one -->
-              <div class="field">
-                <p>HAVE YOU EVER HAD A MENTOR?</p>
-                <div class="buttonClassLeft light-blue">
-                  <a href="networking-d.html" id="ka">YES</a>
-                </div>
-                <div class="buttonClassRight light-blue">
-                  <a href="networking-d.html" id="kb">NO</a>
-                </div>
-              </div>
-        </div>
-        <div class="eight wide column center">
-            <img src="assets\img\networking.png" alt="">
-        </div>
+<div class="content-wrapper introQuestion">
+  <div class="ui grid">
+    <div class="eight wide column center">
+      <h2>NETWORKING</h2>
+      <p>We want to learn more about your experience with networking with other students and professionals.</p>
+      <form class="ui form">
+        <!-- Question one -->
+        <div class="field">
+          <p>HAVE YOU EVER HAD A MENTOR?</p>
+          <button class="ui primary button">
+            YES
+          </button>
+          <button class="ui primary button">
+            NO
+          </button>
+        </div
+      </form>
     </div>
+
+    <div class="eight wide column center">
+      <img src="images\networking.png" alt="">
+    </div>
+  </div>
 </div>
 
-<div class="ui container center">
-  <h2>
-    NETWORKING
-  </h2>
+<div class="ui container center mainQuestions">
+  <h2>NETWORKING</h2>
   <div class="ui eight column centered grid">
     <form class="ui form">
       <!-- Question one -->
@@ -50,6 +48,7 @@
           </div>
         </div>
       </div>
+
       <!-- Question two -->
       <div class="field">
         <p><span class="multiple-select">NETWORKING IS ESSENTIAL TO MY CAREER GROWTH AND PROFESSIONAL DEVELOPMENT</span></p>
@@ -67,6 +66,7 @@
           </div>
         </div>
       </div>
+
       <!-- Question THREE -->
       <div class="field">
         <p><span class="multiple-select">DO YOU FELL COMFORTABLE NETWORKING WITH A PROFESSIONAL?</span></p>
@@ -81,6 +81,7 @@
           </div>
         </div>
       </div>
+
       <!-- Question FOUR -->
       <div class="field">
         <p><span class="multiple-select">WHAT TYPES OF NETWORKING EVENTS HAVE YOU ATTENDED?</span></p>
@@ -99,10 +100,11 @@
       </div>
     </form>
   </div>
+
   <div class="ui four column centered grid">
-    <div class="buttonClass light-blue moveDown">
-      <a href="/involvement">READY TO BEGIN?</a>
-    </div>
+    <button class="ui primary button">
+      <a href="/involvement">Next</a>
+    </button>
   </div>
 </div>
 

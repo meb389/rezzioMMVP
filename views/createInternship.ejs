@@ -2,42 +2,43 @@
 
 <% include partials/navMenu %>
 
-<div class="content-wrapper">
-    <div class="ui grid">
-        <div class="eight wide column center">
-          <h2>INTERNSHIPS</h2>
-            <p>
-              We want to learn more about your experience with internships and co-ops.
-            </p>
-            <form class="ui form">
-              <!-- Question one -->
-              <div class="field">
-                <p>HAVE YOU EVER HAD A MENTOR?</p>
-                <div class="buttonClassLeft light-blue">
-                  <a href="internships-d.html" id="ia">YES</a>
-                </div>
-                <div class="buttonClassRight light-blue">
-                  <a href="internships-d.html" id="ib">NO</a>
-                </div>
-              </div>
+<div class="content-wrapper introQuestion">
+  <div class="ui grid">
+    <div class="eight wide column center">
+      <h2>INTERNSHIPS</h2>
+      <p>
+        We want to learn more about your experience with internships and co-ops.
+      </p>
+      <form class="ui form">
+        <!-- Question one -->
+        <div class="field">
+          <p>HAVE YOU EVER HAD A MENTOR?</p>
+          <button class="ui primary button">
+            <a href="internships-d.html" id="ia">YES</a>
+          </button>
+          <button class="ui primary button">
+            <a href="internships-d.html" id="ib">NO</a>
+          </button>
         </div>
-        <div class="eight wide column center">
-            <img src="assets\img\internship-blog-post-image@2x.png" alt="">
-        </div>
+      </form>
     </div>
+    <div class="eight wide column center">
+      <img src="images\club.png" alt="">
+    </div>
+  </div>
 </div>
 
-<div class="ui container center">
-  <h2>
-    INTERNSHIPS
-  </h2>
+<div class="ui container center mainQuestions">
+  <h2>INTERNSHIPS</h2>
   <div class="ui eight column centered grid">
     <form class="ui form">
+
       <!-- Question one -->
       <div class="field">
         <label>WHAT IS YOUR PROFESSION OF CHOICE?</label>
         <input name="ja" type="text">
       </div>
+
       <!-- Question two -->
       <div class="field">
         <p><span class="multiple-select">WHY DID YOU CHOOSE THE INDUSTRY MENTIONED ABOVE?</span></p>
@@ -51,21 +52,25 @@
             <option value="Other">Other</option>
           </select>
       </div>
+
       <!-- Question three -->
       <div class="field">
         <label>LIST UP TO FIVE JOBS IN YOUR INDUSTRY YOU HAVE AN INTEREST IN PURSUING</label>
         <textarea name="jc"></textarea>
       </div>
+
       <!-- Question FOUR -->
       <div class="field">
         <label>LIST THE TOP THREE STRENGTHS YOU BELIEVE YOU POSSES THAT WILL HELP YOU BE SUCCESSFUL IN YOUR CAREER</label>
         <textarea name="jd"></textarea>
       </div>
+
       <!-- Question FIVE -->
       <div class="field">
         <label>LIST THE TOP THREE WEAKNESS YOU BELIEVE YOU POSSES THAT WILL HURT YOU IN YOUR CAREER</label>
         <textarea name="je"></textarea>
       </div>
+
       <!-- Question SIX -->
       <div class="field">
         <label>IF YOU COULD HAVE DINNER WITH SOMEONE FROM YOUR INDUSTRY, DEAD OR ALIVE, WHO WOULD IT BE AND WHY?</label>
@@ -74,9 +79,9 @@
     </form>
   </div>
   <div class="ui four column centered grid">
-    <div class="buttonClass light-blue moveDown">
-      <a href="/networking">READY TO BEGIN?</a>
-    </div>
+    <button class="ui primary button">
+      <a href="/networking">Next</a>
+    </button>
   </div>
 </div>
 
