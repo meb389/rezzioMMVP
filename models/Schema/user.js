@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const campgroundSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
    firstName: String,
    lastName: String,
-   gender: Number,
+   gender: String,
    emailAddress: String,
    currentMajor: String,
    currentMinor: String,
@@ -11,5 +11,5 @@ const campgroundSchema = new mongoose.Schema({
    graduationDate: String,
 });
 
-const User = mongoose.model("User", campgroundSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;
