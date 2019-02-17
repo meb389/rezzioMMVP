@@ -29,6 +29,7 @@ app.get('/about-you', (req, res) => res.render('createUser'));
 
 app.post('/about-you', (req, res) =>{
   // Get data from form and add to users profile
+  console.log(req.body);
   var firstName = req.body.aa;
   var lastName = req.body.ab;
   var gender = req.body.ac;
@@ -37,6 +38,8 @@ app.post('/about-you', (req, res) =>{
   var currentMinor = req.body.af;
   var currentGrade = req.body.ag;
   var graduationDate = req.body.ah;
+  //using detructuring
+  // let {aa, ab, ac, ad, ae, af, ag, ah} = req.body;
   var newUser = {
     firstName: firstName,
     lastName: lastName,
@@ -134,4 +137,4 @@ app.post('/awareness', (req, res) => {
 });
 
 
-app.listen(5000, () => console.log('Example app listening on port 5000!'))
+app.listen(process.env.PORT || 5000, () => console.log('Example app listening on port 5000!'))
