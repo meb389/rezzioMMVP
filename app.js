@@ -112,11 +112,7 @@ app.post('/careerPath', (req, res) => {
       };
 
   // Create career path and assign to user object in DB
-<<<<<<< HEAD
-  CareerPath.create(newPath, function(err, cratedPath){
-=======
   CareerPath.create(newPath, function(err, createdPath){
->>>>>>> 03b46cd8be8b4be0d5eddc376d8ac1dc4b2ceeb0
     if(err){
       console.log(err);
     } else{

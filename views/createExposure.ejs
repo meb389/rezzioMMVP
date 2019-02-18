@@ -1,84 +1,80 @@
 <% include partials/header %>
-
+<link type="text/css" rel="stylesheet" href="/stylesheets/secondary.css"/>
 <% include partials/navMenu %>
 
 <div id="introQuestion" class="content-wrapper">
   <div class="ui grid">
-    <div class="eight wide column center">
+    <div class="eight wide column">
       <h2>EXPOSURE</h2>
-      <p>
-        We want to learn more about your experience with study abroad programs and active service trips.
-      </p>
+      <p>We want to learn more about your experience with study abroad programs and active service trips.</p>
       <form class="ui form">
         <!-- Question one -->
         <div class="field">
           <p><strong>HAVE YOU EVER HAD A MENTOR?</strong></p>
-          <button class="ui primary button">
+          <button type="submit" class="ui primary button">
             YES
           </button>
-          <button class="ui primary button">
+          <button type="submit" class="ui primary button">
             NO
           </button>
         </div>
       </form>
     </div>
 
-    <div class="eight wide column center">
+    <div class="eight wide column">
       <img src="images\Executive Menber.png" alt="">
     </div>
   </div>
 </div>
 
-<div id="mainQuestions" class="ui container center">
-  <h2>EXPOSURE</h2>
-  <div class="ui eight column centered grid">
-    <form class="ui form">
-
-      <!-- Question one -->
-      <div class="field">
-        <p>
-          <span class="multiple-select">
-            IT IS IMPORTANT TO BE OPEN TO DIVERSITY IN ORDER TO SUCCEED AS AN INDIVIDUAL AND PROFESSIONALY
-          </span>
-        </p>
-        <!-- Scale of 1-5 -->
-        <div class="ui selection dropdown">
-          <input type="hidden" name="ha">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select One</div>
-          <div class="menu">
-            <div class="item" data-value="4">5 - Most Important</div>
-            <div class="item" data-value="3">4</div>
-            <div class="item" data-value="2">3</div>
-            <div class="item" data-value="1">2</div>
-            <div class="item" data-value="0">1 - Not important at all</div>
+<div id="mainQuestions" class="content-wrapper">
+  <div class="ui grid">
+    <div class="eight wide column center">
+      <h2>EXPOSURE</h2>
+        <form class="ui form">
+        <!-- Question one -->
+        <div class="field">
+          <p>
+            <span class="multiple-select">
+              IT IS IMPORTANT TO BE OPEN TO DIVERSITY IN ORDER TO SUCCEED AS AN INDIVIDUAL AND PROFESSIONALY
+            </span>
+          </p>
+          <!-- Scale of 1-5 -->
+          <div class="ui selection dropdown">
+            <input type="hidden" name="ha">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select One</div>
+            <div class="menu">
+              <div class="item" data-value="4">5 - Most Important</div>
+              <div class="item" data-value="3">4</div>
+              <div class="item" data-value="2">3</div>
+              <div class="item" data-value="1">2</div>
+              <div class="item" data-value="0">1 - Not important at all</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Question two -->
-      <div class="field">
-        <p><span class="multiple-select">I AM INTERESTED IN PARTICIPATING IN THE FOLLOWING DURING MY COLLEGE EXPERIENCE</span></p>
-        <!-- Study abroad, active service trip, both, neither -->
-        <div class="ui selection dropdown">
-          <input type="hidden" name="hb">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select One</div>
-          <div class="menu">
-            <div class="item" data-value="3">Study Abroad</div>
-            <div class="item" data-value="2">Active Service Trip</div>
-            <div class="item" data-value="1">Both</div>
-            <div class="item" data-value="0">Neither</div>
+        <!-- Question two -->
+        <div class="field">
+          <p><span class="multiple-select">I AM INTERESTED IN PARTICIPATING IN THE FOLLOWING DURING MY COLLEGE EXPERIENCE</span></p>
+          <!-- Study abroad, active service trip, both, neither -->
+          <div class="ui selection dropdown">
+            <input type="hidden" name="hb">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select One</div>
+            <div class="menu">
+              <div class="item" data-value="3">Study Abroad</div>
+              <div class="item" data-value="2">Active Service Trip</div>
+              <div class="item" data-value="1">Both</div>
+              <div class="item" data-value="0">Neither</div>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
-  </div>
-  
-  <div class="ui four column centered grid">
-    <button class="ui primary button">
-      <a href="/internship">READY TO BEGIN?</a>
-    </button>
+        <button type="submit" class="ui primary button">
+          READY TO BEGIN?
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 
