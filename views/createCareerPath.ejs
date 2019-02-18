@@ -20,25 +20,27 @@
   <div class="ui grid">
     <div class="eight wide column center">
       <div class="ui form">
-        <div class="field">
-          <label>Choose 3 Career Path Options</label>
-          <select multiple="" class="ui dropdown">
-            <option value="">Select Career Paths</option>
-            <option value="entrepeneurship">Entrepreneurship</option>
-            <option value="gradSchool">Graduate School</option>
-            <option value="corporateAmerica">Corporate America</option>
-            <option value="military">Military</option>
-            <option value="medicalSchool">Medical School</option>
-            <option value="engineering">Engineering</option>
-            <option value="technology">Technology</option>
-          </select>
+        <form action="/careerpath" method="post">
+          <div class="field">
+            <label>Choose 3 Career Path Options</label>
+            <select multiple="" class="ui dropdown">
+              <option value="">Select Career Paths</option>
+              <option value="entrepeneurship">Entrepreneurship</option>
+              <option value="gradSchool">Graduate School</option>
+              <option value="corporateAmerica">Corporate America</option>
+              <option value="military">Military</option>
+              <option value="medicalSchool">Medical School</option>
+              <option value="engineering">Engineering</option>
+              <option value="technology">Technology</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <button id="careerButton" class="ui primary button" method="get">
-          <a href="/questionnare">NEXT SECTION</a>
-        </button>
+        <div class="row">
+          <button id="careerButton" class="ui primary button" type="submit" method="post">
+            NEXT SECTION
+          </button>
+        </form>
       </div>
     </div>
   </div>

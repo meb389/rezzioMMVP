@@ -2,26 +2,32 @@
 
 <% include partials/navMenu %>
 
-<div class="ui container center">
-  <h2>
-    CAREER AWARENESS
-  </h2>
-  <div class="ui eight column centered grid">
-    <form action="/careerawareness" class="ui form">
-      <div class="field">
-        <label>HAVE YOU TAKEN STEPS TO FORMALIZE YOUR CAREER?</label>
-        <textarea></textarea>
-      </div>
-      <div class="field">
-        <label>HOW SUPPORTIVE IS YOUR FAMILY IN REGARD TO YOUR CAREER PATH?</label>
-        <textarea></textarea>
-      </div>
-      <div class="field">
-        <label>HOW HAVE YOU FAILED IN THE PAST AND HOW DID YOU OVERCOME THAT FAILURE?</label>
-        <textarea></textarea>
-      </div>
-      <button class="ui primary button next">
-          <a href="mentorship">NEXT</a>
-      </button>
+<div class="ui container">
+  <div class="ui grid">
+    <div class="eight wide column center">
+      <h2>
+        CAREER AWARENESS
+      </h2>
+
+      <form action="/careerawareness" method="POST" class="ui form">
+        <div class="field">
+          <label>HAVE YOU TAKEN STEPS TO FORMALIZE YOUR CAREER?</label>
+          <textarea></textarea>
+        </div>
+        <div class="field">
+          <label>HOW SUPPORTIVE IS YOUR FAMILY IN REGARD TO YOUR CAREER PATH?</label>
+          <textarea></textarea>
+        </div>
+        <div class="field">
+          <label>HOW HAVE YOU FAILED IN THE PAST AND HOW DID YOU OVERCOME THAT FAILURE?</label>
+          <textarea></textarea>
+        </div>
+        <button type="submit"class="ui primary button next">
+            <a href="mentorship">NEXT</a>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
 
 <% include partials/footer %>
