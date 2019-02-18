@@ -1,8 +1,8 @@
 <% include partials/header %>
-
+<link type="text/css" rel="stylesheet" href="/stylesheets/secondary.css"/>
 <% include partials/navMenu %>
 
-<div class="content-wrapper">
+<div id="introQuestion" class="content-wrapper">
   <div class="ui grid">
     <div class="eight wide column">
       <h2>NETWORKING</h2>
@@ -10,10 +10,10 @@
         <!-- Question one -->
         <div class="field">
           <p>HAVE YOU EVER HAD A MENTOR?</p>
-          <button type="button" name="Yes" class="ui primary button">
+          <button id="hideSelectorYes" type="button" name="Yes" class="ui primary button">
             YES
           </button>
-          <button type="button" name="No" class="ui primary button">
+          <button id="hideSelectorNo" type="button" name="No" class="ui primary button">
             NO
           </button>
         </div
@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<div class="content-wrapper">
+<div id="mainQuestions" class="content-wrapper">
   <div class="ui grid">
     <div class="eight wide column center">
       <h2>NETWORKING</h2>
