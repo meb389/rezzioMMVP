@@ -1,88 +1,85 @@
 <% include partials/header %>
-
+<link type="text/css" rel="stylesheet" href="/stylesheets/secondary.css"/>
 <% include partials/navMenu %>
 
 <div class="content-wrapper introQuestion">
   <div class="ui grid">
-    <div class="eight wide column center">
+    <div class="eight wide column">
       <h2>INTERNSHIPS</h2>
-      <p>
-        We want to learn more about your experience with internships and co-ops.
-      </p>
+      <p>We want to learn more about your experience with internships and co-ops.</p>
       <form class="ui form">
         <!-- Question one -->
         <div class="field">
           <p>HAVE YOU EVER HAD A MENTOR?</p>
-          <button class="ui primary button">
-            <a href="internships-d.html" id="ia">YES</a>
+          <button name="Yes" type="button" class="ui primary button">
+            YES
           </button>
-          <button class="ui primary button">
-            <a href="internships-d.html" id="ib">NO</a>
+          <button name="No" type="button" class="ui primary button">
+            NO
           </button>
         </div>
       </form>
     </div>
-    <div class="eight wide column center">
+    <div class="eight wide column">
       <img src="images\club.png" alt="">
     </div>
   </div>
 </div>
 
-<div class="ui container center mainQuestions">
-  <h2>INTERNSHIPS</h2>
-  <div class="ui eight column centered grid">
-    <form class="ui form">
+<div class="content-wrapper">
+  <div class="ui grid">
+    <div class="eight wide column center">
+      <form method="post" action="/internships" class="ui form">
+        <!-- Question one -->
+        <div class="field">
+          <label>WHAT IS YOUR PROFESSION OF CHOICE?</label>
+          <input name="ja" type="text">
+        </div>
 
-      <!-- Question one -->
-      <div class="field">
-        <label>WHAT IS YOUR PROFESSION OF CHOICE?</label>
-        <input name="ja" type="text">
-      </div>
+        <!-- Question two -->
+        <div class="field">
+          <p><span class="multiple-select">WHY DID YOU CHOOSE THE INDUSTRY MENTIONED ABOVE?</span></p>
+            <!-- Passion, Monetery Value, Familial Obligation, Familial Motivation, Other -->
+            <select name="jb" multiple="" class="ui fluid dropdown">
+              <option value="">Select All That Apply</option>
+              <option value="Passion">Passion</option>
+              <option value="Money">Monetary Value</option>
+              <option value="Obligation">Familial Obligation</option>
+              <option value="Motivation">Familial Motivation</option>
+              <option value="Other">Other</option>
+            </select>
+        </div>
 
-      <!-- Question two -->
-      <div class="field">
-        <p><span class="multiple-select">WHY DID YOU CHOOSE THE INDUSTRY MENTIONED ABOVE?</span></p>
-          <!-- Passion, Monetery Value, Familial Obligation, Familial Motivation, Other -->
-          <select name="jb" multiple="" class="ui fluid dropdown">
-            <option value="">Select All That Apply</option>
-            <option value="Passion">Passion</option>
-            <option value="Money">Monetary Value</option>
-            <option value="Obligation">Familial Obligation</option>
-            <option value="Motivation">Familial Motivation</option>
-            <option value="Other">Other</option>
-          </select>
-      </div>
+        <!-- Question three -->
+        <div class="field">
+          <label>LIST UP TO FIVE JOBS IN YOUR INDUSTRY YOU HAVE AN INTEREST IN PURSUING</label>
+          <textarea name="jc"></textarea>
+        </div>
 
-      <!-- Question three -->
-      <div class="field">
-        <label>LIST UP TO FIVE JOBS IN YOUR INDUSTRY YOU HAVE AN INTEREST IN PURSUING</label>
-        <textarea name="jc"></textarea>
-      </div>
+        <!-- Question FOUR -->
+        <div class="field">
+          <label>LIST THE TOP THREE STRENGTHS YOU BELIEVE YOU POSSES THAT WILL HELP YOU BE SUCCESSFUL IN YOUR CAREER</label>
+          <textarea name="jd"></textarea>
+        </div>
 
-      <!-- Question FOUR -->
-      <div class="field">
-        <label>LIST THE TOP THREE STRENGTHS YOU BELIEVE YOU POSSES THAT WILL HELP YOU BE SUCCESSFUL IN YOUR CAREER</label>
-        <textarea name="jd"></textarea>
-      </div>
+        <!-- Question FIVE -->
+        <div class="field">
+          <label>LIST THE TOP THREE WEAKNESS YOU BELIEVE YOU POSSES THAT WILL HURT YOU IN YOUR CAREER</label>
+          <textarea name="je"></textarea>
+        </div>
 
-      <!-- Question FIVE -->
-      <div class="field">
-        <label>LIST THE TOP THREE WEAKNESS YOU BELIEVE YOU POSSES THAT WILL HURT YOU IN YOUR CAREER</label>
-        <textarea name="je"></textarea>
-      </div>
-
-      <!-- Question SIX -->
-      <div class="field">
-        <label>IF YOU COULD HAVE DINNER WITH SOMEONE FROM YOUR INDUSTRY, DEAD OR ALIVE, WHO WOULD IT BE AND WHY?</label>
-        <textarea name="jf"></textarea>
-      </div>
-    </form>
-  </div>
-  <div class="ui four column centered grid">
-    <button class="ui primary button">
-      <a href="/networking">Next</a>
-    </button>
+        <!-- Question SIX -->
+        <div class="field">
+          <label>IF YOU COULD HAVE DINNER WITH SOMEONE FROM YOUR INDUSTRY, DEAD OR ALIVE, WHO WOULD IT BE AND WHY?</label>
+          <textarea name="jf"></textarea>
+        </div>
+        <button type="submit" class="ui primary button">
+          Next
+        </button>
+      </form>
+    </div>
   </div>
 </div>
+
 
 <% include partials/footer %>
