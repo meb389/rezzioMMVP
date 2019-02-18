@@ -103,13 +103,15 @@ app.post('/about-you', (req, res) => {
 });
 
 // Create a career path for user
-app.post('/careerPath', (req, res) => {
+app.post('/careerpath', (req, res) => {
   // Get data from path selection drop down
+  console.log(req.body);
   const pathSelection = req.body.ba
 
   const newPath = {
         pathSelection: pathSelection
       };
+      console.log(newPath);
 
   // Create career path and assign to user object in DB
   CareerPath.create(newPath, function(err, createdPath){
