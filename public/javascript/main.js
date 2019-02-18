@@ -14,5 +14,5 @@ $("#hideSelectorNo").on("click", function(){
   yesNo = "No";
   $("#introQuestion").css("display", "none");
   $("#mainQuestions").css("display", "block");
-  $("#yesNoStorage").text(yesNo);
+  $("#yesNoStorage").val(yesNo);
 });
