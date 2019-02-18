@@ -8,5 +8,5 @@ const mentorshipSchema = new mongoose.Schema({
    Mquestion5: Number,
 });
 
-const Mentorship = mongoose.model("Exposure", mentorshipSchema);
+const Mentorship = mongoose.model("Mentorship", mentorshipSchema);
 module.exports = Mentorship;

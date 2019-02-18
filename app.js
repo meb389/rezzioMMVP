@@ -6,7 +6,14 @@ const expressSanitzer = require("express-sanitizer"),
 
 // Reauiring Schamas for account creation
 const CareerPath      = require('./models/Schema/careerPath'),
-      User            = require('./models/Schema/user')
+      User            = require('./models/Schema/user'),
+      Awareness     = require('./models/Schema/awareness'),
+      CareerAwareness     = require('./models/Schema/careerAwareness'),
+      Exposure     = require('./models/Schema/exposure'),
+      Internship     = require('./models/Schema/internship'),
+      Involvement     = require('./models/Schema/involvement'),
+      Mentorship     = require('./models/Schema/mentorship'),
+      Networking     = require('./models/Schema/networking')
 
 //rezzio
  mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
@@ -105,7 +112,11 @@ app.post('/careerPath', (req, res) => {
       };
 
   // Create career path and assign to user object in DB
+<<<<<<< HEAD
   CareerPath.create(newPath, function(err, cratedPath){
+=======
+  CareerPath.create(newPath, function(err, createdPath){
+>>>>>>> 03b46cd8be8b4be0d5eddc376d8ac1dc4b2ceeb0
     if(err){
       console.log(err);
     } else{
@@ -116,31 +127,157 @@ app.post('/careerPath', (req, res) => {
 });
 
 app.post('/awareness', (req, res) => {
+  const { ca, cb, cc, cd, ce, cf } = req.body;
+  const newAwareness = {
+        Aquestion1: ca,
+        Aquestion2: cb,
+        Aquestion3: cc,
+        Aquestion4: cd,
+        Aquestion5: ce,
+        Aquestion6: cf
+  };
 
+  // Create a new User profile and save to DB
+  Awareness.create(newAwareness, function(err, createdAwareness){
+    if(err){
+      console.log(err);
+    } else{
+      // Redirect to next page
+      res.render('createCareerPath');
+    }
+  });
 });
 
-app.post('/careerAwareness', (req, res) => {
-
+app.post('/careerawareness', (req, res) => {
+  const { ca1, ca2, ca3 } = req.body;
+  const newCareerAwareness = {
+        CAquestion1: ca1,
+        CAquestion2: ca2,
+        CAquestion3: ca3,
+  };
+  console.log(newCareerAwareness);
+// ----------------------------------------Until here working------------------------------//
+  // Create a Career Awareness and save to DB
+  CareerAwareness.create(newCareerAwareness, function(err, createdCareerAwareness){
+    if(err){
+      console.log(err);
+    } else{
+      // Redirect to next page
+      res.render('createCareerPath');
+    }
+  });
 });
+
 
 app.post('/mentorship', (req, res) => {
+  const { fa, fb, fc, fd, fe } = req.body;
+  const newMentorship = {
+        Aquestion1: fa,
+        Aquestion2: fb,
+        Aquestion3: fc,
+        Aquestion4: fd,
+        Aquestion5: fe
+  };
 
+  // Create a new User profile and save to DB
+  Mentorship.create(newMentorship, function(err, createdMentorship){
+    if(err){
+      console.log(err);
+    } else{
+      // Redirect to next page
+      res.render('createCareerPath');
+    }
+  });
 });
+
 
 app.post('/exposure', (req, res) => {
+  const { ha, hb, hc } = req.body;
+  const newExposure = {
+        Aquestion1: ha,
+        Aquestion2: hb,
+        Aquestion3: hc
+  };
 
+  // Create a new User profile and save to DB
+  Exposure.create(newExposure, function(err, createdExposure){
+    if(err){
+      console.log(err);
+    } else{
+      // Redirect to next page
+      res.render('createCareerPath');
+    }
+  });
 });
+
 
 app.post('/internship', (req, res) => {
+  const { ja, jb, jc, jd, je, jf, jg } = req.body;
+  const newInternship = {
+        Aquestion1: ja,
+        Aquestion2: jb,
+        Aquestion3: jc,
+        Aquestion4: jd,
+        Aquestion5: je,
+        Aquestion6: jf,
+        Aquestion7: jg
+  };
 
+  // Create a new User profile and save to DB
+  Internship.create(newInternship, function(err, createdInternship){
+    if(err){
+      console.log(err);
+    } else{
+      // Redirect to next page
+      res.render('createCareerPath');
+    }
+  });
 });
+
 
 app.post('/networking', (req, res) => {
+  const { la, lb, lc, ld, le } = req.body;
+  const newNetworking = {
+        Aquestion1: la,
+        Aquestion2: lb,
+        Aquestion3: lc,
+        Aquestion4: ld,
+        Aquestion5: le
+  };
 
+  // Create a new User profile and save to DB
+  Networking.create(newNetworking, function(err, createdNetworking){
+    if(err){
+      console.log(err);
+    } else{
+      // Redirect to next page
+      res.render('createCareerPath');
+    }
+  });
 });
 
-app.post('/involvement', (req, res) => {
 
+app.post('/involvement', (req, res) => {
+  const { na, nb, nc, nd, ne, nf, ng } = req.body;
+  const newInvolvement = {
+        Aquestion1: na,
+        Aquestion2: nb,
+        Aquestion3: nc,
+        Aquestion4: nd,
+        Aquestion5: ne,
+        Aquestion6: nf,
+        Aquestion7: ng
+  };
+
+  // Create a new User profile and save to DB
+  Involvement.create(newInvolvement, function(err, createdInvolvement){
+    if(err){
+      console.log(err);
+    } else{
+      // Redirect to next page
+      res.render('createCareerPath');
+    }
+  });
 });
 
 app.listen(process.env.PORT || 5000, () => console.log('Example app listening on port 5000!'))
