@@ -1,13 +1,13 @@
-let yesNo = "Yes";
 
 $('.ui.dropdown')
   .dropdown()
 ;
 
 $("#hideSelectorYes").on("click", function(){
+  var yesNo = "Yes";
   $("#introQuestion").css("display", "none");
   $("#mainQuestions").css("display", "block");
-  $("#yesNoStorage").text(yesNo);
+  $("#yesNoStorage").val(yesNo);
 });
 
 $("#hideSelectorNo").on("click", function(){
