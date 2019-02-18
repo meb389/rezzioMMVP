@@ -1,11 +1,11 @@
 <% include partials/header %>
-
+<link type="text/css" rel="stylesheet" href="/stylesheets/secondary.css"/>
 <% include partials/navMenu %>
 
 
 <div class="content-wrapper introQuestion">
   <div class="ui grid">
-    <div class="eight wide column center">
+    <div class="eight wide column">
       <h2>MENTORSHIP</h2>
       <p>
         Mentors play an important role in helping you learn about your and make decisions about your future.
@@ -14,70 +14,70 @@
         <!-- Question one -->
         <div class="field">
           <p>HAVE YOU EVER HAD A MENTOR?</p>
-          <button class="ui primary button">
+          <button type="button" name="Yes" class="ui primary button">
             YES
           </button>
-          <button class="ui primary button">
+          <button type="buttons" name="No" class="ui primary button">
             NO
           </button>
         </div>
       </form>
     </div>
 
-    <div class="eight wide column center">
+    <div class="eight wide column">
       <img src="images\networking.png" alt="">
     </div>
   </div>
 </div>
 
 
-<div class="ui container center mainQuestions">
-  <h2>AWARENESS</h2>
-  <div class="ui eight column centered grid">
-    <form class="ui form">
+<div class="content-wrapper">
+  <div class="ui grid">
+    <div class="eight wide column">
+      <h2>AWARENESS</h2>
+      <form class="ui form" method="post" action="/mentorship">
 
-      <!-- Question one -->
-      <div class="field">
-        <label>TELL US ABOUT YOUR MENTORSHIP EXPERIENCES TO DATE</label>
-        <textarea name="fa"></textarea>
-      </div>
+        <!-- Question one -->
+        <div class="field">
+          <label>TELL US ABOUT YOUR MENTORSHIP EXPERIENCES TO DATE</label>
+          <textarea name="fa"></textarea>
+        </div>
 
-      <!-- Question two -->
-      <div class="field">
-        <p><span class="multiple-select">HOW IMPORTANT DO YOU THINK IT IS TO HAVE A MENTOR?</span></p>
-        <!-- Scale of 1-5 -->
-        <div class="ui selection dropdown">
-          <input type="hidden" name="fb">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select One</div>
-          <div class="menu">
-            <div class="item" data-value="4">5 - Most Important</div>
-            <div class="item" data-value="3">4</div>
-            <div class="item" data-value="2">3</div>
-            <div class="item" data-value="1">2</div>
-            <div class="item" data-value="0">1 - Not important at all</div>
+        <!-- Question two -->
+        <div class="field">
+          <p><span class="multiple-select">HOW IMPORTANT DO YOU THINK IT IS TO HAVE A MENTOR?</span></p>
+          <!-- Scale of 1-5 -->
+          <div class="ui selection dropdown">
+            <input type="hidden" name="fb">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select One</div>
+            <div class="menu">
+              <div class="item" data-value="4">5 - Most Important</div>
+              <div class="item" data-value="3">4</div>
+              <div class="item" data-value="2">3</div>
+              <div class="item" data-value="1">2</div>
+              <div class="item" data-value="0">1 - Not important at all</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Question three -->
-      <div class="field">
-        <label>IN YOUR OPINION DESCRIBE THE QUALITIES A GOOD MENTOR POSSESSES</label>
-        <textarea name="fc"></textarea>
-      </div>
+        <!-- Question three -->
+        <div class="field">
+          <label>IN YOUR OPINION DESCRIBE THE QUALITIES A GOOD MENTOR POSSESSES</label>
+          <textarea name="fc"></textarea>
+        </div>
 
-      <!-- Question four -->
-      <div class="field">
-        <label>HOW MANY MENTORS DO YOU PLAN ON HAVING BEFORE YOU GRADUATE?</label>
-        <input name="fd" type="text">
-      </div>
-    </form>
-  </div>
+        <!-- Question four -->
+        <div class="field">
+          <label>HOW MANY MENTORS DO YOU PLAN ON HAVING BEFORE YOU GRADUATE?</label>
+          <input name="fd" type="text">
+        </div>
 
-  <div class="ui four column centered grid">
-    <button class="ui primary button">
-      <a href="/exposure">Next</a>
-    </button>
+        <button type="submit" class="ui primary button">
+          Next
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 
