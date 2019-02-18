@@ -154,7 +154,7 @@ app.post('/careerawareness', (req, res) => {
         CAquestion3: ca3,
   };
   console.log(newCareerAwareness);
-// ----------------------------------------Until here working------------------------------//
+
   // Create a Career Awareness and save to DB
   CareerAwareness.create(newCareerAwareness, function(err, createdCareerAwareness){
     if(err){
@@ -166,15 +166,15 @@ app.post('/careerawareness', (req, res) => {
   });
 });
 
-
 app.post('/mentorship', (req, res) => {
+  console.log(req.body);
   const { fa, fb, fc, fd, fe } = req.body;
   const newMentorship = {
-        Aquestion1: fa,
-        Aquestion2: fb,
-        Aquestion3: fc,
-        Aquestion4: fd,
-        Aquestion5: fe
+        Mquestion1: fa,
+        Mquestion2: fb,
+        Mquestion3: fc,
+        Mquestion4: fd,
+        // Aquestion5: fe
   };
 
   // Create a new User profile and save to DB
@@ -190,11 +190,12 @@ app.post('/mentorship', (req, res) => {
 
 
 app.post('/exposure', (req, res) => {
-  const { ha, hb, hc } = req.body;
+  console.log(req.body);
+  const { ha, hb } = req.body;
   const newExposure = {
-        Aquestion1: ha,
-        Aquestion2: hb,
-        Aquestion3: hc
+        Equestion1: ha,
+        Equestion2: hb,
+        // Aquestion3: hc
   };
 
   // Create a new User profile and save to DB
@@ -208,17 +209,17 @@ app.post('/exposure', (req, res) => {
   });
 });
 
-
 app.post('/internship', (req, res) => {
-  const { ja, jb, jc, jd, je, jf, jg } = req.body;
+  console.log(req.body);
+  const { ja, jb, jc, jd, je, jf } = req.body;
   const newInternship = {
-        Aquestion1: ja,
-        Aquestion2: jb,
-        Aquestion3: jc,
-        Aquestion4: jd,
-        Aquestion5: je,
-        Aquestion6: jf,
-        Aquestion7: jg
+        Iquestion1: ja,
+        Iquestion2: jb,
+        Iquestion3: jc,
+        Iquestion4: jd,
+        Iquestion5: je,
+        Iquestion6: jf,
+        // Aquestion7: jg
   };
 
   // Create a new User profile and save to DB
@@ -234,13 +235,14 @@ app.post('/internship', (req, res) => {
 
 
 app.post('/networking', (req, res) => {
-  const { la, lb, lc, ld, le } = req.body;
+  console.log(req.body);
+  const { la, lb, lc, ld } = req.body;
   const newNetworking = {
-        Aquestion1: la,
-        Aquestion2: lb,
-        Aquestion3: lc,
-        Aquestion4: ld,
-        Aquestion5: le
+        Nquestion1: la,
+        Nquestion2: lb,
+        Nquestion3: lc,
+        Nquestion4: ld,
+        // Nquestion5: le
   };
 
   // Create a new User profile and save to DB
@@ -254,17 +256,20 @@ app.post('/networking', (req, res) => {
   });
 });
 
+// ----------------------------------------Until here working------------------------------//
+
 
 app.post('/involvement', (req, res) => {
-  const { na, nb, nc, nd, ne, nf, ng } = req.body;
+  console.log(req.body);
+  const { ia, ib, ic, id } = req.body;
   const newInvolvement = {
-        Aquestion1: na,
-        Aquestion2: nb,
-        Aquestion3: nc,
-        Aquestion4: nd,
-        Aquestion5: ne,
-        Aquestion6: nf,
-        Aquestion7: ng
+        IVquestion1: ia,
+        IVquestion2: ib,
+        IVquestion3: ic,
+        IVquestion4: id,
+        // Aquestion5: ie,
+        // Aquestion6: if,
+        // Aquestion7: ig
   };
 
   // Create a new User profile and save to DB

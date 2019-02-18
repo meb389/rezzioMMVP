@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const exposureSchema = new mongoose.Schema({
-   Equestion1: String,
+   Equestion1: Number,
    Equestion2: Number,
-   Equestion3: Number,
+   // Equestion3: Number,
 
    // Equestion4: String,
    // Equestion5: String,

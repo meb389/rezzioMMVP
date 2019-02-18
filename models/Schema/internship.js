@@ -7,7 +7,7 @@ const internshipSchema = new mongoose.Schema({
    Iquestion4: String,
    Iquestion5: String,
    Iquestion6: String,
-   Iquestion7: String,
+   // Iquestion7: String,
 });
 
 const Internship = mongoose.model("Internship", internshipSchema);
