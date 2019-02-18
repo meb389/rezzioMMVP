@@ -5,15 +5,15 @@ const expressSanitzer = require("express-sanitizer"),
       mongoose        = require('mongoose')
 
 // Reauiring Schamas for account creation
-const CareerPath      = require('./models/Schema/careerPath'),
-      User            = require('./models/Schema/user'),
-      Awareness     = require('./models/Schema/awareness'),
-      CareerAwareness     = require('./models/Schema/careerAwareness'),
-      Exposure     = require('./models/Schema/exposure'),
-      Internship     = require('./models/Schema/internship'),
-      Involvement     = require('./models/Schema/involvement'),
-      Mentorship     = require('./models/Schema/mentorship'),
-      Networking     = require('./models/Schema/networking')
+const CareerPath        = require('./models/Schema/careerPath'),
+      User              = require('./models/Schema/user'),
+      Awareness         = require('./models/Schema/awareness'),
+      CareerAwareness   = require('./models/Schema/careerAwareness'),
+      Exposure          = require('./models/Schema/exposure'),
+      Internship        = require('./models/Schema/internship'),
+      Involvement       = require('./models/Schema/involvement'),
+      Mentorship        = require('./models/Schema/mentorship'),
+      Networking        = require('./models/Schema/networking')
 
 //rezzio
  mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
