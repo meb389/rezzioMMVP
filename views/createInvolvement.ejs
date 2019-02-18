@@ -1,104 +1,104 @@
 <% include partials/header %>
-
+<link type="text/css" rel="stylesheet" href="/stylesheets/secondary.css"/>
 <% include partials/navMenu %>
 
-<div class="content-wrapper introQuestion">
+<div class="content-wrapper">
   <div class="ui grid">
-    <div class="eight wide column center">
+    <div class="eight wide column">
       <h2>INVOLVEMENT</h2>
       <p>We want to learn more about your involvement in extra curricularactivities.</p>
       <form class="ui form">
         <!-- Question one -->
         <div class="field">
           <p>HAVE YOU EVER HAD A MENTOR?</p>
-          <button class="ui primary button">
+          <button name="Yes" type="button" class="ui primary button">
             YES
           </button>
-          <button class="ui primary button">
+          <button name="No" type="button" class="ui primary button">
             NO
           </button>
         </div>
-        <div class="eight wide column center">
-          <img src="images\club.png" alt="">
-        </div>
       </form>
+    </div>
+
+    <div class="eight wide column">
+      <img src="images\club.png" alt="">
     </div>
   </div>
 </div>
 
-<div class="ui container center mainQuestions">
-  <h2>INVOLVEMENT</h2>
-  <div class="ui eight column centered grid">
-    <form class="ui form">
-
-      <!-- Question one -->
-      <div class="field">
-        <p><span class="multiple-select">WERE YOU PART OF AN AFTER-SCHOOL ACTIVITY IN HIGH SCHOOL?</span></p>
-        <!-- Yes / No -->
-        <div class="ui selection dropdown">
-          <input type="hidden" name="lc">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select One</div>
-          <div class="menu">
-            <div class="item" data-value="Yes">Yes</div>
-            <div class="item" data-value="No">No</div>
+<div class="content-wrapper">
+  <div class="ui grid">
+    <div class="eight wide column center">
+      <h2>INVOLVEMENT</h2>
+      <form class="ui form" action="/involvement" method="post">
+        <!-- Question one -->
+        <div class="field">
+          <p><span class="multiple-select">WERE YOU PART OF AN AFTER-SCHOOL ACTIVITY IN HIGH SCHOOL?</span></p>
+          <!-- Yes / No -->
+          <div class="ui selection dropdown">
+            <input type="hidden" name="lc">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select One</div>
+            <div class="menu">
+              <div class="item" data-value="Yes">Yes</div>
+              <div class="item" data-value="No">No</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Question TWO -->
-      <div class="field">
-        <label>
-          HOW MANY ON/OFF-CAMPUS CAREER-ORIENTED PROJECTS, VOLUNTEER SERVICE, SPORTS TEAMS, ETC ORGANIZATIONS ARE YOU A PART OF AT YOUR UNIVERISTY?
-        </label>
-        <input name="nc" type="text">
-      </div>
+        <!-- Question TWO -->
+        <div class="field">
+          <label>
+            HOW MANY ON/OFF-CAMPUS CAREER-ORIENTED PROJECTS, VOLUNTEER SERVICE, SPORTS TEAMS, ETC ORGANIZATIONS ARE YOU A PART OF AT YOUR UNIVERISTY?
+          </label>
+          <input name="nc" type="text">
+        </div>
 
-      <!-- Question THREE -->
-      <div class="field">
-        <p>
-          <span class="multiple-select">
-            I PLAN ON BECOMMING PART OF MORE ON-CAMPUS, COMMUNITY, OR CAREER RELATED CLUBS / ORGANIZATIONS AT MY UNIVERSITY
-          </span>
-        </p>
-        <!-- Yes / No -->
-        <div class="ui selection dropdown">
-          <input type="hidden" name="lc">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select One</div>
-          <div class="menu">
-            <div class="item" data-value="Yes">Yes</div>
-            <div class="item" data-value="No">No</div>
+        <!-- Question THREE -->
+        <div class="field">
+          <p>
+            <span class="multiple-select">
+              I PLAN ON BECOMMING PART OF MORE ON-CAMPUS, COMMUNITY, OR CAREER RELATED CLUBS / ORGANIZATIONS AT MY UNIVERSITY
+            </span>
+          </p>
+          <!-- Yes / No -->
+          <div class="ui selection dropdown">
+            <input type="hidden" name="lc">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select One</div>
+            <div class="menu">
+              <div class="item" data-value="Yes">Yes</div>
+              <div class="item" data-value="No">No</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Question FOUR -->
-      <div class="field">
-        <p><span class="multiple-select">WHAT TYPE OF CLUB/ORGANIZATION INTERESTS YOU, CHOOSE 3</span></p>
-          <!-- Passion, Monetery Value, Familial Obligation, Familial Motivation, Other -->
-        <select name="nf" multiple="" class="ui fluid dropdown">
-          <option value="">Select 3</option>
-          <option value="Academic">Academic</option>
-          <option value="Com Serv">Community Service</option>
-          <option value="Cultural">Cultural & Identity</option>
-          <option value="Environmental">Environmental</option>
-          <option value="Governance">Governance</option>
-          <option value="Performing">Performing & Visual Arts</option>
-          <option value="Politics">Politics & Activism</option>
-          <option value="Media">Publications & Media</option>
-          <option value="Sports">Recreation & Sports</option>
-          <option value="Religious">Religious & Spiritual Groups</option>
-          <option value="Social">Social & Special Interest</option>
-        </select>
-      </div>
-    </form>
-  </div>
+        <!-- Question FOUR -->
+        <div class="field">
+          <p><span class="multiple-select">WHAT TYPE OF CLUB/ORGANIZATION INTERESTS YOU, CHOOSE 3</span></p>
+            <!-- Passion, Monetery Value, Familial Obligation, Familial Motivation, Other -->
+          <select name="nf" multiple="" class="ui fluid dropdown">
+            <option value="">Select 3</option>
+            <option value="Academic">Academic</option>
+            <option value="Com Serv">Community Service</option>
+            <option value="Cultural">Cultural & Identity</option>
+            <option value="Environmental">Environmental</option>
+            <option value="Governance">Governance</option>
+            <option value="Performing">Performing & Visual Arts</option>
+            <option value="Politics">Politics & Activism</option>
+            <option value="Media">Publications & Media</option>
+            <option value="Sports">Recreation & Sports</option>
+            <option value="Religious">Religious & Spiritual Groups</option>
+            <option value="Social">Social & Special Interest</option>
+          </select>
+        </div>
 
-  <div class="ui four column centered grid">
-    <button class="ui primary button">
-      <a href="/thankyou">READY TO BEGIN?</a>
-    </button>
+        <button type="submit" class="ui primary button">
+          READY TO BEGIN?
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 
