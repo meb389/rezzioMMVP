@@ -7,6 +7,7 @@ const expressSanitzer = require("express-sanitizer"),
 // Reauiring Schamas for account creation
 const CareerPath        = require('./models/Schema/careerPath'),
       User              = require('./models/Schema/user'),
+      Login              = require('./models/Schema/login'),
       Awareness         = require('./models/Schema/awareness'),
       CareerAwareness   = require('./models/Schema/careerAwareness'),
       Exposure          = require('./models/Schema/exposure'),
@@ -57,15 +58,21 @@ app.get('/thankyou', (req, res) => res.render('thankYou'));
 
 // Submit username and Password to User profile
 app.post('/', (req, res) => {
-  const userName = req.body.userName,
-        password = req.body.password;
+  const {userName, password} = req.body
 
-  const createUser = {
+  const userLogin = {
         userName: userName,
         password: password
   };
 
-
+  Login.create(userLogin, (err, newLogin) => {
+    if(err){
+      console.log(err);
+    } else{
+      // Redirect to next page
+      res.render('createUser');
+    }
+  });
 });
 
 // Post route for creating a user profile
@@ -191,11 +198,11 @@ app.post('/mentorship', (req, res) => {
 
 app.post('/exposure', (req, res) => {
   console.log(req.body);
-  const { ha, hb } = req.body;
+  const { ha, hb, yesNoStorage } = req.body;
   const newExposure = {
         Equestion1: ha,
         Equestion2: hb,
-        // Aquestion3: hc
+        Equestion3: yesNoStorage
   };
 
   // Create a new User profile and save to DB
