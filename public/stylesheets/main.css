@@ -17,6 +17,7 @@ h1{
 h2, h2:first-child{
     font-size: 50px;
     margin-top: 50px;
+    text-align: left;
 }
 
 hr{
@@ -39,25 +40,10 @@ hr{
 
 /* ========================================================================== */
 
-.green{
-    background-color: rgba(118, 196, 174, .85);
-}
-
-.blue{
-    background-color: rgba(35, 47, 62, .85);
-}
-
-.red{
-    background-color: rgba(216, 108, 112, .85);
-}
-
-.light-blue{
-    background-color: rgba(35, 169, 225, .85);
-}
-
 .center{
     text-align: center;
     margin-top: 3%;
+    margin-left: 22%;
 }
 
 .content-wrapper{
@@ -78,13 +64,9 @@ hr{
     padding-top: 100px;
 }
 
-.avatar{
-    color: white;
-    margin: 3%;
-    padding: 2.5% 2%;
-    border-radius: 50%;
-    border: .5px solid gray;
-    text-align: center;
+.introCopy{
+  float: left;
+  text-align: left;
 }
 
 .moveDown{
@@ -99,4 +81,8 @@ hr{
 
 #mainQuestions{
   display: none;
+}
+
+#careerButton{
+  margin-top: 3%;
 }

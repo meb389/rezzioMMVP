@@ -55,6 +55,19 @@ app.get('/involvement', (req, res) => res.render('createInvolvement'));
 // Thank You page
 app.get('/thankyou', (req, res) => res.render('thankYou'));
 
+// Submit username and Password to User profile
+app.post('/', (req, res) => {
+  const userName = req.body.userName,
+        password = req.body.password;
+
+  const createUser = {
+        userName: userName,
+        password: password
+  };
+
+
+});
+
 // Post route for creating a user profile
 app.post('/about-you', (req, res) => {
   // Get data from form and add to users profile

@@ -6,10 +6,10 @@
 <div class="hero">
   <div class="content-wrapper">
     <div class="ui grid">
-      <div class="eight wide column center">
+      <div class="eight wide column">
         <h1>CHOOSE YOUR PATH</h1>
       </div>
-      <div class="eight wide column center">
+      <div class="eight wide column">
         <h1>STEP #2</h1>
       </div>
     </div>
@@ -18,43 +18,30 @@
 
 <div class="content-wrapper center">
   <div class="ui grid">
-    <div class="row">
-      <div class="path-container">
-        <p> ENTREPRENEURSHIP </p>
+    <div class="eight wide column center">
+      <div class="ui form">
+        <div class="field">
+          <label>Choose 3 Career Path Options</label>
+          <select multiple="" class="ui dropdown">
+            <option value="">Select Career Paths</option>
+            <option value="entrepeneurship">Entrepreneurship</option>
+            <option value="gradSchool">Graduate School</option>
+            <option value="corporateAmerica">Corporate America</option>
+            <option value="military">Military</option>
+            <option value="medicalSchool">Medical School</option>
+            <option value="engineering">Engineering</option>
+            <option value="technology">Technology</option>
+          </select>
+        </div>
       </div>
-      <div class="path-container">
-        <p> GAP YEAR </p>
-      </div>
-      <div class="path-container">
-        <p> MASTERS / DOCTORATE </p>
-      </div>
-      <div class="path-container">
-        <p> LAW SCHOOL </p>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="path-container">
-        <p> PHD </p>
+      <div class="row">
+        <button id="careerButton" class="ui primary button" method="get">
+          <a href="/questionnare">NEXT SECTION</a>
+        </button>
       </div>
-      <div class="path-container">
-        <p> MILITARY </p>
-      </div>
-      <div class="path-container">
-        <p> MEDICAL SCHOOL </p>
-      </div>
-      <div class="path-container">
-        <p> CORPORATE AMERICA </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <button id="careerButton" class="ui primary button" method="get">
-        <a href="/questionnare">NEXT SECTION</a>
-      </button>
     </div>
   </div>
 </div>
-</form>
 
 <% include partials/footer %>
