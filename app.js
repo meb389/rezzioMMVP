@@ -191,11 +191,11 @@ app.post('/mentorship', (req, res) => {
 
 app.post('/exposure', (req, res) => {
   console.log(req.body);
-  const { ha, hb } = req.body;
+  const { ha, hb, yesNoStorage } = req.body;
   const newExposure = {
         Equestion1: ha,
         Equestion2: hb,
-        // Aquestion3: hc
+        Equestion3: yesNoStorage
   };
 
   // Create a new User profile and save to DB
