@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const careerPathSchema = new mongoose.Schema({
-   CPquestion1: String,
+   pathSelection: String,
 });
 
 const CareerPath = mongoose.model("CareerPath", careerPathSchema);
