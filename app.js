@@ -84,7 +84,7 @@ app.post('/', (req, res) => {
       console.log(err);
     } else{
       // Redirect to next page
-      
+
     }
   });
 });
