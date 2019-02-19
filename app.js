@@ -2,7 +2,10 @@ const expressSanitzer = require("express-sanitizer"),
       methodOverride  = require("method-override"),
       bodyParser      = require("body-parser"),
       express         = require('express'),
-      mongoose        = require('mongoose')
+      mongoose        = require('mongoose'),
+      bcrypt = require('bcrypt'),
+      //passport = require('passport'),
+      Joi = require('joi')
 
 // Reauiring Schamas for account creation
 const CareerPath        = require('./models/Schema/careerPath'),
@@ -14,7 +17,8 @@ const CareerPath        = require('./models/Schema/careerPath'),
       Internship        = require('./models/Schema/internship'),
       Involvement       = require('./models/Schema/involvement'),
       Mentorship        = require('./models/Schema/mentorship'),
-      Networking        = require('./models/Schema/networking')
+      Networking        = require('./models/Schema/networking'),
+      signUp        = require('./models/Schema/signUp')
 
 //rezzio
  mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
@@ -289,5 +293,69 @@ app.post('/involvement', (req, res) => {
     }
   });
 });
+
+
+
+
+
+
+//------------------------------------login Implementation----------------------------------
+
+const schema = Joi.object().keys({
+    // first_name: Joi.string().required(),
+    // last_name: Joi.string().required(),
+    username: Joi.string().alphanum().min(3).max(30).required(),
+    password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+    // email: Joi.string().email({ minDomainAtoms: 2 })
+});
+
+
+app.get('/signup', function(req, res, next) {
+  res.render('signUp');
+});
+
+app.post('/signup', (req, res, next) => {
+  console.log(req.body);
+    const { username, password } = req.body;
+    const result = joi.validate({ username: userName, password: password }, schema);
+    console.log(result);
+    if(result.error === null){
+        //check if this user exist
+        users
+            .exec()
+            .findOne({username : req.body.username})
+            .then( user => {
+                // if user is undefined user email is not in the db otherwise duplicate user.
+                if (user){
+                    // this user exist
+                    const error = new Error('This email exist. Please choose another one.');
+                    next(error);
+                } else {
+                    //hash password
+                    bcrypt.hash(req.body.password, 12)
+                        .then( hashedpassword => {
+                            const newUserAcc = {
+                                userName: req.body.username,
+                                password: hashedpassword
+                            };
+                            console.log(newUserAcc);
+                            //here I have to use the create methods to create the user
+                      signUp.create(newUserAcc, function(err, createdUserAcc){
+                        if(err){
+                          console.log(err);
+                        } else{
+                          // Redirect to next page
+                          res.render('createCareerPath');
+                        }
+                      });
+
+                    });
+                  }
+              });
+            }else {
+              next(result.error);
+            }
+          });
+
 
 app.listen(process.env.PORT || 5000, () => console.log('Example app listening on port 5000!'))
