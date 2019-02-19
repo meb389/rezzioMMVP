@@ -37,7 +37,18 @@ app.set("view engine", "ejs");
 // Index
 app.get('/', (req, res) => res.render('index'));
 // Open about-you page for new users
-// app.get('/about-you/:id', (req, res) => res.render('createUser'));
+app.get('/about-you/:id', (req, res) => {
+  SignUp.findById(req.params.id).exec(function(err, foundLogin){
+   if(err){
+       console.log(err);
+   } else {
+     res.render('createUser', {login: foundLogin});
+   }
+ });
+});
+
+
+
 // Open careerPath page for new users
 app.get('/careerpath', (req, res) => res.render('createCareerPath'));
 //Questionnaire
@@ -73,27 +84,10 @@ app.post('/', (req, res) => {
       console.log(err);
     } else{
       // Redirect to next page
-      res.render('createUser');
+      
     }
   });
 });
-
-app.get("/about-you/:id", function(req, res) {
-    // Find campground with provided ID
-    SignUp.findById(req.params.id).exec(function(err, foundUser){
-       if(err){
-           console.log(err);
-       } else {
-           // Render show template with that campground
-           res.render("createUser");
-       }
-    });
-
-});
-
-
-
-
 
 // Post route for creating a user profile
 app.post('/about-you', (req, res) => {
