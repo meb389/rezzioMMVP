@@ -309,27 +309,35 @@ const schema = Joi.object().keys({
     // email: Joi.string().email({ minDomainAtoms: 2 })
 });
 
-
-app.get('/signup', function(req, res, next) {
-  res.render('signUp');
-});
+//
+// app.get('/signup', function(req, res, next) {
+//   res.render('signUp');
+// });
 
 app.post('/signup', (req, res, next) => {
-  console.log(req.body);
-    const { username, password } = req.body;
-    const result = joi.validate({ username: userName, password: password }, schema);
-    console.log(result);
+    //res.send(req.body)
+    // res.send('hello;')
+    //console.log(req.body);
+     // const { userName, password } = req.body;
+     const result = Joi.validate(req.body, schema);
+    // // res.json(result);
+    // if (result.error === null) {
+    //   res.send('hello;')
+    // }else {
+    //   res.send(result)
+    // }
     if(result.error === null){
         //check if this user exist
-        users
-            .exec()
+        signUp
             .findOne({username : req.body.username})
+            .exec()
             .then( user => {
                 // if user is undefined user email is not in the db otherwise duplicate user.
                 if (user){
                     // this user exist
                     const error = new Error('This email exist. Please choose another one.');
-                    next(error);
+                    // next(error);
+                    console.log(error);
                 } else {
                     //hash password
                     bcrypt.hash(req.body.password, 12)
@@ -353,7 +361,8 @@ app.post('/signup', (req, res, next) => {
                   }
               });
             }else {
-              next(result.error);
+              // next(result.error);
+              console.log('error end');
             }
           });
 
