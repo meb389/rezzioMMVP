@@ -321,41 +321,40 @@ app.post('/signup', (req, res, next) => {
   if(result.error === null){
     //check if this user exist
     SignUp
-      .findOne({username : req.body.username})
-      .exec()
-      .then( user => {
-        // if user is undefined user email is not in the db otherwise duplicate user.
-        if (user){
-          // this user exist
-          const error = new Error('This email exist. Please choose another one.');
-          // next(error);
-          console.log(error);
-        } else {
-//hash password
-bcrypt.hash(req.body.password, 12)
-.then( hashedpassword => {
-const newUserAcc = {
-userName: req.body.username,
-password: hashedpassword
-};
-console.log(newUserAcc);
-//here I have to use the create methods to create the user
-SignUp.create(newUserAcc, function(err, createdUserAcc){
-if(err){
-console.log(err);
-} else{
-// Redirect to next page
-res.render('createCareerPath');
-}
-});
+    .findOne({username : req.body.username})
+    .exec()
+    .then( user => {
+      // if user is undefined user email is not in the db otherwise duplicate user.
+      if (user){
+        // this user exist
+        const error = new Error('This email exist. Please choose another one.');
+        // next(error);
+        console.log(error);
+      } else {
+        //hash password
+        bcrypt.hash(req.body.password, 12)
+        .then( hashedpassword => {
+          const newUserAcc = {
+            userName: req.body.username,
+            password: hashedpassword
+          };
 
-});
-}
-});
-}else {
-// next(result.error);
-console.log('error end');
-}
+          //here I have to use the create methods to create the user
+          SignUp.create(newUserAcc, function(err, createdUserAcc){
+            if(err){
+              console.log(err);
+            } else{
+              // Redirect to next page
+              res.render('createCareerPath');
+            }
+          });
+        });
+      }
+    });
+  }else {
+    // next(result.error);
+    console.log('error end');
+  }
 });
 
 
