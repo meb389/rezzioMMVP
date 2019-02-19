@@ -34,6 +34,37 @@ app.use(express.static("public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 
+app.route("/")
+  .get((req, res) => res.render('index'))
+  .post((req, res) => {
+    const {userName, password} = req.body
+
+    const userLogin = {
+          userName: userName,
+          password: password
+    };
+
+    SignUp.create(userLogin, (err, newLogin) => {
+      if(err){
+        console.log(err);
+      } else{
+        // Redirect to next page
+        res.render('createUser');
+      }
+    })
+  )
+
+
+
+
+
+
+
+
+
+
+
+
 // Index
 app.get('/', (req, res) => res.render('index'));
 // Open about-you page for new users
