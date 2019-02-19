@@ -9,18 +9,6 @@ const userSchema = new mongoose.Schema({
   currentMinor: String,
   currentGrade: String,
   graduationDate: String,
-  login: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Login"
-    }
-  ],
-  awareness: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Awareness"
-    }
-  ],
 });
 
 const User = mongoose.model("User", userSchema);

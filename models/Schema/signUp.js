@@ -2,8 +2,12 @@ const mongoose = require("mongoose");
 
 const signUpSchema = new mongoose.Schema({
   userName: String,
-  password: String
+  password: String,
+  userInfo: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }],
 });
 
-const signUp = mongoose.model("signUp", signUpSchema);
-module.exports = signUp;
+const SignUp = mongoose.model("SignUp", signUpSchema);
+module.exports = SignUp;

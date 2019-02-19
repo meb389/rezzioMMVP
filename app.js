@@ -3,14 +3,13 @@ const expressSanitzer = require("express-sanitizer"),
       bodyParser      = require("body-parser"),
       express         = require('express'),
       mongoose        = require('mongoose'),
-      bcrypt = require('bcrypt'),
+      bcrypt          = require('bcrypt'),
       //passport = require('passport'),
-      Joi = require('joi')
+      Joi             = require('joi')
 
 // Reauiring Schamas for account creation
 const CareerPath        = require('./models/Schema/careerPath'),
       User              = require('./models/Schema/user'),
-      Login              = require('./models/Schema/login'),
       Awareness         = require('./models/Schema/awareness'),
       CareerAwareness   = require('./models/Schema/careerAwareness'),
       Exposure          = require('./models/Schema/exposure'),
@@ -18,7 +17,7 @@ const CareerPath        = require('./models/Schema/careerPath'),
       Involvement       = require('./models/Schema/involvement'),
       Mentorship        = require('./models/Schema/mentorship'),
       Networking        = require('./models/Schema/networking'),
-      signUp        = require('./models/Schema/signUp')
+      SignUp            = require('./models/Schema/signUp')
 
 //rezzio
  mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
@@ -38,7 +37,7 @@ app.set("view engine", "ejs");
 // Index
 app.get('/', (req, res) => res.render('index'));
 // Open about-you page for new users
-app.get('/about-you', (req, res) => res.render('createUser'));
+// app.get('/about-you/:id', (req, res) => res.render('createUser'));
 // Open careerPath page for new users
 app.get('/careerpath', (req, res) => res.render('createCareerPath'));
 //Questionnaire
@@ -69,7 +68,7 @@ app.post('/', (req, res) => {
         password: password
   };
 
-  Login.create(userLogin, (err, newLogin) => {
+  SignUp.create(userLogin, (err, newLogin) => {
     if(err){
       console.log(err);
     } else{
@@ -78,6 +77,23 @@ app.post('/', (req, res) => {
     }
   });
 });
+
+app.get("/about-you/:id", function(req, res) {
+    // Find campground with provided ID
+    SignUp.findById(req.params.id).exec(function(err, foundUser){
+       if(err){
+           console.log(err);
+       } else {
+           // Render show template with that campground
+           res.render("createUser");
+       }
+    });
+
+});
+
+
+
+
 
 // Post route for creating a user profile
 app.post('/about-you', (req, res) => {
