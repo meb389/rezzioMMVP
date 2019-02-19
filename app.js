@@ -37,18 +37,7 @@ app.set("view engine", "ejs");
 // Index
 app.get('/', (req, res) => res.render('index'));
 // Open about-you page for new users
-app.get('/about-you/:id', (req, res) => {
-  SignUp.findById(req.params.id).exec(function(err, foundLogin){
-   if(err){
-       console.log(err);
-   } else {
-     res.render('createUser', {login: foundLogin});
-   }
- });
-});
-
-
-
+app.get('/about-you/', (req, res) => res.render('createUser'));
 // Open careerPath page for new users
 app.get('/careerpath', (req, res) => res.render('createCareerPath'));
 //Questionnaire
@@ -84,7 +73,11 @@ app.post('/', (req, res) => {
       console.log(err);
     } else{
       // Redirect to next page
+<<<<<<< HEAD
 
+=======
+      res.render('createUser');
+>>>>>>> 7f3f208f60b202f4d8decef2cd6079e3a09f8412
     }
   });
 });
@@ -338,7 +331,7 @@ app.post('/signup', (req, res, next) => {
     // }
     if(result.error === null){
         //check if this user exist
-        signUp
+        SignUp
             .findOne({username : req.body.username})
             .exec()
             .then( user => {
@@ -358,7 +351,7 @@ app.post('/signup', (req, res, next) => {
                             };
                             console.log(newUserAcc);
                             //here I have to use the create methods to create the user
-                      signUp.create(newUserAcc, function(err, createdUserAcc){
+                      SignUp.create(newUserAcc, function(err, createdUserAcc){
                         if(err){
                           console.log(err);
                         } else{
