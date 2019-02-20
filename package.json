@@ -16,7 +16,7 @@
   "author": "Rezzio",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "debug": "^4.1.1",
     "ejs": "^2.6.1",
