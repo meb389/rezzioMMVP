@@ -73,11 +73,7 @@ app.post('/', (req, res) => {
       console.log(err);
     } else{
       // Redirect to next page
-<<<<<<< HEAD
-
-=======
       res.render('createUser');
->>>>>>> 7f3f208f60b202f4d8decef2cd6079e3a09f8412
     }
   });
 });

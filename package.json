@@ -1,6 +1,9 @@
 {
   "name": "rezziommvp",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.12.0"
+  },
   "description": "rezzio learning",
   "main": "app.js",
   "scripts": {
