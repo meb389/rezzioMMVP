@@ -4,14 +4,10 @@ const mongoose              = require("mongoose"),
 const UserSchema = new mongoose.Schema({
   userName: String,
   password: String,
-  firstName: String,
-  lastName: String,
-  gender: String,
-  emailAddress: String,
-  currentMajor: String,
-  currentMinor: String,
-  currentGrade: String,
-  graduationDate: String,
+  personalInformation: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "personalInformation"
+  }],
   awareness: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Awareness"
@@ -43,7 +39,7 @@ const UserSchema = new mongoose.Schema({
   networking: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Networking"
-  }],
+  }]
 });
 
 UserSchema.plugin(passportLocalMongoose);

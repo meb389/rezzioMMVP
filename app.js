@@ -17,7 +17,8 @@ const CareerPath        = require('./models/Schema/careerPath'),
       Internship        = require('./models/Schema/internship'),
       Involvement       = require('./models/Schema/involvement'),
       Mentorship        = require('./models/Schema/mentorship'),
-      Networking        = require('./models/Schema/networking')
+      Networking        = require('./models/Schema/networking'),
+      PersonalInformation =require('./models/Schema/personalInformation')
 
 //rezzio
  mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
@@ -26,13 +27,31 @@ const CareerPath        = require('./models/Schema/careerPath'),
  //  .then(() => console.log('Connected'))
  //  .catch(err => console.log(err));
 
-
+// =============================================================================
+// App config
 app = express(),
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitzer());
 app.use(express.static(__dirname + "public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
+
+// =============================================================================
+// Passport config
+app.use(require("express-session")({
+    secret: "Rezzio Learning #1",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// =============================================================================
+// Routes
 
 // Index Route
 // app.route("/")
@@ -292,6 +311,33 @@ app.get('/thankyou', (req, res) => res.render('thankYou'));
 
 
 //------------------------------------login Implementation----------------------------------
+
+app.route('/register')
+.get((req, res) => res.render("register"))
+.post((req, res) => {
+  User.register(new User({username: req.body.username}), req.body.password, (err, user) => {
+       if(err){
+           console.log(err);
+           return res.render("register");
+       }
+       passport.authenticate("local")(req, res, function(){
+          res.redirect("/awareness");
+      });
+    });
+})
+
+app.route('/login')
+.get((req, res) => res.render('login'))
+.post(
+  passport.authenticate('local', {
+    successRedirect: '/awareness',
+    failureRedirect: '/login'
+  }), (req, res) => {
+
+  })
+
+
+
 
 // const schema = Joi.object().keys({
 //   // first_name: Joi.string().required(),
