@@ -1,11 +1,12 @@
 const expressSanitzer = require("express-sanitizer"),
       methodOverride  = require("method-override"),
+      LocalStrategy   =require("passport-local"),
       bodyParser      = require("body-parser"),
+      passport        = require("passport"),
       express         = require('express'),
-      mongoose        = require('mongoose'),
-      bcrypt          = require('bcrypt'),
-      //passport = require('passport'),
-      Joi             = require('joi')
+      mongoose        = require('mongoose')
+      // bcrypt          = require('bcrypt')
+      // Joi             = require('joi')
 
 // Reauiring Schamas for account creation
 const CareerPath        = require('./models/Schema/careerPath'),
@@ -16,8 +17,7 @@ const CareerPath        = require('./models/Schema/careerPath'),
       Internship        = require('./models/Schema/internship'),
       Involvement       = require('./models/Schema/involvement'),
       Mentorship        = require('./models/Schema/mentorship'),
-      Networking        = require('./models/Schema/networking'),
-      SignUp            = require('./models/Schema/signUp')
+      Networking        = require('./models/Schema/networking')
 
 //rezzio
  mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
@@ -30,30 +30,30 @@ const CareerPath        = require('./models/Schema/careerPath'),
 app = express(),
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitzer());
-app.use(express.static("public"));
+app.use(express.static(__dirname + "public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 
 // Index Route
-app.route("/")
-  .get((req, res) => res.render('index'))
-  .post((req, res) => {
-    const {userName, password} = req.body
-
-    const userLogin = {
-      userName: userName,
-      password: password
-    };
-
-  SignUp.create(userLogin, (err, newLogin) => {
-    if(err){
-      console.log(err);
-    } else{
-      // Redirect to next page
-      res.render('createUser');
-    }
-  })
-})
+// app.route("/")
+//   .get((req, res) => res.render('index'))
+//   .post((req, res) => {
+//     const {userName, password} = req.body
+//
+//     const userLogin = {
+//       userName: userName,
+//       password: password
+//     };
+//
+//   SignUp.create(userLogin, (err, newLogin) => {
+//     if(err){
+//       console.log(err);
+//     } else{
+//       // Redirect to next page
+//       res.render('createUser');
+//     }
+//   })
+// })
 
 // About You Routes
 app.route("/about-you")
@@ -293,69 +293,69 @@ app.get('/thankyou', (req, res) => res.render('thankYou'));
 
 //------------------------------------login Implementation----------------------------------
 
-const schema = Joi.object().keys({
-  // first_name: Joi.string().required(),
-  // last_name: Joi.string().required(),
-  username: Joi.string().alphanum().min(3).max(30).required(),
-  password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
-  // email: Joi.string().email({ minDomainAtoms: 2 })
-});
+// const schema = Joi.object().keys({
+//   // first_name: Joi.string().required(),
+//   // last_name: Joi.string().required(),
+//   username: Joi.string().alphanum().min(3).max(30).required(),
+//   password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
+//   // email: Joi.string().email({ minDomainAtoms: 2 })
+// });
 
 //
 // app.get('/signup', function(req, res, next) {
 //   res.render('signUp');
 // });
 
-app.post('/signup', (req, res, next) => {
-  //res.send(req.body)
-  // res.send('hello;')
-  //console.log(req.body);
-  // const { userName, password } = req.body;
-  const result = Joi.validate(req.body, schema);
+// app.post('/signup', (req, res, next) => {
+//   //res.send(req.body)
+//   // res.send('hello;')
+//   //console.log(req.body);
+//   // const { userName, password } = req.body;
+//   const result = Joi.validate(req.body, schema);
     // // res.json(result);
     // if (result.error === null) {
     //   res.send('hello;')
     // }else {
     //   res.send(result)
     // }
-  if(result.error === null){
-    //check if this user exist
-    SignUp
-    .findOne({username : req.body.username})
-    .exec()
-    .then( user => {
-      // if user is undefined user email is not in the db otherwise duplicate user.
-      if (user){
-        // this user exist
-        const error = new Error('This email exist. Please choose another one.');
-        // next(error);
-        console.log(error);
-      } else {
-        //hash password
-        bcrypt.hash(req.body.password, 12)
-        .then( hashedpassword => {
-          const newUserAcc = {
-            userName: req.body.username,
-            password: hashedpassword
-          };
-
-          //here I have to use the create methods to create the user
-          SignUp.create(newUserAcc, function(err, createdUserAcc){
-            if(err){
-              console.log(err);
-            } else{
-              // Redirect to next page
-              res.render('createCareerPath');
-            }
-          });
-        });
-      }
-    });
-  }else {
-    // next(result.error);
-    console.log('error end');
-  }
-});
+//   if(result.error === null){
+//     //check if this user exist
+//     SignUp
+//     .findOne({username : req.body.username})
+//     .exec()
+//     .then( user => {
+//       // if user is undefined user email is not in the db otherwise duplicate user.
+//       if (user){
+//         // this user exist
+//         const error = new Error('This email exist. Please choose another one.');
+//         // next(error);
+//         console.log(error);
+//       } else {
+//         //hash password
+//         bcrypt.hash(req.body.password, 12)
+//         .then( hashedpassword => {
+//           const newUserAcc = {
+//             userName: req.body.username,
+//             password: hashedpassword
+//           };
+//
+//           //here I have to use the create methods to create the user
+//           SignUp.create(newUserAcc, function(err, createdUserAcc){
+//             if(err){
+//               console.log(err);
+//             } else{
+//               // Redirect to next page
+//               res.render('createCareerPath');
+//             }
+//           });
+//         });
+//       }
+//     });
+//   }else {
+//     // next(result.error);
+//     console.log('error end');
+//   }
+// });
 
 
 app.listen(process.env.PORT || 5000, () => console.log('Example app listening on port 5000!'));
