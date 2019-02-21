@@ -35,7 +35,8 @@ app.use(expressSanitzer());
 app.use(express.static(__dirname + "public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
-
+// css connection
+app.use(express.static(__dirname + '/public'));
 // =============================================================================
 // Passport config
 app.use(require("express-session")({
