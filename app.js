@@ -76,8 +76,8 @@ app.route("/")
 
 // About You Routes
 app.route("/about-you")
-  .get((req, res) => res.render('createUser'))
-  .post((req, res) => {
+  .get(isLoggedIn, (req, res) => res.render('createUser'))
+  .post(isLoggedIn, (req, res) => {
     // Get data from form and add to users profile
     const firstName = req.body.aa,
           lastName = req.body.ab,
@@ -321,7 +321,7 @@ app.route('/register')
            return res.render("register");
        }
        passport.authenticate("local")(req, res, function(){
-          res.redirect("/awareness");
+          res.redirect("/about-you");
       });
     });
 })
@@ -330,13 +330,19 @@ app.route('/login')
 .get((req, res) => res.render('login'))
 .post(
   passport.authenticate('local', {
-    successRedirect: '/awareness',
+    successRedirect: '/about-you',
     failureRedirect: '/login'
   }), (req, res) => {
 
   })
 
+  function isLoggedIn(req, res, next){
+      if(req.isAuthenticated()){
+          return next();
+      }
 
+      res.redirect("/login");
+  }
 
 
 // const schema = Joi.object().keys({
