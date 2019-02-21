@@ -56,7 +56,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Index Route
 app.route("/")
-  .get((req, res) => res.render('index'))
+  .get((req, res) => res.redirect('/register'))
 //   .post((req, res) => {
 //     const {userName, password} = req.body
 //
