@@ -2,8 +2,38 @@
 
 <% include partials/navMenu %>
 
-<form class="" action="/register" method="post">
-<input type="text" name="username" placeholder="username">
-  <input type="password" name="password" placeholder="password">
-  <button type="submit" name="button">Sign Up!</button>
-</form>
+<div class="hero">
+  <div class="content-wrapper">
+    <div class="ui grid">
+      <div class="eight wide column center">
+        <h1>Register</h1>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      <div class="content-wrapper">
+        <div class="ui one column stackable center aligned page grid">
+          <div class="column twelve wide">
+            <div class="ui form">
+
+
+      <form class="ui form" action="/register" method="post">
+        <div class="field">
+        <input type="text" name="username" placeholder="username">
+        </div>
+        <div class="field">
+        <input type="password" name="password" placeholder="password">
+        </div>
+
+        <div class="row">
+        <button class="ui primary button" type="submit" name="button">
+          Sign Up!
+        </button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  </div>
