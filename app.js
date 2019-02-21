@@ -54,8 +54,8 @@ passport.deserializeUser(User.deserializeUser());
 // Routes
 
 // Index Route
-// app.route("/")
-//   .get((req, res) => res.render('index'))
+app.route("/")
+  .get((req, res) => res.render('index'))
 //   .post((req, res) => {
 //     const {userName, password} = req.body
 //
