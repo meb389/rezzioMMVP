@@ -7,10 +7,19 @@ const expressSanitzer = require("express-sanitizer"),
       mongoose        = require('mongoose')
 
 // Creating Route Files
-const indexRoute = require("./models/routes/indexRoute")
+const indexRoute = require("./models/routes/indexRoute"),
+      aboutRoute = require("./models/routes/aboutRoute"),
+      careerpathRoute = require("./models/routes/careerpathRoute"),
+      awarenessRoute = require("./models/routes/awarenessRoute"),
+      careerawarenessRoute = require("./models/routes/careerawarenessRoute"),
+      mentorshipRoute = require("./models/routes/mentorshipRoute"),
+      exposureRoute = require("./models/routes/exposureRoute"),
+      internshipRoute = require("./models/routes/internshipRoute"),
+      networkingRoute = require("./models/routes/networkingRoute"),
+      involvementRoute = require("./models/routes/involvementRoute");
 
 
-// Reauiring Schamas for account creation
+// // Reauiring Schamas for account creation
 const CareerPath        = require('./models/Schema/careerPath'),
       User              = require('./models/Schema/user'),
       Awareness         = require('./models/Schema/awareness'),
@@ -23,11 +32,11 @@ const CareerPath        = require('./models/Schema/careerPath'),
       PersonalInformation =require('./models/Schema/personalInformation')
 
 //rezzio
- mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
+mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
  // mine
  // mongoose.connect(`mongodb://soufi:NHIadkQn0ULQKkoa@cluster0-shard-00-00-ku5v3.mongodb.net:27017,cluster0-shard-00-01-ku5v3.mongodb.net:27017,cluster0-shard-00-02-ku5v3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
- //  .then(() => console.log('Connected'))
- //  .catch(err => console.log(err));
+  // .then(() => console.log('Connected'))
+  // .catch(err => console.log(err));
 
 // =============================================================================
 // App config
@@ -60,279 +69,289 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.use(indexRoute),
+app.use(aboutRoute),
+app.use(careerpathRoute),
+app.use(awarenessRoute),
+app.use(careerawarenessRoute),
+app.use(mentorshipRoute),
+app.use(exposureRoute),
+app.use(internshipRoute),
+app.use(networkingRoute),
+app.use(involvementRoute)
+
 
 
 
 // About You Routes
-app.route("/about-you")
-  .get(isLoggedIn, (req, res) => res.render('createUser'))
-  .post(isLoggedIn, (req, res) => {
-    // Get data from form and add to users profile
-    const firstName = req.body.aa,
-          lastName = req.body.ab,
-          gender = req.body.ac,
-          emailAddress = req.body.ad,
-          currentMajor = req.body.ae,
-          currentMinor = req.body.af,
-          currentGrade = req.body.ag,
-          graduationDate = req.body.ah;
-
-    const newUser = {
-          firstName: firstName,
-          lastName: lastName,
-          gender: gender,
-          emailAddress: emailAddress,
-          currentMajor: currentMajor,
-          currentMinor: currentMinor,
-          currentGrade: currentGrade,
-          graduationDate: graduationDate,
-    };
-    //
-    // console.log(currentUserUsername);
-
-
-  // Create a new User profile and save to DB
-  PersonalInformation.create(newUser, function(err, createdUser){
-    if(err){
-      console.log(err);
-    } else{
-      createdUser.currentUser.id = req.user._id;
-      createdUser.currentUser.username = req.user.username;
-      createdUser.save();
-      // Redirect to next page
-      res.render('createCareerPath');
-    }
-  })
-})
+// app.route("/about-you")
+//   .get(isLoggedIn, (req, res) => res.render('createUser'))
+//   .post(isLoggedIn, (req, res) => {
+//     // Get data from form and add to users profile
+//     const firstName = req.body.aa,
+//           lastName = req.body.ab,
+//           gender = req.body.ac,
+//           emailAddress = req.body.ad,
+//           currentMajor = req.body.ae,
+//           currentMinor = req.body.af,
+//           currentGrade = req.body.ag,
+//           graduationDate = req.body.ah;
+//
+//     const newUser = {
+//           firstName: firstName,
+//           lastName: lastName,
+//           gender: gender,
+//           emailAddress: emailAddress,
+//           currentMajor: currentMajor,
+//           currentMinor: currentMinor,
+//           currentGrade: currentGrade,
+//           graduationDate: graduationDate,
+//     };
+//     //
+//     // console.log(currentUserUsername);
+//
+//
+//   // Create a new User profile and save to DB
+//   PersonalInformation.create(newUser, function(err, createdUser){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       createdUser.currentUser.id = req.user._id;
+//       createdUser.currentUser.username = req.user.username;
+//       createdUser.save();
+//       // Redirect to next page
+//       res.render('createCareerPath');
+//     }
+//   })
+// })
 
 // Careerpath Routes
-app.route("/careerpath")
-  .get((req, res) => res.render('createCareerPath'))
-  .post((req, res) => {
-    // Get data from path selection drop down
-    console.log(req.body);
-    const pathSelection = req.body.ba
-
-    const newPath = {
-          pathSelection: pathSelection
-        };
-        console.log(newPath);
-
-  // Create career path and assign to user object in DB
-  CareerPath.create(newPath, function(err, createdPath){
-    if(err){
-      console.log(err);
-    } else{
-      createdPath.currentUser.id = req.user._id;
-      createdPath.currentUser.username = req.user.username;
-      createdPath.save();
-      // Redirect to next page
-      res.render('questionnare');
-    }
-  })
-})
+// app.route("/careerpath")
+//   .get((req, res) => res.render('createCareerPath'))
+//   .post((req, res) => {
+//     // Get data from path selection drop down
+//     console.log(req.body);
+//     const pathSelection = req.body.ba
+//
+//     const newPath = {
+//           pathSelection: pathSelection
+//         };
+//         console.log(newPath);
+//
+//   // Create career path and assign to user object in DB
+//   CareerPath.create(newPath, function(err, createdPath){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       createdPath.currentUser.id = req.user._id;
+//       createdPath.currentUser.username = req.user.username;
+//       createdPath.save();
+//       // Redirect to next page
+//       res.render('questionnare');
+//     }
+//   })
+// })
 
 //Questionnaire
-app.get('/questionnare', (req, res) => res.render('questionnare'));
+// app.get('/questionnare', (req, res) => res.render('questionnare'));
 
 // Awareness Routes
-app.route("/awareness")
-  .get((req, res) => res.render('createAwareness'))
-  .post((req, res) => {
-    const { ca, cb, cc, cd, ce, cf } = req.body;
-    const newAwareness = {
-          Aquestion1: ca,
-          Aquestion2: cb,
-          Aquestion3: cc,
-          Aquestion4: cd,
-          Aquestion5: ce,
-          Aquestion6: cf
-    };
-
-  // Create a new User profile and save to DB
-  Awareness.create(newAwareness, function(err, createdAwareness){
-    if(err){
-      console.log(err);
-    } else{
-      createdAwareness.currentUser.id = req.user._id;
-      createdAwareness.currentUser.username = req.user.username;
-      createdAwareness.save();
-      // Redirect to next page
-      res.render('createCareerAwareness');
-    }
-  })
-})
+// app.route("/awareness")
+//   .get((req, res) => res.render('createAwareness'))
+//   .post((req, res) => {
+//     const { ca, cb, cc, cd, ce, cf } = req.body;
+//     const newAwareness = {
+//           Aquestion1: ca,
+//           Aquestion2: cb,
+//           Aquestion3: cc,
+//           Aquestion4: cd,
+//           Aquestion5: ce,
+//           Aquestion6: cf
+//     };
+//
+//   // Create a new User profile and save to DB
+//   Awareness.create(newAwareness, function(err, createdAwareness){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       createdAwareness.currentUser.id = req.user._id;
+//       createdAwareness.currentUser.username = req.user.username;
+//       createdAwareness.save();
+//       // Redirect to next page
+//       res.render('createCareerAwareness');
+//     }
+//   })
+// })
 
 // Career awareness Routes
-app.route("/careerawareness")
-  .get((req, res) => res.render('createCareerAwareness'))
-  .post((req, res) => {
-    const { ca1, ca2, ca3 } = req.body;
-    const newCareerAwareness = {
-      CAquestion1: ca1,
-      CAquestion2: ca2,
-      CAquestion3: ca3,
-    };
-
-  // Create a Career Awareness and save to DB
-  CareerAwareness.create(newCareerAwareness, function(err, createdCareerAwareness){
-    if(err){
-      console.log(err);
-    } else{
-      createdCareerAwareness.currentUser.id = req.user._id;
-      createdCareerAwareness.currentUser.username = req.user.username;
-      createdCareerAwareness.save();
-      // Redirect to next page
-      res.render('createMentorship');
-    }
-  })
-})
+// app.route("/careerawareness")
+//   .get((req, res) => res.render('createCareerAwareness'))
+//   .post((req, res) => {
+//     const { ca1, ca2, ca3 } = req.body;
+//     const newCareerAwareness = {
+//       CAquestion1: ca1,
+//       CAquestion2: ca2,
+//       CAquestion3: ca3,
+//     };
+//
+//   // Create a Career Awareness and save to DB
+//   CareerAwareness.create(newCareerAwareness, function(err, createdCareerAwareness){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       createdCareerAwareness.currentUser.id = req.user._id;
+//       createdCareerAwareness.currentUser.username = req.user.username;
+//       createdCareerAwareness.save();
+//       // Redirect to next page
+//       res.render('createMentorship');
+//     }
+//   })
+// })
 
 // Mentorship Routes
-app.route("/mentorship")
-  .get((req, res) => res.render('createMentorship'))
-  .post((req, res) => {
-    const { fa, fb, fc, fd, yesNo } = req.body;
-    const newMentorship = {
-          Mquestion1: fa,
-          Mquestion2: fb,
-          Mquestion3: fc,
-          Mquestion4: fd,
-          Mquestion5: yesNo
-    };
-
-  // Create a new User profile and save to DB
-  Mentorship.create(newMentorship, function(err, createdMentorship){
-    if(err){
-      console.log(err);
-    } else{
-      createdMentorship.currentUser.id = req.user._id;
-      createdMentorship.currentUser.username = req.user.username;
-      createdMentorship.save();
-      // Redirect to next page
-      res.render('createExposure');
-    }
-  })
-})
+// app.route("/mentorship")
+//   .get((req, res) => res.render('createMentorship'))
+//   .post((req, res) => {
+//     const { fa, fb, fc, fd, yesNo } = req.body;
+//     const newMentorship = {
+//           Mquestion1: fa,
+//           Mquestion2: fb,
+//           Mquestion3: fc,
+//           Mquestion4: fd,
+//           Mquestion5: yesNo
+//     };
+//
+//   // Create a new User profile and save to DB
+//   Mentorship.create(newMentorship, function(err, createdMentorship){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       createdMentorship.currentUser.id = req.user._id;
+//       createdMentorship.currentUser.username = req.user.username;
+//       createdMentorship.save();
+//       // Redirect to next page
+//       res.render('createExposure');
+//     }
+//   })
+// })
 
 // Exposure Routes
-app.route("/exposure")
-  .get((req, res) => res.render('createExposure'))
-  .post((req, res) => {
-    console.log(req.body);
-    const { ha, hb, yesNo } = req.body;
-    const newExposure = {
-          Equestion1: ha,
-          Equestion2: hb,
-          Equestion3: yesNo
-    };
-
-  // Create a new User profile and save to DB
-  Exposure.create(newExposure, function(err, createdExposure){
-    if(err){
-      console.log(err);
-    } else{
-      createdExposure.currentUser.id = req.user._id;
-      createdExposure.currentUser.username = req.user.username;
-      createdExposure.save();
-      // Redirect to next page
-      res.render('createInternship');
-    }
-  })
-})
+// app.route("/exposure")
+//   .get((req, res) => res.render('createExposure'))
+//   .post((req, res) => {
+//     console.log(req.body);
+//     const { ha, hb, yesNo } = req.body;
+//     const newExposure = {
+//           Equestion1: ha,
+//           Equestion2: hb,
+//           Equestion3: yesNo
+//     };
+//
+//   // Create a new User profile and save to DB
+//   Exposure.create(newExposure, function(err, createdExposure){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       createdExposure.currentUser.id = req.user._id;
+//       createdExposure.currentUser.username = req.user.username;
+//       createdExposure.save();
+//       // Redirect to next page
+//       res.render('createInternship');
+//     }
+//   })
+// })
 
 // Internship Routes
-app.route("/internship")
-  .get((req, res) => res.render('createInternship'))
-  .post((req, res) => {
-    const { ja, jb, jc, jd, je, jf, yesNo } = req.body;
-    const newInternship = {
-          Iquestion1: ja,
-          Iquestion2: jb,
-          Iquestion3: jc,
-          Iquestion4: jd,
-          Iquestion5: je,
-          Iquestion6: jf,
-          Iquestion7: yesNo
-    };
-
-  // Create a new User profile and save to DB
-  Internship.create(newInternship, function(err, createdInternship){
-    if(err){
-      console.log(err);
-    } else{
-      createdInternship.currentUser.id = req.user._id;
-      createdInternship.currentUser.username = req.user.username;
-      createdInternship.save();
-      // Redirect to next page
-      res.render('createNetworking');
-    }
-  })
-})
+// app.route("/internship")
+//   .get((req, res) => res.render('createInternship'))
+//   .post((req, res) => {
+//     const { ja, jb, jc, jd, je, jf, yesNo } = req.body;
+//     const newInternship = {
+//           Iquestion1: ja,
+//           Iquestion2: jb,
+//           Iquestion3: jc,
+//           Iquestion4: jd,
+//           Iquestion5: je,
+//           Iquestion6: jf,
+//           Iquestion7: yesNo
+//     };
+//
+//   // Create a new User profile and save to DB
+//   Internship.create(newInternship, function(err, createdInternship){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       createdInternship.currentUser.id = req.user._id;
+//       createdInternship.currentUser.username = req.user.username;
+//       createdInternship.save();
+//       // Redirect to next page
+//       res.render('createNetworking');
+//     }
+//   })
+// })
 
 // Networking Routes
-app.route("/networking")
-  .get((req, res) => res.render('createNetworking'))
-  .post((req, res) => {
-    const { la, lb, lc, ld, yesNo } = req.body;
-    const newNetworking = {
-          Nquestion1: la,
-          Nquestion2: lb,
-          Nquestion3: lc,
-          Nquestion4: ld,
-          Nquestion5: yesNo
-    };
-
-  // Create a new User profile and save to DB
-  Networking.create(newNetworking, function(err, createdNetworking){
-    if(err){
-      console.log(err);
-    } else{
-      createdNetworking.currentUser.id = req.user._id;
-      createdNetworking.currentUser.username = req.user.username;
-      createdNetworking.save();
-      // Redirect to next page
-      res.render('createInvolvement');
-    }
-  })
-})
+// app.route("/networking")
+//   .get((req, res) => res.render('createNetworking'))
+//   .post((req, res) => {
+//     const { la, lb, lc, ld, yesNo } = req.body;
+//     const newNetworking = {
+//           Nquestion1: la,
+//           Nquestion2: lb,
+//           Nquestion3: lc,
+//           Nquestion4: ld,
+//           Nquestion5: yesNo
+//     };
+//
+//   // Create a new User profile and save to DB
+//   Networking.create(newNetworking, function(err, createdNetworking){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       createdNetworking.currentUser.id = req.user._id;
+//       createdNetworking.currentUser.username = req.user.username;
+//       createdNetworking.save();
+//       // Redirect to next page
+//       res.render('createInvolvement');
+//     }
+//   })
+// })
 
 // Involvement Routes
-app.route("/involvement")
-  .get((req, res) => res.render('createInvolvement'))
-  .post((req, res) => {
-    const { ia, ib, ic, id, yesNo } = req.body;
-    const newInvolvement = {
-          IVquestion1: ia,
-          IVquestion2: ib,
-          IVquestion3: ic,
-          IVquestion4: id,
-          IVquestion5: yesNo
-    };
+// app.route("/involvement")
+//   .get((req, res) => res.render('createInvolvement'))
+//   .post((req, res) => {
+//     const { ia, ib, ic, id, yesNo } = req.body;
+//     const newInvolvement = {
+//           IVquestion1: ia,
+//           IVquestion2: ib,
+//           IVquestion3: ic,
+//           IVquestion4: id,
+//           IVquestion5: yesNo
+//     };
+//
+//   // Create a new User profile and save to DB
+//   Involvement.create(newInvolvement, function(err, createdInvolvement){
+//     if(err){
+//       console.log(err);
+//     } else{
+//       createdInvolvement.currentUser.id = req.user._id;
+//       createdInvolvement.currentUser.username = req.user.username;
+//       createdInvolvement.save();
+//       // Redirect to next page
+//       res.render('thankYou');
+//     }
+//   })
+// })
 
-  // Create a new User profile and save to DB
-  Involvement.create(newInvolvement, function(err, createdInvolvement){
-    if(err){
-      console.log(err);
-    } else{
-      createdInvolvement.currentUser.id = req.user._id;
-      createdInvolvement.currentUser.username = req.user.username;
-      createdInvolvement.save();
-      // Redirect to next page
-      res.render('thankYou');
-    }
-  })
-})
 
 
-
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-
-    res.redirect("/login");
-}
+// function isLoggedIn(req, res, next){
+//     if(req.isAuthenticated()){
+//         return next();
+//     }
+//
+//     res.redirect("/login");
+// }
 
 
 //------------------------------------login Implementation----------------------------------
