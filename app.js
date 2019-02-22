@@ -75,6 +75,10 @@ app.route("/")
 //   })
 // })
 
+// Student Dashboard
+app.route("/dashboard")
+  .get((req, res) => res.render('studentDashboard'))
+
 // About You Routes
 app.route("/about-you")
   .get((req, res) => res.render('createUser'))

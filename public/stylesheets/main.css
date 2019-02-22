@@ -86,3 +86,7 @@ hr{
 #careerButton{
   margin-top: 3%;
 }
+
+.segment {
+   min-height: 100px;
+}
