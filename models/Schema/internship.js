@@ -7,7 +7,12 @@ const internshipSchema = new mongoose.Schema({
    Iquestion4: String,
    Iquestion5: String,
    Iquestion6: String,
-   // Iquestion7: String,
+   Iquestion7: String,
+   currentUser:{
+     id: mongoose.Schema.Types.ObjectId,
+     username: String
+   }
+
 });
 
 const Internship = mongoose.model("Internship", internshipSchema);

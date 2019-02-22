@@ -7,6 +7,10 @@ const awarenessSchema = new mongoose.Schema({
    Aquestion4: String,
    Aquestion5: Number,
    Aquestion6: Number,
+   currentUser:{
+     id: mongoose.Schema.Types.ObjectId,
+     username: String
+   }
 });
 
 const Awareness = mongoose.model("Awareness", awarenessSchema);

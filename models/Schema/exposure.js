@@ -4,6 +4,10 @@ const exposureSchema = new mongoose.Schema({
    Equestion1: Number,
    Equestion2: Number,
    Equestion3: String,
+   currentUser:{
+     id: mongoose.Schema.Types.ObjectId,
+     username: String
+   }
 
    // Equestion4: String,
    // Equestion5: String,
