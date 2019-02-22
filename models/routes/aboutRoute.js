@@ -5,7 +5,7 @@ const express = require("express"),
       PersonalInformation        = require("../Schema/personalInformation");
 
 
-app.route("/about-you")
+router.route("/about-you")
   .get(isLoggedIn, (req, res) => res.render('createUser'))
   .post(isLoggedIn, (req, res) => {
     // Get data from form and add to users profile

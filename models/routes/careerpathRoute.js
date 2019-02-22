@@ -5,7 +5,7 @@ const express = require("express"),
       CareerPath        = require("../Schema/careerPath");
 
 
-app.route("/careerpath")
+router.route("/careerpath")
   .get((req, res) => res.render('createCareerPath'))
   .post((req, res) => {
     // Get data from path selection drop down

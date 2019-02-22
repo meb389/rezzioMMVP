@@ -5,7 +5,7 @@ const express = require("express"),
       Internship        = require("../Schema/internship");
 
 
-app.route("/internship")
+router.route("/internship")
   .get((req, res) => res.render('createInternship'))
   .post((req, res) => {
     const { ja, jb, jc, jd, je, jf, yesNo } = req.body;

@@ -5,7 +5,7 @@ const express = require("express"),
       Mentorship        = require("../Schema/mentorship");
 
 
-app.route("/mentorship")
+router.route("/mentorship")
   .get((req, res) => res.render('createMentorship'))
   .post((req, res) => {
     const { fa, fb, fc, fd, yesNo } = req.body;

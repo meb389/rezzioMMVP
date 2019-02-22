@@ -5,7 +5,7 @@ const express = require("express"),
       Networking        = require("../Schema/networking");
 
 
-app.route("/networking")
+router.route("/networking")
   .get((req, res) => res.render('createNetworking'))
   .post((req, res) => {
     const { la, lb, lc, ld, yesNo } = req.body;

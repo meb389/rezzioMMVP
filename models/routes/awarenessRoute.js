@@ -5,7 +5,7 @@ const express = require("express"),
       Awareness        = require("../Schema/awareness");
 
 
-app.route("/awareness")
+router.route("/awareness")
   .get((req, res) => res.render('createAwareness'))
   .post((req, res) => {
     const { ca, cb, cc, cd, ce, cf } = req.body;

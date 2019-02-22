@@ -5,7 +5,7 @@ const express = require("express"),
       Involvement        = require("../Schema/involvement");
 
 
-app.route("/involvement")
+router.route("/involvement")
   .get((req, res) => res.render('createInvolvement'))
   .post((req, res) => {
     const { ia, ib, ic, id, yesNo } = req.body;

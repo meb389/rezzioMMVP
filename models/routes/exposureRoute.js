@@ -5,7 +5,7 @@ const express = require("express"),
       Exposure        = require("../Schema/exposure");
 
 
-app.route("/exposure")
+router.route("/exposure")
   .get((req, res) => res.render('createExposure'))
   .post((req, res) => {
     console.log(req.body);

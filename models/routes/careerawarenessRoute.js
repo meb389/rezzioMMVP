@@ -5,7 +5,7 @@ const express = require("express"),
       CareerAwareness        = require("../Schema/careerAwareness");
 
 
-app.route("/careerawareness")
+router.route("/careerawareness")
   .get((req, res) => res.render('createCareerAwareness'))
   .post((req, res) => {
     const { ca1, ca2, ca3 } = req.body;
