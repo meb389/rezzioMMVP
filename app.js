@@ -5,8 +5,10 @@ const expressSanitzer = require("express-sanitizer"),
       passport        = require("passport"),
       express         = require('express'),
       mongoose        = require('mongoose')
-      // bcrypt          = require('bcrypt')
-      // Joi             = require('joi')
+
+// Creating Route Files
+const indexRoute = require("./models/routes/indexRoute")
+
 
 // Reauiring Schamas for account creation
 const CareerPath        = require('./models/Schema/careerPath'),
@@ -42,6 +44,7 @@ app.use(function(req, res, next){
 });
 // css connection
 app.use(express.static(__dirname + '/public'));
+
 // =============================================================================
 // Passport config
 app.use(require("express-session")({
@@ -55,16 +58,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// =============================================================================
-// Routes
 
-// Index Route
-app.route("/")
-  .get((req, res) => res.redirect('/register'))
+app.use(indexRoute),
 
-// Student Dashboard
-app.route("/dashboard")
-  .get((req, res) => res.render('studentDashboard'))
+
 
 // About You Routes
 app.route("/about-you")
@@ -300,47 +297,18 @@ app.route("/involvement")
   })
 })
 
-// Thank You page
-app.get('/thankyou', (req, res) => res.render('thankYou'));
 
 
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
 
-
+    res.redirect("/login");
+}
 
 
 //------------------------------------login Implementation----------------------------------
-
-app.route('/register')
-.get((req, res) => res.render("register"))
-.post((req, res) => {
-  User.register(new User({username: req.body.username}), req.body.password, (err, user) => {
-       if(err){
-           console.log(err);
-           return res.render("register");
-       }
-       passport.authenticate("local")(req, res, function(){
-          res.redirect("/about-you");
-      });
-    });
-})
-
-app.route('/login')
-.get((req, res) => res.render('login'))
-.post(
-  passport.authenticate('local', {
-    successRedirect: '/about-you',
-    failureRedirect: '/login'
-  }), (req, res) => {
-
-  })
-
-  function isLoggedIn(req, res, next){
-      if(req.isAuthenticated()){
-          return next();
-      }
-
-      res.redirect("/login");
-  }
 
 
 // const schema = Joi.object().keys({
