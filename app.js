@@ -35,6 +35,11 @@ app.use(expressSanitzer());
 app.use(express.static(__dirname + "public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
+// Passing user info through to all pages
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+});
 // css connection
 app.use(express.static(__dirname + '/public'));
 // =============================================================================
@@ -44,7 +49,6 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
-app.use(passport.initialize());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -97,14 +101,20 @@ app.route("/about-you")
           currentMajor: currentMajor,
           currentMinor: currentMinor,
           currentGrade: currentGrade,
-          graduationDate: graduationDate
+          graduationDate: graduationDate,
     };
+    //
+    // console.log(currentUserUsername);
+
 
   // Create a new User profile and save to DB
-  User.create(newUser, function(err, createdUser){
+  PersonalInformation.create(newUser, function(err, createdUser){
     if(err){
       console.log(err);
     } else{
+      createdUser.currentUser.id = req.user._id;
+      createdUser.currentUser.username = req.user.username;
+      createdUser.save();
       // Redirect to next page
       res.render('createCareerPath');
     }

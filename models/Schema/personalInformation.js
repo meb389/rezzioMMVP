@@ -9,6 +9,10 @@ const PersonalInformationSchema = new mongoose.Schema({
   currentMinor: String,
   currentGrade: String,
   graduationDate: String,
+  currentUser:{
+    id: mongoose.Schema.Types.ObjectId,
+    username: String
+  }
   });
 
   const PersonalInformation = mongoose.model("PersonalInformation", PersonalInformationSchema);
