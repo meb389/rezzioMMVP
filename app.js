@@ -62,6 +62,10 @@ passport.deserializeUser(User.deserializeUser());
 app.route("/")
   .get((req, res) => res.redirect('/register'))
 
+// Student Dashboard
+app.route("/dashboard")
+  .get((req, res) => res.render('studentDashboard'))
+
 // About You Routes
 app.route("/about-you")
   .get(isLoggedIn, (req, res) => res.render('createUser'))
