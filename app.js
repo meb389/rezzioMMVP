@@ -123,6 +123,9 @@ app.route("/careerpath")
     if(err){
       console.log(err);
     } else{
+      createdPath.currentUser.id = req.user._id;
+      createdPath.currentUser.username = req.user.username;
+      createdPath.save();
       // Redirect to next page
       res.render('questionnare');
     }
@@ -151,15 +154,18 @@ app.route("/awareness")
     if(err){
       console.log(err);
     } else{
+      createdAwareness.currentUser.id = req.user._id;
+      createdAwareness.currentUser.username = req.user.username;
+      createdAwareness.save();
       // Redirect to next page
-      res.render('createCareerPath');
+      res.render('createCareerAwareness');
     }
   })
 })
 
 // Career awareness Routes
 app.route("/careerawareness")
-  .get((req, res) => res.render('createAwareness'))
+  .get((req, res) => res.render('createCareerAwareness'))
   .post((req, res) => {
     const { ca1, ca2, ca3 } = req.body;
     const newCareerAwareness = {
@@ -173,8 +179,11 @@ app.route("/careerawareness")
     if(err){
       console.log(err);
     } else{
+      createdCareerAwareness.currentUser.id = req.user._id;
+      createdCareerAwareness.currentUser.username = req.user.username;
+      createdCareerAwareness.save();
       // Redirect to next page
-      res.render('createCareerPath');
+      res.render('createMentorship');
     }
   })
 })
@@ -183,13 +192,13 @@ app.route("/careerawareness")
 app.route("/mentorship")
   .get((req, res) => res.render('createMentorship'))
   .post((req, res) => {
-    const { fa, fb, fc, fd, fe } = req.body;
+    const { fa, fb, fc, fd, yesNo } = req.body;
     const newMentorship = {
           Mquestion1: fa,
           Mquestion2: fb,
           Mquestion3: fc,
           Mquestion4: fd,
-          // Aquestion5: fe
+          Mquestion5: yesNo
     };
 
   // Create a new User profile and save to DB
@@ -197,6 +206,9 @@ app.route("/mentorship")
     if(err){
       console.log(err);
     } else{
+      createdMentorship.currentUser.id = req.user._id;
+      createdMentorship.currentUser.username = req.user.username;
+      createdMentorship.save();
       // Redirect to next page
       res.render('createExposure');
     }
@@ -204,14 +216,15 @@ app.route("/mentorship")
 })
 
 // Exposure Routes
-app.route("/mentorship")
+app.route("/exposure")
   .get((req, res) => res.render('createExposure'))
   .post((req, res) => {
-    const { ha, hb, yesNoStorage } = req.body;
+    console.log(req.body);
+    const { ha, hb, yesNo } = req.body;
     const newExposure = {
           Equestion1: ha,
           Equestion2: hb,
-          Equestion3: yesNoStorage
+          Equestion3: yesNo
     };
 
   // Create a new User profile and save to DB
@@ -219,6 +232,9 @@ app.route("/mentorship")
     if(err){
       console.log(err);
     } else{
+      createdExposure.currentUser.id = req.user._id;
+      createdExposure.currentUser.username = req.user.username;
+      createdExposure.save();
       // Redirect to next page
       res.render('createInternship');
     }
@@ -229,7 +245,7 @@ app.route("/mentorship")
 app.route("/internship")
   .get((req, res) => res.render('createInternship'))
   .post((req, res) => {
-    const { ja, jb, jc, jd, je, jf } = req.body;
+    const { ja, jb, jc, jd, je, jf, yesNo } = req.body;
     const newInternship = {
           Iquestion1: ja,
           Iquestion2: jb,
@@ -237,6 +253,7 @@ app.route("/internship")
           Iquestion4: jd,
           Iquestion5: je,
           Iquestion6: jf,
+          Iquestion7: yesNo
     };
 
   // Create a new User profile and save to DB
@@ -244,8 +261,11 @@ app.route("/internship")
     if(err){
       console.log(err);
     } else{
+      createdInternship.currentUser.id = req.user._id;
+      createdInternship.currentUser.username = req.user.username;
+      createdInternship.save();
       // Redirect to next page
-      res.render('createCareerPath');
+      res.render('createNetworking');
     }
   })
 })
@@ -254,13 +274,13 @@ app.route("/internship")
 app.route("/networking")
   .get((req, res) => res.render('createNetworking'))
   .post((req, res) => {
-    const { la, lb, lc, ld } = req.body;
+    const { la, lb, lc, ld, yesNo } = req.body;
     const newNetworking = {
           Nquestion1: la,
           Nquestion2: lb,
           Nquestion3: lc,
           Nquestion4: ld,
-          // Nquestion5: le
+          Nquestion5: yesNo
     };
 
   // Create a new User profile and save to DB
@@ -268,6 +288,9 @@ app.route("/networking")
     if(err){
       console.log(err);
     } else{
+      createdNetworking.currentUser.id = req.user._id;
+      createdNetworking.currentUser.username = req.user.username;
+      createdNetworking.save();
       // Redirect to next page
       res.render('createInvolvement');
     }
@@ -278,12 +301,13 @@ app.route("/networking")
 app.route("/involvement")
   .get((req, res) => res.render('createInvolvement'))
   .post((req, res) => {
-    const { ia, ib, ic, id } = req.body;
+    const { ia, ib, ic, id, yesNo } = req.body;
     const newInvolvement = {
           IVquestion1: ia,
           IVquestion2: ib,
           IVquestion3: ic,
           IVquestion4: id,
+          IVquestion5: yesNo
     };
 
   // Create a new User profile and save to DB
@@ -291,8 +315,11 @@ app.route("/involvement")
     if(err){
       console.log(err);
     } else{
+      createdInvolvement.currentUser.id = req.user._id;
+      createdInvolvement.currentUser.username = req.user.username;
+      createdInvolvement.save();
       // Redirect to next page
-      res.render('createCareerPath');
+      res.render('thankYou');
     }
   })
 })

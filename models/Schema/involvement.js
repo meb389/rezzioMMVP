@@ -5,6 +5,11 @@ const involvementVSchema = new mongoose.Schema({
    IVquestion2: String,
    IVquestion3: String,
    IVquestion4: String,
+   IVquestion5: String,
+   currentUser:{
+     id: mongoose.Schema.Types.ObjectId,
+     username: String
+   }
    // IVquestion5: String,
 });
 

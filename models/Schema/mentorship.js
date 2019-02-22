@@ -5,6 +5,11 @@ const mentorshipSchema = new mongoose.Schema({
    Mquestion2: String,
    Mquestion3: String,
    Mquestion4: String,
+   Mquestion5: String,
+   currentUser:{
+     id: mongoose.Schema.Types.ObjectId,
+     username: String
+   }
    // Mquestion5: Number,
 });
 
