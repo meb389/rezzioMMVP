@@ -1,7 +1,7 @@
-const express = require("express"),
-      passport    = require("passport"),
-      router  = express.Router(),
-      User        = require("../Schema/user");
+const express   = require("express"),
+      passport  = require("passport"),
+      router    = express.Router(),
+      User      = require("../Schema/user");
 
 // Index Route
 router.route("/")

@@ -1,8 +1,8 @@
-const express = require("express"),
-      app = express(),
-      passport    = require("passport"),
-      router  = express.Router(),
-      Mentorship        = require("../Schema/mentorship");
+const express    = require("express"),
+      passport   = require("passport"),
+      router     = express.Router(),
+      User       = require("../Schema/user")
+      Mentorship = require("../Schema/mentorship");
 
 
 router.route("/mentorship")

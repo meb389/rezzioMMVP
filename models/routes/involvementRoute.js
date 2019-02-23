@@ -1,8 +1,8 @@
 const express = require("express"),
-      app = express(),
       passport    = require("passport"),
-      router  = express.Router(),
-      Involvement        = require("../Schema/involvement");
+      router      = express.Router(),
+      User        = require("../Schema/user")
+      Involvement = require("../Schema/involvement");
 
 
 router.route("/involvement")

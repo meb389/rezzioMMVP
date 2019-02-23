@@ -1,8 +1,8 @@
-const express = require("express"),
-      app = express(),
-      passport    = require("passport"),
-      router  = express.Router(),
-      Networking        = require("../Schema/networking");
+const express    = require("express"),
+      passport   = require("passport"),
+      router     = express.Router(),
+      User       = require("../Schema/user")
+      Networking = require("../Schema/networking");
 
 
 router.route("/networking")
