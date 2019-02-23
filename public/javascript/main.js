@@ -1,18 +1,17 @@
 
 $('.ui.dropdown')
   .dropdown()
-;
 
 $("#hideSelectorYes").on("click", function(){
-  var yesNo = "Yes";
-  $("#introQuestion").css("display", "none");
-  $("#mainQuestions").css("display", "block");
-  $("#yesNoStorage").val(yesNo);
-});
+  let yesNo = "Yes"
+  $("#introQuestion").css("display", "none")
+  $("#mainQuestions").css("display", "block")
+  $("#yesNoStorage").val(yesNo)
+})
 
 $("#hideSelectorNo").on("click", function(){
   yesNo = "No";
-  $("#introQuestion").css("display", "none");
-  $("#mainQuestions").css("display", "block");
-  $("#yesNoStorage").val(yesNo);
-});
+  $("#introQuestion").css("display", "none")
+  $("#mainQuestions").css("display", "block")
+  $("#yesNoStorage").val(yesNo)
+})
