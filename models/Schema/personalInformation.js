@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const PersonalInformationSchema = new mongoose.Schema({
   firstName: String,
@@ -13,7 +13,7 @@ const PersonalInformationSchema = new mongoose.Schema({
     id: mongoose.Schema.Types.ObjectId,
     username: String
   }
-  });
+})
 
-  const PersonalInformation = mongoose.model("PersonalInformation", PersonalInformationSchema);
-  module.exports = PersonalInformation;
+  const PersonalInformation = mongoose.model("PersonalInformation", PersonalInformationSchema)
+  module.exports = PersonalInformation
