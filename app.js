@@ -3,8 +3,8 @@ const expressSanitzer = require("express-sanitizer"),
       LocalStrategy   =require("passport-local"),
       bodyParser      = require("body-parser"),
       passport        = require("passport"),
-      express         = require('express'),
-      mongoose        = require('mongoose')
+      express         = require("express"),
+      mongoose        = require("mongoose")
 
 // Creating Route Files
 const indexRoute = require("./models/routes/indexRoute"),
@@ -20,16 +20,16 @@ const indexRoute = require("./models/routes/indexRoute"),
 
 
 // // Reauiring Schamas for account creation
-const CareerPath        = require('./models/Schema/careerPath'),
-      User              = require('./models/Schema/user'),
-      Awareness         = require('./models/Schema/awareness'),
-      CareerAwareness   = require('./models/Schema/careerAwareness'),
-      Exposure          = require('./models/Schema/exposure'),
-      Internship        = require('./models/Schema/internship'),
-      Involvement       = require('./models/Schema/involvement'),
-      Mentorship        = require('./models/Schema/mentorship'),
-      Networking        = require('./models/Schema/networking'),
-      PersonalInformation =require('./models/Schema/personalInformation')
+const PersonalInformation =require("./models/Schema/personalInformation"),
+      CareerAwareness   = require("./models/Schema/careerAwareness"),
+      Involvement       = require("./models/Schema/involvement"),
+      CareerPath        = require("./models/Schema/careerPath"),
+      Internship        = require("./models/Schema/internship"),
+      Mentorship        = require("./models/Schema/mentorship"),
+      Networking        = require("./models/Schema/networking"),
+      Awareness         = require("./models/Schema/awareness"),
+      Exposure          = require("./models/Schema/exposure"),
+      User              = require("./models/Schema/user")
 
 //rezzio
 mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true });
@@ -52,7 +52,7 @@ app.use(function(req, res, next){
     next();
 });
 // css connection
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 
 // =============================================================================
 // Passport config
@@ -81,4 +81,4 @@ app.use(networkingRoute),
 app.use(involvementRoute)
 
 
-app.listen(process.env.PORT || 5000, () => console.log('Example app listening on port 5000!'));
+app.listen(process.env.PORT || 5000, () => console.log("Example app listening on port 5000!"));

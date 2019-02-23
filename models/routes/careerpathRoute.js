@@ -1,12 +1,12 @@
 const express    = require("express"),
       passport   = require("passport"),
       router     = express.Router(),
-      User       = require("../Schema/user")
-      CareerPath = require("../Schema/careerPath");
+      User       = require("../Schema/user"),
+      CareerPath = require("../Schema/careerPath")
 
 
 router.route("/careerpath")
-  .get((req, res) => res.render('createCareerPath'))
+  .get((req, res) => res.render("createCareerPath"))
   .post((req, res) => {
     // Get data from path selection drop down
     console.log(req.body);
@@ -14,19 +14,18 @@ router.route("/careerpath")
 
     const newPath = {
           pathSelection: pathSelection
-        };
-        console.log(newPath);
+        }
 
   // Create career path and assign to user object in DB
-  CareerPath.create(newPath, function(err, createdPath){
+  CareerPath.create(newPath, (err, createdPath) => {
     if(err){
-      console.log(err);
+      console.log(err)
     } else{
-      createdPath.currentUser.id = req.user._id;
-      createdPath.currentUser.username = req.user.username;
-      createdPath.save();
+      createdPath.currentUser.id = req.user._id
+      createdPath.currentUser.username = req.user.username
+      createdPath.save()
       // Redirect to next page
-      res.render('questionnare');
+      res.render("questionnare")
     }
   })
 })
@@ -34,9 +33,9 @@ router.route("/careerpath")
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
-        return next();
+        return next()
     }
-    res.redirect("/login");
+    res.redirect("/login")
 }
 
-module.exports = router;
+module.exports = router
