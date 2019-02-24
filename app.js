@@ -16,7 +16,8 @@ const indexRoute = require("./models/routes/indexRoute"),
       exposureRoute = require("./models/routes/exposureRoute"),
       internshipRoute = require("./models/routes/internshipRoute"),
       networkingRoute = require("./models/routes/networkingRoute"),
-      involvementRoute = require("./models/routes/involvementRoute")
+      involvementRoute = require("./models/routes/involvementRoute"),
+      resetPasswordRoute = require("./models/routes/resetPassword")
 
 
 // // Reauiring Schamas for account creation
@@ -78,7 +79,8 @@ app.use(mentorshipRoute),
 app.use(exposureRoute),
 app.use(internshipRoute),
 app.use(networkingRoute),
-app.use(involvementRoute)
+app.use(involvementRoute),
+app.use(resetPasswordRoute)
 
 
 app.listen(process.env.PORT || 5000, () => console.log("Example app listening on port 5000!"))
