@@ -19,12 +19,14 @@ router.route("/dashboard")
 router.route("/register")
   .get((req, res) => res.render("register"))
   .post((req, res) => {
-    User.register(new User({username: req.body.username}), req.body.password, (err, user) => {
+    User.register(new User({username: req.body.username, sQuestion: req.body.secretQ, sAnswer: req.body.secretA}), req.body.password, (err, user) => {
+      // password: req.body.password, secretQuestion: req.body.secretQ, secretAnswer: req.body.secretA
       if(err){
         console.log(err)
         return res.render("register")
        }
         passport.authenticate("local")(req, res, () => {
+          console.log();
         res.redirect("/about-you")
       })
     })
