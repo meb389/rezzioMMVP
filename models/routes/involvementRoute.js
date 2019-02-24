@@ -6,8 +6,8 @@ const express     = require("express"),
 
 
 router.route("/involvement")
-  .get((req, res) => res.render("createInvolvement"))
-  .post((req, res) => {
+  .get(isLoggedIn, (req, res) => res.render("createInvolvement"))
+  .post(isLoggedIn, (req, res) => {
     const { ia, ib, ic, id, yesNo } = req.body
     const newInvolvement = {
           IVquestion1: ia,

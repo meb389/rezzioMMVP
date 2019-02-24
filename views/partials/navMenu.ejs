@@ -14,8 +14,14 @@
       ABOUT REZZIO
     </a>
     <a class="item">
-      <img class="ui avatar image" src="https://pbs.twimg.com/profile_images/446566229210181632/2IeTff-V_400x400.jpeg">
-      <span>Username</span>
+      <% if(!currentUser){ %>
+        <img class="ui avatar image" src="https://pbs.twimg.com/profile_images/446566229210181632/2IeTff-V_400x400.jpeg">
+        <span>Username</span>
+     <% } else{ %>
+       <img class="ui avatar image" src="https://pbs.twimg.com/profile_images/446566229210181632/2IeTff-V_400x400.jpeg">
+       <span><%= currentUser.username %></span>
+       <% console.log(currentUser.username) %>
+      <% } %>
     </a>
   </div>
 </div>

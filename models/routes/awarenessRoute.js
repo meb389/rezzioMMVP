@@ -6,8 +6,8 @@ const express    = require("express"),
 
 
 router.route("/awareness")
-  .get((req, res) => res.render("createAwareness"))
-  .post((req, res) => {
+  .get(isLoggedIn, (req, res) => res.render("createAwareness"))
+  .post(isLoggedIn, (req, res) => {
     const { ca, cb, cc, cd, ce, cf } = req.body;
     const newAwareness = {
           Aquestion1: ca,

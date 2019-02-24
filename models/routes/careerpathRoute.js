@@ -6,8 +6,8 @@ const express    = require("express"),
 
 
 router.route("/careerpath")
-  .get((req, res) => res.render("createCareerPath"))
-  .post((req, res) => {
+  .get(isLoggedIn, (req, res) => res.render("createCareerPath"))
+  .post(isLoggedIn, (req, res) => {
     // Get data from path selection drop down
     console.log(req.body);
     const pathSelection = req.body.ba

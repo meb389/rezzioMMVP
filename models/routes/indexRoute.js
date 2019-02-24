@@ -9,7 +9,7 @@ router.route("/")
 
 // Student Dashboard
 router.route("/dashboard")
-  .get((req, res) => res.render("studentDashboard"))
+  .get(isLoggedIn, (req, res) => res.render("studentDashboard"))
 
 router.route("/register")
   .get((req, res) => res.render("register"))
@@ -36,7 +36,7 @@ router.route("/login")
   })
 
 // Thank You page
-router.get("/thankyou", (req, res) => res.render("thankYou"))
+router.get("/thankyou", isLoggedIn, (req, res) => res.render("thankYou"))
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
