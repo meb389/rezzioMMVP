@@ -1,8 +1,10 @@
 const mongoose              = require("mongoose"),
-      passportLocalMongoose = require("passport-local-mongoose")
+      passportLocalMongoose = require("passport-local-mongoose"),
+      passport = require('passport'),
+      LocalStrategy = require('passport-local').Strategy;
 
 const UserSchema = new mongoose.Schema({
-  userName: String,
+  username: String,
   password: String,
 })
 

@@ -6,7 +6,7 @@ const express  = require("express"),
 
 
 router.route("/exposure")
-  .get(isLoggedIn, (req, res) => res.render("createExposure"))
+  .get(isLoggedIn, (req, res) => res.render("createExposure", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     console.log(req.body)
     const { ha, hb, yesNo } = req.body

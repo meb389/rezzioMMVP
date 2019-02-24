@@ -6,7 +6,7 @@ const express    = require("express"),
 
 
 router.route("/internship")
-  .get(isLoggedIn, (req, res) => res.render("createInternship"))
+  .get(isLoggedIn, (req, res) => res.render("createInternship", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     const { ja, jb, jc, jd, je, jf, yesNo } = req.body;
     const newInternship = {

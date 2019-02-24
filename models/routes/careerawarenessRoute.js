@@ -6,7 +6,7 @@ const express         = require("express"),
 
 
 router.route("/careerawareness")
-  .get(isLoggedIn, (req, res) => res.render("createCareerAwareness"))
+  .get(isLoggedIn, (req, res) => res.render("createCareerAwareness", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     const { ca1, ca2, ca3 } = req.body;
     const newCareerAwareness = {

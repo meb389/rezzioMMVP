@@ -6,7 +6,7 @@ const express     = require("express"),
 
 
 router.route("/involvement")
-  .get(isLoggedIn, (req, res) => res.render("createInvolvement"))
+  .get(isLoggedIn, (req, res) => res.render("createInvolvement", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     const { ia, ib, ic, id, yesNo } = req.body
     const newInvolvement = {

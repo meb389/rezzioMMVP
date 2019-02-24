@@ -1,8 +1,13 @@
-const express   = require("express"),
-      passport  = require("passport"),
-      router    = express.Router(),
-      User      = require("../Schema/user")
+const expressSanitzer = require("express-sanitizer"),
+      methodOverride  = require("method-override"),
+      LocalStrategy   = require('passport-local').Strategy,
+      bodyParser      = require("body-parser"),
+      passport        = require("passport"),
+      mongoose        = require("mongoose"),
+      express         = require("express"),
+      router          = express.Router()
 
+const User            = require("../Schema/user")
 // Index Route
 router.route("/")
   .get((req, res) => res.redirect("/register"))
@@ -26,11 +31,12 @@ router.route("/register")
 })
 
 router.route("/login")
-  .get((req, res) => res.render("login"))
+  .get((req, res) => res.render("login",))
   .post(
     passport.authenticate("local", {
       successRedirect: "/about-you",
-      failureRedirect: "/login"
+      failureRedirect: "/login",
+      failureFlash: true
     }), (req, res) => {
 
   })

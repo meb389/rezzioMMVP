@@ -6,7 +6,7 @@ const express    = require("express"),
 
 
 router.route("/careerpath")
-  .get(isLoggedIn, (req, res) => res.render("createCareerPath"))
+  .get(isLoggedIn, (req, res) => res.render("createCareerPath", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     // Get data from path selection drop down
     console.log(req.body);

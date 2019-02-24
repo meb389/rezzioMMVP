@@ -1,12 +1,19 @@
-const express             = require("express"),
-      passport            = require("passport"),
-      router              = express.Router(),
+const expressSanitzer = require("express-sanitizer"),
+      methodOverride  = require("method-override"),
+      LocalStrategy   = require('passport-local').Strategy,
+      bodyParser      = require("body-parser"),
+      passport        = require("passport"),
+      mongoose        = require("mongoose"),
+      express         = require("express"),
+      router          = express.Router()
+      app             = express()
+
       User                = require("../Schema/user"),
       PersonalInformation = require("../Schema/personalInformation")
 
 
 router.route("/about-you")
-  .get(isLoggedIn, (req, res) => res.render("createUser"))
+  .get(isLoggedIn, (req, res) => res.render("createUser", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     // Get data from form and add to users profile
     const firstName = req.body.aa,

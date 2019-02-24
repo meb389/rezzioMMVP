@@ -6,7 +6,7 @@ const express    = require("express"),
 
 
 router.route("/networking")
-  .get(isLoggedIn, (req, res) => res.render("createNetworking"))
+  .get(isLoggedIn, (req, res) => res.render("createNetworking", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     const { la, lb, lc, ld, yesNo } = req.body
     const newNetworking = {

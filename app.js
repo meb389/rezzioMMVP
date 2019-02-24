@@ -1,35 +1,35 @@
 const expressSanitzer = require("express-sanitizer"),
       methodOverride  = require("method-override"),
-      LocalStrategy   =require("passport-local"),
+      LocalStrategy   = require('passport-local').Strategy,
       bodyParser      = require("body-parser"),
       passport        = require("passport"),
-      express         = require("express"),
-      mongoose        = require("mongoose")
+      mongoose        = require("mongoose"),
+      express         = require("express")
 
 // Creating Route Files
-const indexRoute = require("./models/routes/indexRoute"),
-      aboutRoute = require("./models/routes/aboutRoute"),
-      careerpathRoute = require("./models/routes/careerpathRoute"),
-      awarenessRoute = require("./models/routes/awarenessRoute"),
+const indexRoute           = require("./models/routes/indexRoute"),
+      aboutRoute           = require("./models/routes/aboutRoute"),
+      careerpathRoute      = require("./models/routes/careerpathRoute"),
+      awarenessRoute       = require("./models/routes/awarenessRoute"),
       careerawarenessRoute = require("./models/routes/careerawarenessRoute"),
-      mentorshipRoute = require("./models/routes/mentorshipRoute"),
-      exposureRoute = require("./models/routes/exposureRoute"),
-      internshipRoute = require("./models/routes/internshipRoute"),
-      networkingRoute = require("./models/routes/networkingRoute"),
-      involvementRoute = require("./models/routes/involvementRoute")
+      mentorshipRoute      = require("./models/routes/mentorshipRoute"),
+      exposureRoute        = require("./models/routes/exposureRoute"),
+      internshipRoute      = require("./models/routes/internshipRoute"),
+      networkingRoute      = require("./models/routes/networkingRoute"),
+      involvementRoute     = require("./models/routes/involvementRoute")
 
 
 // // Reauiring Schamas for account creation
-const PersonalInformation =require("./models/Schema/personalInformation"),
-      CareerAwareness   = require("./models/Schema/careerAwareness"),
-      Involvement       = require("./models/Schema/involvement"),
-      CareerPath        = require("./models/Schema/careerPath"),
-      Internship        = require("./models/Schema/internship"),
-      Mentorship        = require("./models/Schema/mentorship"),
-      Networking        = require("./models/Schema/networking"),
-      Awareness         = require("./models/Schema/awareness"),
-      Exposure          = require("./models/Schema/exposure"),
-      User              = require("./models/Schema/user")
+const PersonalInformation = require("./models/Schema/personalInformation"),
+      CareerAwareness     = require("./models/Schema/careerAwareness"),
+      Involvement         = require("./models/Schema/involvement"),
+      CareerPath          = require("./models/Schema/careerPath"),
+      Internship          = require("./models/Schema/internship"),
+      Mentorship          = require("./models/Schema/mentorship"),
+      Networking          = require("./models/Schema/networking"),
+      Awareness           = require("./models/Schema/awareness"),
+      Exposure            = require("./models/Schema/exposure"),
+      User                = require("./models/Schema/user")
 
 //rezzio
 mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
@@ -48,8 +48,8 @@ app.use(methodOverride("_method"))
 app.set("view engine", "ejs")
 // Passing user info through to all pages
 app.use(function(req, res, next){
-    res.locals.currentUser = req.user
-    next()
+  res.locals.currentUser = req.user
+  next()
 })
 // css connection
 app.use(express.static(__dirname + "/public"))
@@ -60,7 +60,7 @@ app.use(require("express-session")({
     secret: "Rezzio Learning #1",
     resave: false,
     saveUninitialized: false
-}));
+}))
 
 app.use(passport.initialize())
 app.use(passport.session())

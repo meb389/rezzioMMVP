@@ -6,7 +6,7 @@ const express    = require("express"),
 
 
 router.route("/mentorship")
-  .get(isLoggedIn, (req, res) => res.render("createMentorship"))
+  .get(isLoggedIn, (req, res) => res.render("createMentorship", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     const { fa, fb, fc, fd, yesNo } = req.body;
     const newMentorship = {
