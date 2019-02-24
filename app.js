@@ -12,20 +12,11 @@ const indexRoute           = require("./models/routes/indexRoute"),
       careerpathRoute      = require("./models/routes/careerpathRoute"),
       awarenessRoute       = require("./models/routes/awarenessRoute"),
       careerawarenessRoute = require("./models/routes/careerawarenessRoute"),
-<<<<<<< HEAD
       mentorshipRoute      = require("./models/routes/mentorshipRoute"),
       exposureRoute        = require("./models/routes/exposureRoute"),
       internshipRoute      = require("./models/routes/internshipRoute"),
       networkingRoute      = require("./models/routes/networkingRoute"),
       involvementRoute     = require("./models/routes/involvementRoute")
-=======
-      mentorshipRoute = require("./models/routes/mentorshipRoute"),
-      exposureRoute = require("./models/routes/exposureRoute"),
-      internshipRoute = require("./models/routes/internshipRoute"),
-      networkingRoute = require("./models/routes/networkingRoute"),
-      involvementRoute = require("./models/routes/involvementRoute"),
-      resetPasswordRoute = require("./models/routes/resetPassword")
->>>>>>> b6fb1c69782cda348bb19b3787ce9299160c72ff
 
 
 // // Reauiring Schamas for account creation
