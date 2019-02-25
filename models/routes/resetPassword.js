@@ -1,5 +1,6 @@
 const express    = require("express"),
       passport   = require("passport"),
+      mongoose        = require("mongoose"),
       router     = express.Router(),
       User       = require("../Schema/user"),
       Networking = require("../Schema/networking")
@@ -8,27 +9,25 @@ const express    = require("express"),
 router.route("/resetPassword")
   .get((req, res) => res.render("resetPassword"))
   .post((req, res) => {
-    const { la, lb, lc, ld, yesNo } = req.body
-    const newNetworking = {
-          Nquestion1: la,
-          Nquestion2: lb,
-          Nquestion3: lc,
-          Nquestion4: ld,
-          Nquestion5: yesNo
-    }
-
-  // Create a new User profile and save to DB
-  Networking.create(newNetworking, (err, createdNetworking) => {
-    if(err){
-      console.log(err)
-    } else{
-      createdNetworking.currentUser.id = req.user._id
-      createdNetworking.currentUser.username = req.user.username
-      createdNetworking.save()
-      // Redirect to next page
-      res.render("createInvolvement")
-    }
-  })
+    console.log(req.body);
+    const {uId, newPassword, sAnswer, secretQ} = req.body;
+    User.findByUsername(uId).then(function(sanitizedUser){
+      console.log(sanitizedUser);
+        if (sanitizedUser){
+          if (sAnswer == sanitizedUser.sAnswer && secretQ == sanitizedUser.sQuestion) {
+            sanitizedUser.setPassword(newPassword, function(){
+                sanitizedUser.save();
+                res.status(200).json({message: 'password reset successful'});
+            }
+          )} else {
+            res.status(500).json({message: 'The answer does not match!'});
+          };
+        } else {
+            res.status(500).json({message: 'This user does not exist'});
+        }
+    },function(err){
+        console.error(err);
+    })
 })
 
 // Function to chech if loggedIn

@@ -8,6 +8,7 @@ const express         = require("express"),
 router.route("/careerawareness")
   .get(isLoggedIn, (req, res) => res.render("createCareerAwareness", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
+    console.log(req.body);
     const { ca1, ca2, ca3 } = req.body;
     const newCareerAwareness = {
       CAquestion1: ca1,

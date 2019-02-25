@@ -16,7 +16,8 @@ const indexRoute           = require("./models/routes/indexRoute"),
       exposureRoute        = require("./models/routes/exposureRoute"),
       internshipRoute      = require("./models/routes/internshipRoute"),
       networkingRoute      = require("./models/routes/networkingRoute"),
-      involvementRoute     = require("./models/routes/involvementRoute")
+      involvementRoute     = require("./models/routes/involvementRoute"),
+      resetPasswordRoute     = require("./models/routes/resetPassword")
 
 
 // // Reauiring Schamas for account creation
