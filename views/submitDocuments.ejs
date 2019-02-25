@@ -1,0 +1,42 @@
+<% include partials/header %>
+
+<% include partials/navMenu %>
+
+<div class="hero">
+  <div class="content-wrapper">
+    <div class="ui grid">
+      <h1>SUBMIT YOUR VERIFICATION DOCUMENTS</h1>
+    </div>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <div class="ui grid">
+    <div class="eight wide column">
+      <div class="ui form">
+        <form action="/submitdocuments" method="POST">
+          <div class="field">
+            <input type="text" name="name" placeholder="Name">
+          </div>
+          <div class="field">
+            <input type="email" name="email" placeholder="Email">
+          </div>
+          <div class="field">
+            <input type="text" name="subject" placeholder="Subject">
+          </div>
+          <div class="field">
+            <label>Message</label>
+            <textarea value="Message"></textarea>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>I agree to the Terms and Conditions</label>
+            </div>
+          </div>
+          <button class="ui button" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -43,6 +43,10 @@ router.route("/login")
 
   })
 
+// Verification document submission form
+router.route("/submitdocuments")
+  .get(isLoggedIn, (req, res) => res.render("submitdocuments", {currentUser: req.user}))
+
 // Thank You page
 router.get("/thankyou", isLoggedIn, (req, res) => res.render("thankYou"))
 

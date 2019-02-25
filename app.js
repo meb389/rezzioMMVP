@@ -79,8 +79,8 @@ app.use(mentorshipRoute),
 app.use(exposureRoute),
 app.use(internshipRoute),
 app.use(networkingRoute),
-app.use(involvementRoute),
-app.use(resetPasswordRoute)
+app.use(involvementRoute)
+// app.use(resetPasswordRoute)
 
 
 app.listen(process.env.PORT || 5000, () => console.log("Example app listening on port 5000!"))
