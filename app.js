@@ -42,6 +42,7 @@ mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mon
 // =============================================================================
 // App config
 app = express()
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(expressSanitzer())
 app.use(express.static(__dirname + "public"))
