@@ -11,6 +11,16 @@ const expressSanitzer = require("express-sanitizer"),
 
 const User            = require("../Schema/user")
 
+let transporter = nodeMailer.createTransport({
+  host: 'smtp.gmail.com',
+  service: 'gmail',
+  port: 465,
+  secure: true,
+  auth: {
+    user: 'mitchbrudel@gmail.com',
+    pass: 'olympic1'
+  }
+ })
 // Index Route
 router.route("/")
   .get((req, res) => res.redirect("/register"))
@@ -51,7 +61,10 @@ router.route("/submitdocuments")
   .get(isLoggedIn, (req, res) => res.render("submitdocuments", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     let transporter = nodeMailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      service: 'Gmail',
+      port: 465,
+      secure: true,
       auth: {
         user: 'mitchbrudel@gmail.com',
         pass: 'olympic1'
@@ -59,10 +72,10 @@ router.route("/submitdocuments")
      })
     let mailOptions = {
       from: req.body.email, // sender address
-         to: "meb389@drexel.edu", // list of receivers
+         to: "mitchbrudel@gmail.com", // list of receivers
          subject: req.body.subject, // Subject line
          text: req.body.message, // plain text body
-         html: '<b>NodeJS Email Tutorial</b>' // html body
+         html:  req.body.message// html body
      };
 
      transporter.sendMail(mailOptions, (error, info) => {
@@ -70,7 +83,7 @@ router.route("/submitdocuments")
              return console.log(error);
          }
          console.log('Message %s sent: %s', info.messageId, info.response);
-             res.render('index');
+             res.render('studentDashboard');
          });
      })
 // Thank You page
