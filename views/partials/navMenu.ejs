@@ -15,8 +15,10 @@
     </a>
     <a class="item">
       <% if(!currentUser){ %>
-        <img class="ui avatar image" src="https://pbs.twimg.com/profile_images/446566229210181632/2IeTff-V_400x400.jpeg">
-        <span>Username</span>
+        <a href="/login">
+          <img class="ui avatar image" src="https://pbs.twimg.com/profile_images/446566229210181632/2IeTff-V_400x400.jpeg">
+          <span>Login</span>
+        </a>
      <% } else{ %>
        <img class="ui avatar image" src="https://pbs.twimg.com/profile_images/446566229210181632/2IeTff-V_400x400.jpeg">
        <span><%= currentUser.username %></span>

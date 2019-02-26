@@ -18,6 +18,7 @@ const indexRoute           = require("./models/routes/indexRoute"),
       internshipRoute      = require("./models/routes/internshipRoute"),
       networkingRoute      = require("./models/routes/networkingRoute"),
       involvementRoute     = require("./models/routes/involvementRoute"),
+      contactRoute     = require("./models/routes/contact"),
       resetPasswordRoute    = require("./models/routes/resetPassword")
 
 
@@ -82,6 +83,7 @@ app.use(exposureRoute),
 app.use(internshipRoute),
 app.use(networkingRoute),
 app.use(involvementRoute)
+app.use(contactRoute)
 // app.use(resetPasswordRoute)
 
 

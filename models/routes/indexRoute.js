@@ -11,16 +11,6 @@ const expressSanitzer = require("express-sanitizer"),
 
 const User            = require("../Schema/user")
 
-let transporter = nodeMailer.createTransport({
-  host: 'smtp.gmail.com',
-  service: 'gmail',
-  port: 465,
-  secure: true,
-  auth: {
-    user: 'mitchbrudel@gmail.com',
-    pass: 'olympic1'
-  }
- })
 // Index Route
 router.route("/")
   .get((req, res) => res.redirect("/register"))
@@ -56,34 +46,6 @@ router.route("/login")
 
   })
 
-// Verification document submission form
-router.route("/contact")
-  .get(isLoggedIn, (req, res) => res.render("contact", {currentUser: req.user}))
-  .post(isLoggedIn, (req, res) => {
-    let transporter = nodeMailer.createTransport({
-      host: 'smtp.gmail.com',
-      service: 'Gmail',
-      port: 465,
-      secure: true,
-      auth: {
-        user: 'mitchbrudel@gmail.com',
-        pass: 'olympic1'
-      }
-    })
-    let mailOptions = {
-      from: req.body.email, // sender address
-      to: "mitchbrudel@gmail.com", // list of receivers
-      subject: req.body.subject, // Subject line
-      text: req.body.email, // plain text body
-      html: req.body.message + " -- " + req.body.email + " -- " + req.body.name// html body
-    };
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-      return console.log(error);
-      }
-        res.render('studentDashboard');
-    })
-  })
 // Thank You page
 router.get("/thankyou", isLoggedIn, (req, res) => res.render("thankYou"))
 
