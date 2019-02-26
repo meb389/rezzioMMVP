@@ -57,8 +57,8 @@ router.route("/login")
   })
 
 // Verification document submission form
-router.route("/submitdocuments")
-  .get(isLoggedIn, (req, res) => res.render("submitdocuments", {currentUser: req.user}))
+router.route("/contact")
+  .get(isLoggedIn, (req, res) => res.render("contact", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     let transporter = nodeMailer.createTransport({
       host: 'smtp.gmail.com',
@@ -69,23 +69,21 @@ router.route("/submitdocuments")
         user: 'mitchbrudel@gmail.com',
         pass: 'olympic1'
       }
-     })
+    })
     let mailOptions = {
       from: req.body.email, // sender address
-         to: "mitchbrudel@gmail.com", // list of receivers
-         subject: req.body.subject, // Subject line
-         text: req.body.message, // plain text body
-         html:  req.body.message// html body
-     };
-
-     transporter.sendMail(mailOptions, (error, info) => {
-         if (error) {
-             return console.log(error);
-         }
-         console.log('Message %s sent: %s', info.messageId, info.response);
-             res.render('studentDashboard');
-         });
-     })
+      to: "mitchbrudel@gmail.com", // list of receivers
+      subject: req.body.subject, // Subject line
+      text: req.body.email, // plain text body
+      html: req.body.message + " -- " + req.body.email + " -- " + req.body.name// html body
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+      return console.log(error);
+      }
+        res.render('studentDashboard');
+    })
+  })
 // Thank You page
 router.get("/thankyou", isLoggedIn, (req, res) => res.render("thankYou"))
 
