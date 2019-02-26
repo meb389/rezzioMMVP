@@ -14,29 +14,26 @@ const expressSanitzer = require("express-sanitizer"),
 
 router.route("/networking")
   .get(isLoggedIn, (req, res) => res.render("createNetworking", {currentUser: req.user}))
-//   .post(isLoggedIn, (req, res) => {
-//     const { la, lb, lc, ld, yesNo } = req.body
-//     const newNetworking = {
-//           Nquestion1: la,
-//           Nquestion2: lb,
-//           Nquestion3: lc,
-//           Nquestion4: ld,
-//           Nquestion5: yesNo
-//     }
-//
-//   // Create a new User profile and save to DB
-//   Networking.create(newNetworking, (err, createdNetworking) => {
-//     if(err){
-//       console.log(err)
-//     } else{
-//       createdNetworking.currentUser.id = req.user._id
-//       createdNetworking.currentUser.username = req.user.username
-//       createdNetworking.save()
-//       // Redirect to next page
-//       res.render("createInvolvement")
-//     }
-//   })
-// })
+  .post(isLoggedIn, (req, res) => {
+    Intake.findOneAndUpdate(
+    {"currentUser.username": req.user.username},
+      {$set:
+        {
+          "networking.Nquestion1": req.body.la,
+          "networking.Nquestion2": req.body.lb,
+          "networking.Nquestion3": req.body.lc,
+          "networking.Nquestion4": req.body.ld,
+          "networking.Nquestion5": req.body.yesNo,
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.render("createInvolvement")
+      }
+    })
+  })
 
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){

@@ -5,39 +5,34 @@ const expressSanitzer = require("express-sanitizer"),
       passport        = require("passport"),
       mongoose        = require("mongoose"),
       express         = require("express"),
-      router          = express.Router()
-      app             = express()
+      router          = express.Router(),
+      app             = express(),
 
-      User   = require("../Schema/user")
+      User   = require("../Schema/user"),
       Intake = require("../Schema/intake")
       // Exposure = require("../Schema/exposure")
 
 
 router.route("/exposure")
   .get(isLoggedIn, (req, res) => res.render("createExposure", {currentUser: req.user}))
-  // .post(isLoggedIn, (req, res) => {
-  //   console.log(req.body)
-  //   const { ha, hb, yesNo } = req.body
-  //   const newExposure = {
-  //         Equestion1: ha,
-  //         Equestion2: hb,
-  //         Equestion3: yesNo
-  //   }
-
-  // Create a new User profile and save to DB
-//   Exposure.create(newExposure, (err, createdExposure) => {
-//     if(err){
-//       console.log(err)
-//     } else{
-//       createdExposure.currentUser.id = req.user._id
-//       createdExposure.currentUser.username = req.user.username
-//       createdExposure.save()
-//       // Redirect to next page
-//       res.render("createInternship")
-//     }
-//   })
-// })
-
+  .post(isLoggedIn, (req, res) => {
+  Intake.findOneAndUpdate(
+    {"currentUser.username": req.user.username},
+    {$set:
+      {
+        "exposure.Equestion1": req.body.ha,
+        "exposure.Equestion2": req.body.hb,
+        "exposure.Equestion3": req.body.yesNo,
+      }
+    }, (err, updatedUser) => {
+    if(err) {
+      console.log(err)
+    } else {
+      updatedUser.save()
+      res.render("createInternship")
+    }
+  })
+})
 
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){

@@ -19,40 +19,19 @@ router.route("/careerawareness")
       {"currentUser.username": req.user.username},
       {$set:
         {
-          "careerAwareness.CAquestion1": req.body.caOne,
-          "careerAwareness.CAquestion2": req.body.caTwo,
-          "careerAwareness.CAquestion3": req.body.caThree,
+          "careerAwareness.CAquestion1": req.body.career1,
+          "careerAwareness.CAquestion2": req.body.career2,
+          "careerAwareness.CAquestion3": req.body.career3,
         }
       }, (err, updatedUser) => {
       if(err) {
         res.redirect("/contact")
       } else {
         updatedUser.save()
-        console.log(req.body.career1)
         res.render("createMentorship")
       }
     })
-//     console.log(req.body);
-//     const { ca1, ca2, ca3 } = req.body;
-//     const newCareerAwareness = {
-//       CAquestion1: ca1,
-//       CAquestion2: ca2,
-//       CAquestion3: ca3
-//     }
-//
-//   // Create a Career Awareness and save to DB
-//   CareerAwareness.create(newCareerAwareness, (err, createdCareerAwareness) => {
-//     if(err){
-//       console.log(err)
-//     } else{
-//       createdCareerAwareness.currentUser.id = req.user._id
-//       createdCareerAwareness.currentUser.username = req.user.username
-//       createdCareerAwareness.save()
-//       // Redirect to next page
-//       res.render("createMentorship")
-//     }
-//   })
-})
+  })
 
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){

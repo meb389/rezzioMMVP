@@ -31,6 +31,7 @@ router.route("/awareness")
       if(err){
         res.redirect("/contact")
       } else {
+        console.log
         res.render("createCareerAwareness")
       }
     });

@@ -14,7 +14,26 @@ const expressSanitzer = require("express-sanitizer"),
 
 router.route("/mentorship")
   .get(isLoggedIn, (req, res) => res.render("createMentorship", {currentUser: req.user}))
-//   .post(isLoggedIn, (req, res) => {
+  .post(isLoggedIn, (req, res) => {
+    Intake.findOneAndUpdate(
+      {"currentUser.username": req.user.username},
+      {$set:
+        {
+          "mentorship.Mquestion1": req.body.fa,
+          "mentorship.Mquestion2": req.body.fb,
+          "mentorship.Mquestion3": req.body.fc,
+          "mentorship.Mquestion4": req.body.fd,
+          "mentorship.Mquestion5": req.body.yesNo,
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.render("createExposure")
+      }
+    })
+  })
 //     const { fa, fb, fc, fd, yesNo } = req.body;
 //     const newMentorship = {
 //           Mquestion1: fa,

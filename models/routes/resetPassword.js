@@ -3,7 +3,7 @@ const express    = require("express"),
       mongoose        = require("mongoose"),
       router     = express.Router(),
       User       = require("../Schema/user"),
-      Networking = require("../Schema/networking")
+      Intake     = require("../Schema/intake")
 
 
 router.route("/resetPassword")

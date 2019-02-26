@@ -14,31 +14,28 @@ const expressSanitzer = require("express-sanitizer"),
 
 router.route("/internship")
   .get(isLoggedIn, (req, res) => res.render("createInternship", {currentUser: req.user}))
-//   .post(isLoggedIn, (req, res) => {
-//     const { ja, jb, jc, jd, je, jf, yesNo } = req.body;
-//     const newInternship = {
-//           Iquestion1: ja,
-//           Iquestion2: jb,
-//           Iquestion3: jc,
-//           Iquestion4: jd,
-//           Iquestion5: je,
-//           Iquestion6: jf,
-//           Iquestion7: yesNo
-//     }
-//
-//   // Create a new User profile and save to DB
-//   Internship.create(newInternship, (err, createdInternship) => {
-//     if(err) {
-//       console.log(err)
-//     } else {
-//       createdInternship.currentUser.id = req.user._id
-//       createdInternship.currentUser.username = req.user.username
-//       createdInternship.save()
-//       // Redirect to next page
-//       res.render("createNetworking")
-//     }
-//   })
-// })
+  .post(isLoggedIn, (req, res) => {
+    Intake.findOneAndUpdate(
+    {"currentUser.username": req.user.username},
+      {$set:
+        {
+          "internship.Iquestion1": req.body.ja,
+          "internship.Iquestion2": req.body.jb,
+          "internship.Iquestion3": req.body.jc,
+          "internship.Iquestion4": req.body.jd,
+          "internship.Iquestion5": req.body.je,
+          "internship.Iquestion6": req.body.jf,
+          "internship.Iquestion7": req.body.yesNo,
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.redirect("createNetworking")
+      }
+    })
+  })
 
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){

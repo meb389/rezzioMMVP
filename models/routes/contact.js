@@ -11,17 +11,6 @@ const expressSanitzer = require("express-sanitizer"),
 
 const User            = require("../Schema/user")
 
-let transporter = nodeMailer.createTransport({
-  host: 'smtp.gmail.com',
-  service: 'gmail',
-  port: 465,
-  secure: true,
-  auth: {
-    user: 'mitchbrudel@gmail.com',
-    pass: 'olympic1'
-  }
- })
-
  // Verification document submission form
  router.route("/contact")
    .get(isLoggedIn, (req, res) => res.render("contact", {currentUser: req.user}))

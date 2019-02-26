@@ -14,31 +14,26 @@ const expressSanitzer = require("express-sanitizer"),
 
 router.route("/involvement")
   .get(isLoggedIn, (req, res) => res.render("createInvolvement", {currentUser: req.user}))
-//   .post(isLoggedIn, (req, res) => {
-//     const { ia, ib, ic, id, yesNo } = req.body
-//     const newInvolvement = {
-//           IVquestion1: ia,
-//           IVquestion2: ib,
-//           IVquestion3: ic,
-//           IVquestion4: id,
-//           IVquestion5: yesNo
-//     }
-//
-//   // Create a new User profile and save to DB
-//   Involvement.create(newInvolvement, (err, createdInvolvement) => {
-//     if(err) {
-//       console.log(err)
-//     } else {
-//       createdInvolvement.currentUser.id = req.user._id
-//       createdInvolvement.currentUser.username = req.user.username
-//       createdInvolvement.save()
-//       // Redirect to next page
-//       res.render("thankYou")
-//     }
-//   })
-// })
-
-
+  .post(isLoggedIn, (req, res) => {
+    Intake.findOneAndUpdate(
+    {"currentUser.username": req.user.username},
+      {$set:
+        {
+          "involvement.IVquestion1": req.body.ia,
+          "involvement.IVquestion2": req.body.ib,
+          "involvement.IVquestion3": req.body.ic,
+          "involvement.IVquestion4": req.body.id,
+          "involvement.IVquestion5": req.body.yesNo,
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.render("thankYou")
+      }
+    })
+  })
 
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){
