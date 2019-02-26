@@ -1,6 +1,7 @@
 const expressSanitzer = require("express-sanitizer"),
       methodOverride  = require("method-override"),
       LocalStrategy   = require('passport-local').Strategy,
+      nodeMailer      = require("nodemailer"),
       bodyParser      = require("body-parser"),
       passport        = require("passport"),
       mongoose        = require("mongoose"),
