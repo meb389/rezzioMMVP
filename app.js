@@ -23,8 +23,7 @@ const indexRoute           = require("./models/routes/indexRoute"),
 
 
 // // Reauiring Schamas for account creation
-const PersonalInformation = require("./models/Schema/personalInformation"),
-      CareerAwareness     = require("./models/Schema/careerAwareness"),
+const CareerAwareness     = require("./models/Schema/careerAwareness"),
       Involvement         = require("./models/Schema/involvement"),
       CareerPath          = require("./models/Schema/careerPath"),
       Internship          = require("./models/Schema/internship"),

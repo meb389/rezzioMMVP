@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const exposureSchema = new mongoose.Schema({
   Equestion1: Number,
   Equestion2: Number,
-  Equestion3: String,
+  Equestion3: String
   currentUser:{
     id: mongoose.Schema.Types.ObjectId,
     username: String

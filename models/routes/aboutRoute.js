@@ -9,46 +9,37 @@ const expressSanitzer = require("express-sanitizer"),
       app             = express()
 
       User                = require("../Schema/user"),
-      PersonalInformation = require("../Schema/personalInformation")
+      // PersonalInformation = require("../Schema/personalInformation")
 
 
 router.route("/about-you")
   .get(isLoggedIn, (req, res) => res.render("createUser", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     // Get data from form and add to users profile
-    const firstName = req.body.aa,
-          lastName = req.body.ab,
-          gender = req.body.ac,
-          emailAddress = req.body.ad,
-          currentMajor = req.body.ae,
-          currentMinor = req.body.af,
-          currentGrade = req.body.ag,
-          graduationDate = req.body.ah
-
-    const newUser = {
-          firstName: firstName,
-          lastName: lastName,
-          gender: gender,
-          emailAddress: emailAddress,
-          currentMajor: currentMajor,
-          currentMinor: currentMinor,
-          currentGrade: currentGrade,
-          graduationDate: graduationDate
-    }
 
   // Create a new User profile and save to DB
-  PersonalInformation.create(newUser, (err, createdUser) => {
+  User.findOneAndUpdate(
+    {_id: req.user.id},
+    {$set:
+      {
+        firstName: req.body.aa,
+        lastName: req.body.ab,
+        gender: req.body.ac,
+        emailAddress: req.body.ad,
+        currentMajor: req.body.ae,
+        currentMinor: req.body.af,
+        currentGrade: req.body.ag,
+        graduationDate: req.body.ah
+      }
+    }, (err, updatedUser) => {
     if(err){
-      console.log(err)
-    } else{
-      createdUser.currentUser.id = req.user._id
-      createdUser.currentUser.username = req.user.username
-      createdUser.save()
-      // Redirect to next page
-      res.render("createCareerPath")
+      res.redirect("/contact")
+    } else {
+      res.render("Success")
     }
-  })
-})
+  });
+});
+
 
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){
