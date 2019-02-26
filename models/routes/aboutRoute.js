@@ -37,8 +37,8 @@ router.route("/about-you")
     } else {
       res.render("Success")
     }
-  });
-});
+  })
+})
 
 
 // Function to chech if loggedIn

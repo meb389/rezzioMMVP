@@ -14,7 +14,24 @@ const expressSanitzer = require("express-sanitizer"),
 
 router.route("/careerawareness")
   .get(isLoggedIn, (req, res) => res.render("createCareerAwareness", {currentUser: req.user}))
-//   .post(isLoggedIn, (req, res) => {
+  .post(isLoggedIn, (req, res) => {
+    Intake.findOneAndUpdate(
+      {"currentUser.username": req.user.username},
+      {$set:
+        {
+          "careerAwareness.CAquestion1": req.body.caOne,
+          "careerAwareness.CAquestion2": req.body.caTwo,
+          "careerAwareness.CAquestion3": req.body.caThree,
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        res.redirect("/contact")
+      } else {
+        updatedUser.save()
+        console.log(req.body.career1)
+        res.render("createMentorship")
+      }
+    })
 //     console.log(req.body);
 //     const { ca1, ca2, ca3 } = req.body;
 //     const newCareerAwareness = {
@@ -35,7 +52,7 @@ router.route("/careerawareness")
 //       res.render("createMentorship")
 //     }
 //   })
-// })
+})
 
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){

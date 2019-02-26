@@ -14,30 +14,27 @@ const expressSanitzer = require("express-sanitizer"),
 
 router.route("/awareness")
   .get(isLoggedIn, (req, res) => res.render("createAwareness", {currentUser: req.user}))
-  // .post(isLoggedIn, (req, res) => {
-  //   const { ca, cb, cc, cd, ce, cf } = req.body;
-  //   const newAwareness = {
-  //         Aquestion1: ca,
-  //         Aquestion2: cb,
-  //         Aquestion3: cc,
-  //         Aquestion4: cd,
-  //         Aquestion5: ce,
-  //         Aquestion6: cf
-  //   }
-  //
-  // // Create a new User profile and save to DB
-  // Awareness.create(newAwareness, (err, createdAwareness) => {
-  //   if(err){
-  //     console.log(err)
-  //   } else{
-  //     createdAwareness.currentUser.id = req.user._id
-  //     createdAwareness.currentUser.username = req.user.username
-  //     createdAwareness.save()
-  //     // Redirect to next page
-  //     res.render("createCareerAwareness")
-  //   }
-//   // })
-// })
+  .post(isLoggedIn, (req, res) => {
+
+    Intake.findOneAndUpdate(
+      {"currentUser.username": req.user.username},
+      {$set:
+        {
+          "awareness.Aquestion1": req.body.ca,
+          "awareness.Aquestion2": req.body.cb,
+          "awareness.Aquestion3": req.body.cc,
+          "awareness.Aquestion4": req.body.cd,
+          "awareness.Aquestion5": req.body.ce,
+          "awareness.Aquestion6": req.body.cf,
+        }
+      }, (err, updatedUser) => {
+      if(err){
+        res.redirect("/contact")
+      } else {
+        res.render("createCareerAwareness")
+      }
+    });
+  })
 
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){

@@ -10,17 +10,17 @@ const intakeSchema = new mongoose.Schema({
     Aquestion3: Number,
     Aquestion4: String,
     Aquestion5: Number,
-    Aquestion6: Number
+    Aquestion6: Number,
   },
   careerAwareness: {
     CAquestion1: String,
     CAquestion2: String,
-    CAquestion3: String
+    CAquestion3: String,
   },
   exposure: {
     Equestion1: Number,
     Equestion2: Number,
-    Equestion3: String
+    Equestion3: String,
   },
   internship: {
     Iquestion1: String,
