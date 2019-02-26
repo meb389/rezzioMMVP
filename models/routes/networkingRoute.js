@@ -33,6 +33,24 @@ router.route("/networking")
         res.render("createInvolvement")
       }
     })
+
+// Add last visited url.
+// Should be deleted for this involvement
+    User.findByIdAndUpdate(
+    {_id: req.user.id},
+      {$set:
+        {
+          lastVisitedURL: `${req.headers.host}` + `${req.url}`
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.render("createInvolvement")
+      }
+    })
+
   })
 
 // Function to chech if loggedIn

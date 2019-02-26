@@ -35,6 +35,23 @@ router.route("/internship")
         res.redirect("createNetworking")
       }
     })
+
+
+// Add last visited url.
+    User.findByIdAndUpdate(
+    {_id: req.user.id},
+      {$set:
+        {
+          lastVisitedURL: `${req.headers.host}` + `${req.url}`
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.redirect("createNetworking")
+      }
+    })
   })
 
 // Function to chech if loggedIn

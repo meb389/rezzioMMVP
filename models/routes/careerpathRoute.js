@@ -36,6 +36,24 @@ router.route("/careerpath")
       res.render("questionnare")
     }
   })
+
+// Add last visited url.
+// Should be deleted for this involvement
+    User.findByIdAndUpdate(
+    {_id: req.user.id},
+      {$set:
+        {
+          lastVisitedURL: `${req.headers.host}` + `${req.url}`
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.render("questionnare")
+      }
+    })
+
 })
 
 // Function to chech if loggedIn

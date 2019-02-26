@@ -33,7 +33,25 @@ router.route("/involvement")
         res.render("thankYou")
       }
     })
+
+// Add last visited url.
+// Should be deleted for this involvement
+    User.findByIdAndUpdate(
+    {_id: req.user.id},
+      {$unset:
+        {
+          lastVisitedURL: ""
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.redirect("thankYou")
+      }
+    })
   })
+
 
 // Function to chech if loggedIn
 function isLoggedIn(req, res, next){
