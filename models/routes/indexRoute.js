@@ -43,7 +43,9 @@ router.route("/login")
       failureFlash: true
     }), (req, res) => {
       // console.log(req);
-      console.log(res.domain);
+      console.log(res.req.user.lastVisitedURL);
+      // last visited url inside the response.
+      const lastVisitedURL = res.req.user.lastVisitedURL;
       res.redirect("/about-you");
   })
 
