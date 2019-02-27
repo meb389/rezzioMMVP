@@ -39,7 +39,7 @@ router.route("/mentorship")
     {_id: req.user.id},
       {$set:
         {
-          lastVisitedURL: `${req.headers.host}` + `${req.url}`
+          lastVisitedURL: `${req.url}`
         }
       }, (err, updatedUser) => {
       if(err) {

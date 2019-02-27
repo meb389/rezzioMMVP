@@ -46,7 +46,12 @@ router.route("/login")
       console.log(res.req.user.lastVisitedURL);
       // last visited url inside the response.
       const lastVisitedURL = res.req.user.lastVisitedURL;
-      res.redirect("/about-you");
+      if (lastVisitedURL) {
+        res.redirect(`${lastVisitedURL}`);
+      }else {
+        res.redirect('/dashboard');
+      }
+
   })
 
 // Thank You page

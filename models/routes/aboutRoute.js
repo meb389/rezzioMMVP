@@ -30,7 +30,7 @@ router.route("/about-you")
         currentMinor: req.body.af,
         currentGrade: req.body.ag,
         graduationDate: req.body.ah,
-        lastVisitedURL: `${req.headers.host}` + `${req.url}`
+        lastVisitedURL: `${req.url}`
       }
     }, (err, updatedUser) => {
     if(err){

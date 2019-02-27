@@ -40,7 +40,7 @@ router.route("/involvement")
     {_id: req.user.id},
       {$unset:
         {
-          lastVisitedURL: ""
+          lastVisitedURL: null
         }
       }, (err, updatedUser) => {
       if(err) {
