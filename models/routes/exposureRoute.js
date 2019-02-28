@@ -32,6 +32,24 @@ router.route("/exposure")
       res.render("createInternship")
     }
   })
+
+// Add last visited url.
+// Should be deleted for this involvement
+    User.findByIdAndUpdate(
+    {_id: req.user.id},
+      {$set:
+        {
+          lastVisitedURL: `${req.url}`
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.render("createInternship")
+      }
+    })
+
 })
 
 // Function to chech if loggedIn

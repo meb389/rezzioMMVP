@@ -29,13 +29,14 @@ router.route("/about-you")
         currentMajor: req.body.ae,
         currentMinor: req.body.af,
         currentGrade: req.body.ag,
-        graduationDate: req.body.ah
+        graduationDate: req.body.ah,
+        lastVisitedURL: `${req.url}`
       }
     }, (err, updatedUser) => {
     if(err){
-      res.redirect("/contact")
+      console.log(err);
     } else {
-      res.render("Success")
+      res.render("createCareerPath")
     }
   })
 })

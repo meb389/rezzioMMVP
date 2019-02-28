@@ -15,7 +15,8 @@ const UserSchema = new mongoose.Schema({
   currentMajor: String,
   currentMinor: String,
   currentGrade: String,
-  graduationDate: String
+  graduationDate: String,
+  lastVisitedURL: String
 })
 
 UserSchema.plugin(passportLocalMongoose)

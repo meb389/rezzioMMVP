@@ -31,6 +31,24 @@ router.route("/careerawareness")
         res.render("createMentorship")
       }
     })
+
+// Add last visited url.
+// Should be deleted for this involvement
+    User.findByIdAndUpdate(
+    {_id: req.user.id},
+      {$set:
+        {
+          lastVisitedURL: `${req.url}`
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.render("createMentorship")
+      }
+    })
+
   })
 
 // Function to chech if loggedIn
