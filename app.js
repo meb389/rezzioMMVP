@@ -44,8 +44,8 @@ app.use(methodOverride("_method"))
 app.set("view engine", "ejs")
 // Passing user info through to all pages
 app.use(function(req, res, next){
-  res.locals.currentUser = req.user
-  next()
+  res.locals.currentUser = req.user;
+  next();
 })
 // css connection
 app.use(express.static(__dirname + "/public"))
