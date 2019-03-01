@@ -14,10 +14,10 @@ const expressSanitzer = require("express-sanitizer"),
 
 
 router.route("/exposure")
-  .get(isLoggedIn, (req, res) => res.render("createExposure", {currentUser: req.user}))
+  .get(isLoggedIn, (req, res) => res.render("/instakeForms/createExposure", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
   Intake.findOneAndUpdate(
-    {"currentUser.username": req.user.username},
+    {"user.username": req.user.username},
     {$set:
       {
         "exposure.Equestion1": req.body.ha,
@@ -29,7 +29,7 @@ router.route("/exposure")
       console.log(err)
     } else {
       updatedUser.save()
-      res.render("createInternship")
+      res.render("/instakeForms/createInternship")
     }
   })
 
@@ -46,7 +46,7 @@ router.route("/exposure")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("createInternship")
+        res.render("/instakeForms/createInternship")
       }
     })
 

@@ -13,7 +13,7 @@ const expressSanitzer = require("express-sanitizer"),
 
 
 router.route("/internship")
-  .get(isLoggedIn, (req, res) => res.render("createInternship", {currentUser: req.user}))
+  .get(isLoggedIn, (req, res) => res.render("/instakeForms/createInternship", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     Intake.findOneAndUpdate(
     {"currentUser.username": req.user.username},
@@ -32,7 +32,7 @@ router.route("/internship")
         console.log(err)
       } else {
         updatedUser.save()
-        res.redirect("createNetworking")
+        res.redirect("/instakeForms/createNetworking")
       }
     })
 
@@ -49,7 +49,7 @@ router.route("/internship")
         console.log(err)
       } else {
         updatedUser.save()
-        res.redirect("createNetworking")
+        res.redirect("/instakeForms/createNetworking")
       }
     })
   })

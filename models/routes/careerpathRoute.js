@@ -12,7 +12,7 @@ const expressSanitzer = require("express-sanitizer"),
 
 
 router.route("/careerpath")
-  .get(isLoggedIn, (req, res) => res.render("createCareerPath", {currentUser: req.user}))
+  .get(isLoggedIn, (req, res) => res.render("/instakeForms/createCareerPath", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     // Get data from path selection drop down
     console.log(req.body);
@@ -33,7 +33,7 @@ router.route("/careerpath")
       createdIntake.currentUser.username = req.user.username,
       createdIntake.save()
       // Redirect to next page
-      res.render("questionnare")
+      res.render("/instakeForms/questionnare")
     }
   })
 
@@ -50,7 +50,7 @@ router.route("/careerpath")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("questionnare")
+        res.render("/instakeForms/questionnare")
       }
     })
 
