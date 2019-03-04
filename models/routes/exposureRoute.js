@@ -29,7 +29,7 @@ router.route("/exposure")
       console.log(err)
     } else {
       updatedUser.save()
-      res.render("/instakeForms/createInternship")
+      res.render("createInternship")
     }
   })
 
@@ -46,7 +46,7 @@ router.route("/exposure")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("/instakeForms/createInternship")
+        res.render("createInternship")
       }
     })
 

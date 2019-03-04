@@ -32,7 +32,7 @@ router.route("/internship")
         console.log(err)
       } else {
         updatedUser.save()
-        res.redirect("/instakeForms/createNetworking")
+        res.redirect("createNetworking")
       }
     })
 
@@ -49,7 +49,7 @@ router.route("/internship")
         console.log(err)
       } else {
         updatedUser.save()
-        res.redirect("/instakeForms/createNetworking")
+        res.redirect("createNetworking")
       }
     })
   })

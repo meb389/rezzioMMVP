@@ -30,7 +30,7 @@ router.route("/networking")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("/instakeForms/createInvolvement")
+        res.render("createInvolvement")
       }
     })
 
@@ -47,7 +47,7 @@ router.route("/networking")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("/instakeForms/createInvolvement")
+        res.render("createInvolvement")
       }
     })
 
