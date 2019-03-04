@@ -5,7 +5,8 @@ const expressSanitzer = require("express-sanitizer"),
       bodyParser      = require("body-parser"),
       passport        = require("passport"),
       mongoose        = require("mongoose"),
-      express         = require("express")
+      express         = require("express"),
+      path            = require('path');
 
 // Creating Route Files
 const indexRoute           = require("./models/routes/indexRoute"),
@@ -36,12 +37,16 @@ mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mon
 // =============================================================================
 // App config
 app = express()
+// app.set('views', path.join(__dirname, 'views/'));
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(expressSanitzer())
-app.use(express.static(__dirname + "public"))
+app.use(express.static(__dirname + 'public'))
 app.use(methodOverride("_method"))
 app.set("view engine", "ejs")
+app.set('views', [path.join(__dirname, '/views'),
+                     path.join(__dirname, '/views/intakeForms')]);
 // Passing user info through to all pages
 app.use(function(req, res, next){
   res.locals.currentUser = req.user;
@@ -74,7 +79,7 @@ app.use(mentorshipRoute),
 app.use(exposureRoute),
 app.use(internshipRoute),
 app.use(networkingRoute),
-app.use(involvementRoute)
+app.use(involvementRoute),
 app.use(contactRoute)
 // app.use(resetPasswordRoute)
 

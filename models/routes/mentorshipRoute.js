@@ -13,7 +13,7 @@ const expressSanitzer = require("express-sanitizer"),
 
 
 router.route("/mentorship")
-  .get(isLoggedIn, (req, res) => res.render("/instakeForms/createMentorship", {currentUser: req.user}))
+  .get(isLoggedIn, (req, res) => res.render("createMentorship", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     Intake.findOneAndUpdate(
       {"currentUser.username": req.user.username},

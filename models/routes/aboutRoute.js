@@ -36,7 +36,7 @@ router.route("/about-you")
     if(err){
       console.log(err);
     } else {
-      res.render("/instakeForms/createCareerPath")
+      res.render("createCareerPath")
     }
   })
 })

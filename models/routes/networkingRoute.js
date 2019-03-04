@@ -13,7 +13,7 @@ const expressSanitzer = require("express-sanitizer"),
 
 
 router.route("/networking")
-  .get(isLoggedIn, (req, res) => res.render("/instakeForms/createNetworking", {currentUser: req.user}))
+  .get(isLoggedIn, (req, res) => res.render("createNetworking", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
     Intake.findOneAndUpdate(
     {"currentUser.username": req.user.username},

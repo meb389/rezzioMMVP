@@ -17,7 +17,7 @@ router.route("/")
 
 // Student Dashboard
 router.route("/dashboard")
-  .get(isLoggedIn, (req, res) => res.render("studentDashboard"))
+  .get( (req, res) => res.render("studentDashboard"))
 
 router.route("/register")
   .get((req, res) => res.render("register"))
