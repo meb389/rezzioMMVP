@@ -30,7 +30,7 @@ router.route("/mentorship")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("/instakeForms/createExposure")
+        res.render("createExposure")
       }
     })
 // Add last visited url.
@@ -46,7 +46,7 @@ router.route("/mentorship")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("/instakeForms/createExposure")
+        res.render("createExposure")
       }
     })
   })
