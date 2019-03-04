@@ -17,7 +17,7 @@ router.route("/exposure")
   .get(isLoggedIn, (req, res) => res.render("/instakeForms/createExposure", {currentUser: req.user}))
   .post(isLoggedIn, (req, res) => {
   Intake.findOneAndUpdate(
-    {"user.username": req.user.username},
+    {"currentUser.username": req.user.username},
     {$set:
       {
         "exposure.Equestion1": req.body.ha,

@@ -29,7 +29,6 @@ router.route("/register")
         return res.render("register")
        }
         passport.authenticate("local")(req, res, () => {
-          console.log();
         res.redirect("/about-you")
       })
     })
@@ -40,10 +39,8 @@ router.route("/login")
   .post(
     passport.authenticate("local", {
       failureRedirect: "/login",
-      // failureFlash: true
     }), (req, res) => {
       // console.log(req);
-      console.log(res.req.user.lastVisitedURL);
       // last visited url inside the response.
       const lastVisitedURL = res.req.user.lastVisitedURL;
       if (lastVisitedURL) {

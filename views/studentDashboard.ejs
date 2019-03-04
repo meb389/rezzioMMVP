@@ -1,24 +1,15 @@
 <% include partials/header %>
+<link type="text/css" rel="stylesheet" href="/stylesheets/dashboard.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
 
 <% include partials/navMenu %>
 
 <div class="content-wrapper">
-<div class="ui two column grid">
-  <div class="row">
-
-
-  <!-- <div class="ui one column grid"> -->
-    <div class="column">
-      <!-- <div class="ui segment">
-        <img>
-      </div>
-    </div>
-    <div class="column">
-      <div class="ui segment">
-        <img>
-      </div> -->
-
-      <div class="ui three stackable cards">
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <div class="row card-row">
         <div class="ui card">
           <div class="image">
             <img src="">
@@ -39,11 +30,9 @@
             </a>
           </div>
         </div>
-
-        <!-- card 2 -->
         <div class="ui card">
           <div class="image">
-            <img >
+            <img src="">
           </div>
           <div class="content">
             <a class="header">Kristy</a>
@@ -54,17 +43,16 @@
               Kristy is an art director living in New York.
             </div>
           </div>
-          <div class="extra content">
-            <a>
-              <i class="user icon"></i>
-              22 Friends
-            </a>
-          </div>
+            <div class="extra content">
+              <a>
+                <i class="user icon"></i>
+                22 Friends
+              </a>
+            </div>
         </div>
-        <!-- card 3 -->
         <div class="ui card">
           <div class="image">
-            <img >
+            <img src="">
           </div>
           <div class="content">
             <a class="header">Kristy</a>
@@ -83,40 +71,51 @@
           </div>
         </div>
       </div>
-    </div>
-  <!-- </div> -->
-
-  <!-- <div class="ui four column grid"> -->
-  <!-- <div class="ui grid"> -->
-
-
-    <div class="right floated column">
-      <div class="ui card ">
-        <div class="image">
-          <img >
+      <hr>
+      <div class="row">
+        <div class="ui segments">
+            <div class="ui segment">
+              <p>Top</p>
+            </div>
+            <div class="ui segment">
+              <p>Middle</p>
+            </div>
+            <div class="ui segment">
+              <p>Middle</p>
+            </div>
+            <div class="ui segment">
+              <p>Middle</p>
+            </div>
+            <div class="ui segment">
+              <p>Bottom</p>
+            </div>
         </div>
-        <div class="content">
-          <a class="header">Kristy</a>
-          <div class="meta">
-            <span class="date">Joined in 2013</span>
+        <div id="progress" class="ui card">
+          <div class="card">
+            <div class="content">
+              <div class="header">Progress</div>
+              <div class="progress description">
+                <i class="fas fa-chart-pie fa-4x"></i>
+              </div>
+              <div class="progress description">
+                <i class="fas fa-chart-pie fa-4x"></i>
+              </div>
+              <div class="progress description">
+                <i class="fas fa-chart-pie fa-4x"></i>
+              </div>
+              <div class="progress description">
+                <i class="fas fa-chart-pie fa-4x"></i>
+              </div>
+              <div class="progress description">
+                <i class="fas fa-chart-pie fa-4x"></i>
+              </div>
+              <div class="progress description">
+                <i class="fas fa-chart-pie fa-4x"></i>
+              </div>
+            </div>
           </div>
-          <div class="description">
-            Kristy is an art director living in New York.
-          </div>
-        </div>
-        <div class="extra content">
-          <a>
-            <i class="user icon"></i>
-            22 Friends
-          </a>
         </div>
       </div>
     </div>
-    <!-- </div> -->
-  <!-- </div> -->
-
-</div>
-
-</div>
-
+  </div>
 </div>

@@ -1,0 +1,47 @@
+
+
+.ui.card{
+  width: 33.33%;
+  margin: 0;
+  float: left;
+}
+
+
+
+.card-row{
+  background-color: white;
+  height: 180px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+hr{
+  width: 100%;
+  margin: 0 0 5px 0;
+}
+
+.ui.segments{
+  float: left;
+  width: 48%;
+}
+
+.segment{
+  min-height: 0;
+}
+
+.progress {
+  width: 33%;
+  float: left;
+  padding-top: 30px;
+  text-align: center;
+}
+
+
+
+#progress{
+  width: 48%;
+  float: right;
+  margin: auto;
+  height: 250px;
+}
