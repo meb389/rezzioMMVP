@@ -6,7 +6,8 @@ const expressSanitzer = require("express-sanitizer"),
       mongoose        = require("mongoose"),
       express         = require("express"),
       router          = express.Router(),
-      app             = express(),
+      app             = express();
+
 
       User   = require("../Schema/user"),
       Intake = require("../Schema/intake")

@@ -6,7 +6,12 @@ const expressSanitzer = require("express-sanitizer"),
       passport        = require("passport"),
       mongoose        = require("mongoose"),
       express         = require("express"),
-      path            = require('path');
+      path            = require('path'),
+      multer          = require('multer'),
+      GridFsStorage   = require('multer-gridfs-storage'),
+      Grid            = require('gridfs-stream'),
+      crypto          = require('crypto'),
+      router          = express.Router();
 
 // Creating Route Files
 const indexRoute           = require("./models/routes/indexRoute"),
@@ -28,7 +33,8 @@ const Intake              = require("./models/Schema/intake"),
       User                = require("./models/Schema/user")
 
 //rezzio
-mongoose.connect(`mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
+const mongoURI = `mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`;
+const conn = mongoose.createConnection( mongoURI , { useNewUrlParser: true })
  // mine
  // mongoose.connect(`mongodb://soufi:NHIadkQn0ULQKkoa@cluster0-shard-00-00-ku5v3.mongodb.net:27017,cluster0-shard-00-01-ku5v3.mongodb.net:27017,cluster0-shard-00-02-ku5v3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
   // .then(() => console.log('Connected'))
@@ -80,8 +86,50 @@ app.use(exposureRoute),
 app.use(internshipRoute),
 app.use(networkingRoute),
 app.use(involvementRoute),
+app.use(contactRoute),
 app.use(contactRoute)
+
 // app.use(resetPasswordRoute)
+
+
+
+
+// upload routes
+  conn.once('open', function () {
+    var gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection('files');
+
+  // all set!
+});
+
+const storage = new GridFsStorage({
+  url: mongoURI,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'files'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
+const upload = multer({ storage });
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  res.json({ file: req.file });
+  // res.redirect('/');
+});
+
+
+  module.exports = upload;
+
 
 
 app.listen(process.env.PORT || 5000, () => console.log("Example app listening on port 5000!"))
