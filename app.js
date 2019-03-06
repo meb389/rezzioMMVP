@@ -24,8 +24,8 @@ const indexRoute           = require("./models/routes/indexRoute"),
       internshipRoute      = require("./models/routes/internshipRoute"),
       networkingRoute      = require("./models/routes/networkingRoute"),
       involvementRoute     = require("./models/routes/involvementRoute"),
-      contactRoute     = require("./models/routes/contact"),
-      resetPasswordRoute    = require("./models/routes/resetPassword")
+      contactRoute         = require("./models/routes/contact"),
+      resetPasswordRoute   = require("./models/routes/resetPassword")
 
 
 // // Reauiring Schamas for account creation
@@ -34,7 +34,8 @@ const Intake              = require("./models/Schema/intake"),
 
 //rezzio
 const mongoURI = `mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`;
-const conn = mongoose.createConnection( mongoURI , { useNewUrlParser: true })
+const conn = mongoose.connect( mongoURI , { useNewUrlParser: true })
+
  // mine
  // mongoose.connect(`mongodb://soufi:NHIadkQn0ULQKkoa@cluster0-shard-00-00-ku5v3.mongodb.net:27017,cluster0-shard-00-01-ku5v3.mongodb.net:27017,cluster0-shard-00-02-ku5v3.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`, { useNewUrlParser: true })
   // .then(() => console.log('Connected'))
@@ -95,40 +96,40 @@ app.use(contactRoute)
 
 
 // upload routes
-  conn.once('open', function () {
-    var gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection('files');
+//   conn.once('open', function () {
+//     var gfs = Grid(conn.db, mongoose.mongo);
+//     gfs.collection('files');
+//
+//   // all set!
+// });
 
-  // all set!
-});
+// const storage = new GridFsStorage({
+//   url: mongoURI,
+//   file: (req, file) => {
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         }
+//         const filename = buf.toString('hex') + path.extname(file.originalname);
+//         const fileInfo = {
+//           filename: filename,
+//           bucketName: 'files'
+//         };
+//         resolve(fileInfo);
+//       });
+//     });
+//   }
+// });
+// const upload = multer({ storage });
 
-const storage = new GridFsStorage({
-  url: mongoURI,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: 'files'
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
-});
-const upload = multer({ storage });
-
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.json({ file: req.file });
-  // res.redirect('/');
-});
-
-
-  module.exports = upload;
+// app.post('/upload', upload.single('file'), (req, res) => {
+//   res.json({ file: req.file });
+//   // res.redirect('/');
+// });
+//
+//
+//   module.exports = upload;
 
 
 
