@@ -45,7 +45,7 @@ router.route("/careerawareness")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("createMentorship")
+        
       }
     })
 

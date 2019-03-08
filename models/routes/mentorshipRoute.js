@@ -46,7 +46,6 @@ router.route("/mentorship")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("createExposure")
       }
     })
   })

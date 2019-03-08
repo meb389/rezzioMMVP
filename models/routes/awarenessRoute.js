@@ -14,9 +14,9 @@ const expressSanitzer = require("express-sanitizer"),
 
 router.route("/awareness")
   .get(isLoggedIn, (req, res) => res.render("createAwareness", {currentUser: req.user}))
-  .post(isLoggedIn, (req, res) => {
+  .post(isLoggedIn,  (req, res) => {
 
-    Intake.findOneAndUpdate(
+     Intake.findOneAndUpdate(
       {"currentUser.username": req.user.username},
       {$set:
         {
@@ -37,7 +37,7 @@ router.route("/awareness")
 
     // Add last visited url.
     // Should be deleted for this involvement
-        User.findByIdAndUpdate(
+         User.findByIdAndUpdate(
         {_id: req.user.id},
           {$set:
             {
@@ -48,7 +48,7 @@ router.route("/awareness")
             console.log(err)
           } else {
             updatedUser.save()
-            res.render("createCareerAwareness")
+
           }
         })
 

@@ -50,7 +50,6 @@ router.route("/internship")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("createNetworking")
       }
     })
   })

@@ -16,7 +16,6 @@ router.route("/careerpath")
   .post(isLoggedIn, (req, res) => {
 
     // Get data from path selection drop down
-    console.log(req);
     const pathSelection = req.body.ba,
           currentUser = req.user.username
 
@@ -40,7 +39,7 @@ router.route("/careerpath")
 
 // Add last visited url.
 // Should be deleted for this involvement
-    User.findByIdAndUpdate(
+   User.findByIdAndUpdate(
     {_id: req.user.id},
       {$set:
         {
@@ -51,7 +50,6 @@ router.route("/careerpath")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("questionnare")
       }
     })
 

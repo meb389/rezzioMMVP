@@ -47,7 +47,6 @@ router.route("/involvement")
         console.log(err)
       } else {
         updatedUser.save()
-        res.redirect("thankYou")
       }
     })
   })

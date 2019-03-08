@@ -47,7 +47,6 @@ router.route("/networking")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("createInvolvement")
       }
     })
 

@@ -46,7 +46,6 @@ router.route("/exposure")
         console.log(err)
       } else {
         updatedUser.save()
-        res.render("createInternship")
       }
     })
 
