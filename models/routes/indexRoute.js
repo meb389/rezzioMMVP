@@ -63,6 +63,10 @@ router.route("/")
 router.route("/dashboard")
   .get(async (req, res) => {
     console.log(await conn.collection('files.chunks').find().toArray());
+    conn.collection('files.chunks').find().toArray((err, files) => {
+      res.render('studentDashboard', { files: files });
+
+    })
    //  const files = files.files;
    //  const files = await gfs.chunks;
    // console.log( files );
@@ -83,7 +87,7 @@ router.route("/dashboard")
   //         file.isImage = false;
   //       }
       // });
-      res.render('studentDashboard');
+      // res.render('studentDashboard');
     })
   // });
   // })

@@ -130,4 +130,14 @@
 </form>
 
 <hr>
-        
+        <% if(files){ %>
+          <% console.log(files) %>
+          <% files.forEach(function(file) { %>
+            <div >
+
+                <img src="data:image/jpeg;base64,<%= file.data.toString('base64') %>" alt="">
+            </div>
+            <% }) %>
+              <% } else { %>
+                <p>No files to show</p>
+                <% } %>
