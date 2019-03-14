@@ -61,37 +61,65 @@ router.route("/")
 
 // Student Dashboard
 router.route("/dashboard")
-  .get(async (req, res) => {
-    console.log(await conn.collection('files.chunks').find().toArray());
-    conn.collection('files.chunks').find().toArray((err, files) => {
+  .get((req, res) => {
+  //   console.log(await conn.collection('files.chunks').find().toArray());
+  //   conn.collection('files.chunks').find().toArray((err, files) => {
+  //     res.render('studentDashboard', { files: files });
+  //
+  //   })
+  //   const files = files.files;
+  //   const files = await gfs.chunks;
+  //  console.log( files );
+
+  gfs.files.find().toArray((err, files) => {
+    // console.log(files);
+    // Check if files
+    if (!files || files.length === 0) {
+      res.render('studentDashboard', { files: false });
+    } else {
+      files.map(file => {
+        if (
+          file.contentType === 'image/jpeg' ||
+          file.contentType === 'image/png'
+        ) {
+          file.isImage = true;
+        } else {
+          file.isImage = false;
+        }
+      });
       res.render('studentDashboard', { files: files });
-
-    })
-   //  const files = files.files;
-   //  const files = await gfs.chunks;
-   // console.log( files );
-
-  // gfs.files.find().toArray((err, files) => {
-  //   // console.log(files);
-  //   // Check if files
-  //   if (!files || files.length === 0) {
-  //     res.render('studentDashboard', { files: false });
-  //   } else {
-  //     files.map(file => {
-  //       if (
-  //         file.contentType === 'image/jpeg' ||
-  //         file.contentType === 'image/png'
-  //       ) {
-  //         file.isImage = true;
-  //       } else {
-  //         file.isImage = false;
-  //       }
-      // });
-      // res.render('studentDashboard');
-    })
-  // });
-  // })
+    }
+  });
+  })
   .post( upload.upload.single('file'), (req, res) => res.json({ file: req.file }))
+
+
+  router.route('/image/:filename')
+    .get((req, res) => {
+      gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+        // Check if file
+        if (!file || file.length === 0) {
+          return res.status(404).json({
+            err: 'No file exists'
+          });
+        }
+
+        // Check if image
+        if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+          // Read output to browser
+          const readstream = gfs.createReadStream(file.filename);
+          readstream.pipe(res);
+        } else {
+          res.status(404).json({
+            err: 'Not an image'
+          });
+        }
+      });
+  });
+
+
+
+
 
 router.route("/register")
   .get((req, res) => res.render("register"))
