@@ -14,6 +14,8 @@ const expressSanitzer = require("express-sanitizer"),
       upload    = require("../../middlewares"),
       router          = express.Router()
 
+      Intake = require("../Schema/intake")
+
 
     //   const mongoURI = `mongodb://Amadou:AmadouPassword@cluster0-shard-00-00-lujlt.mongodb.net:27017,cluster0-shard-00-01-lujlt.mongodb.net:27017,cluster0-shard-00-02-lujlt.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`;
       const conn = mongoose.connection;
@@ -61,7 +63,7 @@ router.route("/")
 
 // Student Dashboard
 router.route("/dashboard")
-  .get((req, res) => {
+  .get(isLoggedIn, (req, res) => {
   //   console.log(await conn.collection('files.chunks').find().toArray());
   //   conn.collection('files.chunks').find().toArray((err, files) => {
   //     res.render('studentDashboard', { files: files });
@@ -71,27 +73,52 @@ router.route("/dashboard")
   //   const files = await gfs.chunks;
   //  console.log( files );
 
-  gfs.files.find().toArray((err, files) => {
+  // gfs.files.find().toArray((err, files) => {
+  //   // console.log(files);
+  //   // Check if files
+  //   if (!files || files.length === 0) {
+  //     res.render('studentDashboard', { files: false });
+  //   } else {
+  //     files.map(file => {
+  //       if (
+  //         file.contentType === 'image/jpeg' ||
+  //         file.contentType === 'image/png'
+  //       ) {
+  //         file.isImage = true;
+  //       } else {
+  //         file.isImage = false;
+  //       }
+  //     });
+  //     res.render('studentDashboard', { files: files });
+  //   }
+  // });
+    var files = Intake.findOne({"currentUser.username": req.user.username}).exec();
+    files.then(function (file) {
+      pic = [file.Dashboard.profilePic];
+      // console.log(pic)
+      res.render('studentDashboard', { files: pic });
+    });
     // console.log(files);
-    // Check if files
-    if (!files || files.length === 0) {
-      res.render('studentDashboard', { files: false });
-    } else {
-      files.map(file => {
-        if (
-          file.contentType === 'image/jpeg' ||
-          file.contentType === 'image/png'
-        ) {
-          file.isImage = true;
-        } else {
-          file.isImage = false;
-        }
-      });
-      res.render('studentDashboard', { files: files });
-    }
-  });
+    // res.render('studentDashboard', { files: files });
   })
-  .post( upload.upload.single('file'), (req, res) => res.json({ file: req.file }))
+  .post(isLoggedIn, upload.upload.single('profile'), (req, res) => {
+    // console.log(req.file.filename);
+    Intake.findOneAndUpdate(
+    {"currentUser.username": req.user.username},
+      {$set:
+        {
+          "Dashboard.profilePic": req.file.filename
+        }
+      }, (err, updatedUser) => {
+      if(err) {
+        console.log(err)
+      } else {
+        updatedUser.save()
+        res.json({ file: req.file })
+      }
+    })
+    // console.log(res);
+    })
 
 
   router.route('/image/:filename')
@@ -154,6 +181,14 @@ router.route("/login")
 
 // Thank You page
 router.get("/thankyou", isLoggedIn, (req, res) => res.render("thankYou"))
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect("/login")
+}
+
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){

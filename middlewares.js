@@ -49,30 +49,36 @@ var gfs
 //  return upload
 // };
 
+function uploadStorage() {
+  const storage = new GridFsStorage({
+      url: mongoURI,
+      file: (req, file) => {
+          return new Promise((resolve, reject) => {
+              crypto.randomBytes(16, (err, buf) => {
+                  if (err) {
+                      return reject(err);
+                  }
+                  // console.log(req);
+                  // const UserID = req.body.UserID;
+                  // console.log('inside the promise:' + UserID);
+                  const filename = buf.toString('hex') + path.extname(file.originalname);
+                  const fileInfo = {
+                      filename: filename,
+                      bucketName: 'files'
+                  };
+                  resolve(fileInfo);
+              });
+          });
+      }
+  });
 
-const storage = new GridFsStorage({
-    url: mongoURI,
-    file: (req, file) => {
-        return new Promise((resolve, reject) => {
-            crypto.randomBytes(16, (err, buf) => {
-                if (err) {
-                    return reject(err);
-                }
-                // const UserID = req.body.UserID;
-                // console.log('inside the promise:' + UserID);
-                const filename = buf.toString('hex') + path.extname(file.originalname);
-                const fileInfo = {
-                    filename: filename,
-                    bucketName: 'files'
-                };
-                resolve(fileInfo);
-            });
-        });
-    }
-});
+   let storageFn = multer({ storage });
+   return storageFn;
+}
 
-const upload = module.exports = { upload : multer({ storage }),
-                                  gfs: gfs}
+const storage = uploadStorage();
+
+const upload = module.exports = { upload : storage}
 
 // app.post('/upload', upload.single('file'), (req, res) => {
 //   res.json({ file: req.file });

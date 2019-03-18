@@ -52,6 +52,9 @@ const intakeSchema = new mongoose.Schema({
     Nquestion4: String,
     Nquestion5: String,
   },
+  Dashboard: {
+    profilePic: String,
+  },
   currentUser:{
     id: mongoose.Schema.Types.ObjectId,
     username: String
